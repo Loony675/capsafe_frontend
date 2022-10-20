@@ -1,12 +1,77 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+//Bibliothèque Fontwesome
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+//Import des screens
+import HomeScreen from './screens/HomeScreen';
+import MainScreen from './screens/MainScreen';
+import ProfilScreen from './screens/ProfilScreen';
+import RouteScreen from './screens/RouteScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import SignInScreen from './screens/SignInScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import TchatScreen from './screens/TchatScreen';
+//Import redux
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+// const store = configureStore({
+//   reducer: {},
+//  });
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+ const TabNavigator = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ color, size }) => {
+        let iconName = '';
+
+        if (route.name === 'Profil') {
+          iconName = 'user';
+        } else if (route.name === 'Main') {
+          iconName = 'house';
+        } else if (route.name === 'Messaging') {
+          iconName = 'fa-envelope';
+        } else if (route.name === 'Settings') {
+          iconName = 'fa-gear';
+        }
+
+        return <FontAwesome name={iconName} size={size} color={color} />;
+      },
+
+      tabBarActiveTintColor: '#ec6e5b',
+      tabBarInactiveTintColor: '#335561',
+      headerShown: false,
+    })}>
+      <Tab.Screen name="Profil" component={ProfilScreen} />
+      <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Messaging" component={TchatScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Route" component={RouteScreen} />
+    </Tab.Navigator>
+  );
+};
+
+ 
+ export default function App() {
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Google" component={HomeScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
