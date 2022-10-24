@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.image1} source={require("../assets/google.png")} />
             <Text style = {styles.google}>S’enregistrer avec Google </Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.btn3}>
+          <TouchableOpacity style = {styles.btn3} onPress={() => navigation.navigate('SignUp')}>
             <Text style = {styles.signUp}>S’enregistrer par email</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn4}>
