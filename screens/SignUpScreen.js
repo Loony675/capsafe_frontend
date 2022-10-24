@@ -23,7 +23,7 @@ export default function SignUpScreen() {
 		fetch('http://localhost:3000/users/signup', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ email: emailSignUp, username: signUpUsername, password: signUpPassword }),
+			body: JSON.stringify({ email: emailSignUp, username: usernameSignUp, password: passwordSignUp }),
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
