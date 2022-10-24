@@ -53,7 +53,6 @@ const Tab = createBottomTabNavigator();
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Messaging" component={TchatScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Route" component={RouteScreen} />
     </Tab.Navigator>
   );
 };
@@ -61,17 +60,18 @@ const Tab = createBottomTabNavigator();
  
  export default function App() {
   return (
-    <Provider store={store}>
+    //<Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
-    </Provider>
+   //</Provider>
   );
 }
 
