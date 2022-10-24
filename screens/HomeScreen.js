@@ -33,7 +33,6 @@ export default function HomeScreen({ navigation }) {
   )
 }
 
-export default HomeScreen
 
 const styles = StyleSheet.create({
   background: {
