@@ -13,8 +13,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { login } from "../reducers/users";
 
-export default function SignUpScreen() {
+export default function SignUpScreen({navigation}) {
   const [emailSignUp, setEmailSignUp] = useState();
   const [usernameSignUp, setUsernameSignUp] = useState();
   const [passwordSignUp, setPasswordSignUp] = useState();
@@ -22,7 +23,7 @@ export default function SignUpScreen() {
   const dispatch = useDispatch();
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signUp", {
+    fetch("http://192.168.10.118:3000/users/signUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,13 +36,15 @@ export default function SignUpScreen() {
       .then((data) => {
         if (data.result) {
           dispatch(login({ username: usernameSignUp, token: data.token }));
+          navigation.navigate('TabNavigator', { screen: 'Main' });
+
         }
       });
   };
 
   return (
     <SafeAreaView style={styles.background}>
-      <Image style={styles.logo} source={require("../assets/beubeu.jpg")} />
+        <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -88,8 +91,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: "10%",
-    height: "40%",
-    width: "60%",
+    height:300,
+    width: 300,
+    borderRadius:9999
   },
   inputContainer: {
     height: "40%",
@@ -99,24 +103,24 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
   input: {
-    flexDirection: "row",
+    flex: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: "20%",
     justifyContent: "center",
     marginBottom: 15,
     alignSelf: "center",
     padding: 15,
   },
   btnSignUp: {
-    flexDirection: "row",
+    flex: "row",
     width: "75%",
     height: "15%",
     backgroundColor: "rgba(71, 139, 188, 1)",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: "20%",
     justifyContent: "center",
     marginTop: 25,
     alignSelf: "center",
