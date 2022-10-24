@@ -19,9 +19,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// const store = configureStore({
-//   reducer: {},
-//  });
+import users from './reducers/users';
+
+const store = configureStore({
+  reducer: { users },
+});
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,7 +62,7 @@ const Tab = createBottomTabNavigator();
  
  export default function App() {
   return (
-    //<Provider store={store}>
+    <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} />
@@ -71,7 +73,7 @@ const Tab = createBottomTabNavigator();
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
-   //</Provider>
+   </Provider>
   );
 }
 

@@ -12,28 +12,32 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function SignUpScreen() {
-
   const [emailSignUp, setEmailSignUp] = useState();
   const [usernameSignUp, setUsernameSignUp] = useState();
   const [passwordSignUp, setPasswordSignUp] = useState();
 
+  const dispatch = useDispatch();
+
   const handleRegister = () => {
-		fetch('http://localhost:3000/users/signup', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ email: emailSignUp, username: signUpUsername, password: signUpPassword }),
-		}).then(response => response.json())
-			.then(data => {
-				if (data.result) {
-					dispatch(login({ username: signUpUsername, token: data.token }));
-					setSignUpUsername('');
-					setSignUpPassword('');
-					setIsModalVisible(false)
-				}
-			});
-	};
+    fetch("http://localhost:3000/users/signUp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: emailSignUp,
+        username: usernameSignUp,
+        password: passwordSignUp,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(login({ username: usernameSignUp, token: data.token }));
+        }
+      });
+  };
 
   return (
     <SafeAreaView style={styles.background}>
@@ -49,15 +53,31 @@ export default function SignUpScreen() {
           onChangeText={(value) => setEmailSignUp(value)}
           value={emailSignUp}
         />
-        <TextInput style={styles.input} placeholder="Pseudo" autoCapitalize="yes" onChangeText={(value) => setUsernameSignUp(value)} value={usernameSignUp} />
-        <TextInput style={styles.input} placeholder="Mot de passe" autoCapitalize="none" secureTextEntry={true} onChangeText={(value) => setPasswordSignUp(value)} value= {passwordSignUp} />
-        <TouchableOpacity style={styles.btnSignUp} place>
+        <TextInput
+          style={styles.input}
+          placeholder="Pseudo"
+          autoCapitalize="yes"
+          onChangeText={(value) => setUsernameSignUp(value)}
+          value={usernameSignUp}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Mot de passe"
+          autoCapitalize="none"
+          secureTextEntry={true}
+          onChangeText={(value) => setPasswordSignUp(value)}
+          value={passwordSignUp}
+        />
+        <TouchableOpacity
+          style={styles.btnSignUp}
+          onPress={() => handleRegister()}
+        >
           <Text style={styles.fieldBtnSignUp}>Rejoindre Capsafe</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   background: {
