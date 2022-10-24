@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 
-
 export default function HomeScreen({ navigation }) {
 
   
@@ -19,7 +18,7 @@ export default function HomeScreen({ navigation }) {
             <Text style = {styles.facebook}>S’enregistrer avec Facebook </Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn2}>
-            <Image style={styles.image1} source={require("../assets/google.png")} />
+            <Image style={styles.image2} source={require("../assets/google.png")} />
             <Text style = {styles.google}>S’enregistrer avec Google </Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn3} onPress={() => navigation.navigate('SignUp')}>
@@ -40,91 +39,104 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent : "center",
   },
+
   logo: {
     marginTop: "10%",
     height:300,
     width: 300,
     borderRadius:9999
   },
+
   buttonContainer: {
     height: "40%",
     width: "75%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "5%",
- 
+    marginTop: "5%", 
   },
+
   btn1: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",   
+    borderRadius: 20,   
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center'
    },
+
    image1: { 
     marginTop: 11,
     marginLeft: 10,   
     width: 30,
     height: 30
    },
+
   facebook: {   
     textAlign:'center',
-    fontFamily: "Montserrat", 
-    fontSize: 20
-     
+    fontSize: 20,
+    paddingTop: 12,
+    marginLeft: 5     
   },
+
   btn2: {
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,   
     justifyContent: 'center',
-    marginBottom: 15
+    marginBottom: 15,
+    alignSelf: 'center',    
   },
   image2: { 
-    marginTop: 12,
-    marginLeft: 10,   
-    width: 30,
-    height: 30
+    marginTop: 11,
+    width: 26,
+    height: 26,
+    marginRight: 18,
+    
   },
+
   google: {
     textAlign:'center',   
-    fontSize: 20 
+    fontSize: 20,
+    paddingTop: 12,     
   },
+
   btn3: {
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
   },
+
   signUp: {
     textAlign:'center',
     color: 'white',
     fontSize: 20
   },
+
   btn4: {
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
   },
+
   signIn: {
     textAlign:'center',
     color: 'white',
     fontSize: 20
-
   },
 })
