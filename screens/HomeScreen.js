@@ -12,7 +12,7 @@ export default function HomeScreen({ navigation }) {
   
   return (
       <View style = {styles.background}>
-        <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666616816/LOGO_CAPSAFE_2_aclnue.jpg"}}/>
+        <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
         <View style = {styles.buttonContainer}>
           <TouchableOpacity style = {styles.btn1}>
             <Image style={styles.image1} source={require("../assets/facebook.png")} />
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: "10%",
-    height:100,
-    width: 100,
+    height:300,
+    width: 300,
     borderRadius:9999
   },
   buttonContainer: {
