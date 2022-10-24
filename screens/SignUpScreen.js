@@ -23,7 +23,7 @@ export default function SignUpScreen({navigation}) {
   const dispatch = useDispatch();
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signUp", {
+    fetch("http://192.168.10.118:3000/users/signUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

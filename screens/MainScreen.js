@@ -7,7 +7,7 @@ import MapView from "react-native-maps";
 
 const MainScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <MapView
         initialRegion={{
           latitude: 37.78825,
@@ -15,12 +15,21 @@ const MainScreen = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        style={{ flex: 1 }}
-      ></MapView>
+        style={styles.map}>
+        </MapView>
+
+      <Text> TEST </Text>
     </View>
   );
 };
 
 export default MainScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    flex: 1,
+  },
+});
