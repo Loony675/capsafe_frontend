@@ -71,6 +71,7 @@ const Tab = createBottomTabNavigator();
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>
    </Provider>

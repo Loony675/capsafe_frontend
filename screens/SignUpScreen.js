@@ -81,7 +81,7 @@ export default function SignUpScreen() {
 
 const styles = StyleSheet.create({
   background: {
-    flex: "1",
+    flex: 1,
     backgroundColor: "rgba(	124, 96, 183, 0.7)",
     alignItems: "center",
     justifyContent: "center",
@@ -99,24 +99,24 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
   input: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: "center",
     marginBottom: 15,
     alignSelf: "center",
     padding: 15,
   },
   btnSignUp: {
-    flex: "row",
+    flexDirection: "row",
     width: "75%",
     height: "15%",
     backgroundColor: "rgba(71, 139, 188, 1)",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: "center",
     marginTop: 25,
     alignSelf: "center",
