@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   btnSignUp: {
-    flexDirection: "row",
     width: "75%",
     height: "15%",
     backgroundColor: "rgba(71, 139, 188, 1)",
