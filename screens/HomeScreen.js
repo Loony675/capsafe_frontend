@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
   },
 
   btn1: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",   
+    borderRadius: 20,   
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center'
@@ -73,16 +73,14 @@ const styles = StyleSheet.create({
 
    image1: { 
     marginTop: 11,
-    marginLeft: 10,   
     width: 30,
     height: 30
    },
 
   facebook: {   
     textAlign:'center',
-    fontFamily: "Montserrat", 
-    fontSize: 20
-     
+    fontSize: 20,
+    marginTop: 13     
   },
 
   btn2: {
@@ -91,7 +89,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center',    
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
   google: {
     textAlign:'center',   
     fontSize: 20,
-    paddingTop: 12,     
+    paddingTop: 12, 
   },
 
   btn3: {
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
@@ -142,6 +140,5 @@ const styles = StyleSheet.create({
     textAlign:'center',
     color: 'white',
     fontSize: 20
-
   },
 })

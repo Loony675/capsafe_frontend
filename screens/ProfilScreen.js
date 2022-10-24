@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -34,47 +34,47 @@ useEffect(() => {
     <Image style = {styles.logo} source={require("../assets/imageProfil.png")}/>
     <View style = {styles.MainInfoContainer}>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Prénom:</Text>
+        <Text style ={styles.text1}>Prénom :</Text>
         <Text style ={styles.text2}>{profilInfos.firstName}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Nom:</Text>
+        <Text style ={styles.text1}>Nom :</Text>
         <Text style ={styles.text2}>{profilInfos.lastName}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Email:</Text>
+        <Text style ={styles.text1}>Email :</Text>
         <Text style ={styles.text2}>{profilInfos.email}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Date de Naissance:</Text>
+        <Text style ={styles.text1}>Date de Naissance :</Text>
         <Text style ={styles.text2}>{profilInfos.birthdayDate}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Sexe:</Text>
+        <Text style ={styles.text1}>Sexe :</Text>
         <Text style ={styles.text2}>{profilInfos.sexe}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Ligne Préférée:</Text>
+        <Text style ={styles.text1}>Ligne Préférée :</Text>
         <Text style ={styles.text2}>{profilInfos.favoriteTransportLine}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Voyager avec des personnes du même sexe:</Text>
+        <Text style ={styles.text1}>Voyager avec des personnes du même sexe :</Text>
         <Text style ={styles.text2}>{profilInfos.travelingWithSameSex}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Afficher mon sexe sur le profil:</Text>
+        <Text style ={styles.text1}>Afficher mon sexe sur le profil :</Text>
         <Text style ={styles.text2}>{profilInfos.showSexOnProfil}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Date d'enregistrement:</Text>
+        <Text style ={styles.text1}>Date d'enregistrement :</Text>
         <Text style ={styles.text2}>{profilInfos.registerDate}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Délai avant notification d'urgence:</Text>
+        <Text style ={styles.text1}>Délai avant notification d'urgence :</Text>
         <Text style ={styles.text2}>{profilInfos.emergencyTime}</Text>
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Note:</Text>
+        <Text style ={styles.text1}>Note :</Text>
         <Text style ={styles.text2}>{profilInfos.score}</Text>
       </View>
     </View>
