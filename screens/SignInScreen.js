@@ -1,37 +1,49 @@
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, Button } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useState } from 'react';
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
 
-  const EMAIL_REGEX =
+const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const [signInEmail, setSignInEmail] = useState('');
-const [password, setPassword] = useState('');
+const [signInEmail, setSignInEmail] = useState('benoitferrieres1@gmail.com');
+const [signInPassword, setSignInPassword] = useState('');
+const [emailError, setEmailError] = useState(false);
 
-const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
+const handleConnection = () => {
+  fetch('http://localhost:3000/users/signin', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: signInEmail, password: signInPassword }),
+  }).then(response => response.json())
+    .then(data => {
+      if (data.result) {
+        navigation.navigate("TabNavigator", { screen: "Main" });
+        setSignInEmail('');
+        setSignInPassword('');
+      }else if (!EMAIL_REGEX.test(signInEmail)){
+        setEmailError(true)
+        setSignInEmail('')
+      }else if (!data.email){
 
-  const handleSubmit = () => {
-    if (EMAIL_REGEX.test(email)) {
-      dispatch(updateEmail(email));
-      navigation.navigate("TabNavigator", { screen: "Gallery" });
-    } else {
-      setEmailError(true);
-    }
-  };
+      }
+    });
+};
+
+  
 
   return (
     <View style = {styles.background}>
         <View style = {styles.container}>
-          <TextInput style = {styles.emailInput} onChangeText={(value) => setEmail(value)} value={email} placeholder='Email'/>
+          <TextInput style = {styles.emailInput} onChangeText={(value) => setSignInEmail(value)} value={signInEmail} placeholder='Email'/>
+          {emailError && (<Text style={styles.error}>Adresse email invalide</Text>)}
           <TextInput style = {styles.passwordInput} onChangeText={(value) => setPassword(value)} type="password" 
            value={password} placeholder='Mot de passe' textContentType={'password'}/>                
           <TouchableOpacity style = {styles.btn1}>
-            <Text style = {styles.connection}>Se connecter</Text>
+            <Text style = {styles.connection} onPress={() => handleSubmit()}>Se connecter</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn2}>
             <Text style = {styles.mdp}>Mot de passe oublié ?</Text>
@@ -62,7 +74,7 @@ const styles = StyleSheet.create({
     height:"40%",
     width: "75%",
   },
-
+  
   emailInput: {
     width: "100%",
     height: "15%",
@@ -71,8 +83,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 1,
     borderRadius: 20,
-    marginBottom: 30,
     paddingLeft: 15
+  },
+
+  error: {
+    textAlign: 'center',
+    color: 'red'
   },
 
   passwordInput: {
@@ -83,6 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 1,
     borderRadius: 20,
+    marginTop: 15,
     marginBottom: 60,
     paddingLeft: 15
    },
@@ -99,8 +116,10 @@ const styles = StyleSheet.create({
   connection: {   
     textAlign:'center',
     fontFamily: "montserrat", 
-    fontSize: 20     
+    fontSize: 20,
+    color: 'white'    
   },
+
   btn2: {
     width: "100%",
     height: "15%",
@@ -108,11 +127,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: "20%",
     justifyContent: 'center',
-    marginBottom: 15
+    marginBottom: 15,
   },  
   mdp: {   
     textAlign:'center',
     fontFamily: "montserrat", 
-    fontSize: 20     
+    fontSize: 20,
+    color: 'white'  
   }, 
 })
