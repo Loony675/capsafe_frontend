@@ -35,7 +35,7 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   background: {
-    flex: "1",    
+    flex: 1,    
     backgroundColor: "rgba(	124, 96, 183, 0.4)",
     alignItems: "center",
     justifyContent : "center",
@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
  
   },
   btn1: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",   
+    borderRadius: 20,   
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center'
@@ -75,14 +75,13 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontFamily: "Montserrat", 
     fontSize: 20
-     
   },
   btn2: {
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15
   },
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
