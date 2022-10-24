@@ -4,8 +4,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationProp, ParamListBase } from "@react-navigation/native";
 
-const HomeScreen = () => {
+
+export default function HomeScreen({ navigation }) {
+
+  
   return (
       <View style = {styles.background}>
         <Image style = {styles.logo} source={require("../assets/beubeu.jpg")}/>
@@ -22,14 +26,13 @@ const HomeScreen = () => {
             <Text style = {styles.signUp}>S’enregistrer par email</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn4}>
-            <Text style = {styles.signIn}>Déjà un compte ?</Text>
+            <Text style = {styles.signIn} onPress={() => navigation.navigate('SignIn')}>Déjà un compte ?</Text>
           </TouchableOpacity>
         </View>
       </View>
   )
 }
 
-export default HomeScreen
 
 const styles = StyleSheet.create({
   background: {
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
    },
   facebook: {   
     textAlign:'center',
-    fontFamily: "montserrat", 
+    fontFamily: "Montserrat", 
     fontSize: 20
      
   },

@@ -35,17 +35,17 @@ const Tab = createBottomTabNavigator();
         if (route.name === 'Profil') {
           iconName = 'user';
         } else if (route.name === 'Main') {
-          iconName = 'house';
+          iconName = 'home';
         } else if (route.name === 'Messaging') {
-          iconName = 'fa-envelope';
+          iconName = 'envelope';
         } else if (route.name === 'Settings') {
-          iconName = 'fa-gear';
+          iconName = 'gear';
         }
 
         return <FontAwesome name={iconName} size={size} color={color} />;
       },
 
-      tabBarActiveTintColor: '#ec6e5b',
+      tabBarActiveTintColor: '#478bbc',
       tabBarInactiveTintColor: '#335561',
       headerShown: false,
     })}>
