@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const HomeScreen = () => {
+export default function HomeScreen({ navigation }) {
   return (
       <View style = {styles.background}>
         <Image style = {styles.logo} source={require("../assets/beubeu.jpg")}/>
@@ -18,7 +18,7 @@ const HomeScreen = () => {
             <Image style={styles.image1} source={require("../assets/google.png")} />
             <Text style = {styles.google}>S’enregistrer avec Google </Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.btn3}>
+          <TouchableOpacity style = {styles.btn3} onPress={() => navigation.navigate('SignUp')}>
             <Text style = {styles.signUp}>S’enregistrer par email</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn4}>
@@ -29,7 +29,7 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+
 
 const styles = StyleSheet.create({
   background: {
