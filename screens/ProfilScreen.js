@@ -3,14 +3,15 @@ import React, {useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ProfilScreen = () => {
   // const user = useSelector((state) => state.user.value);
 
   const [profilInfos, setProfilInfos] = useState([])
-
+// const updateInfo
 useEffect(() => {
-  fetch('http://192.168.10.163:3000/users/displayProfil', {
+  fetch('http://192.168.10.173:3000/users/displayProfil', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: 'b6AWk7AnQIgDGmEg3WfXMfc62nTSL978'}),
@@ -37,47 +38,57 @@ useEffect(() => {
 
   <View style ={styles.infoContainer}>
     <Text>Prénom:</Text>
-    <Text>{profilInfos.firstName}</Text>
+    <Text>{profilInfos.firstName} <FontAwesome name='edit' onPress={()=> updateInfo('firstName')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Nom:</Text>
-    <Text>{profilInfos.lastName}</Text>
+    <Text>{profilInfos.lastName} <FontAwesome name='edit' onPress={()=> updateInfo('lastName')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Email:</Text>
-    <Text>{profilInfos.email}</Text>
+    <Text>{profilInfos.email} <FontAwesome name='edit' onPress={()=> updateInfo('email')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Date de Naissance:</Text>
-    <Text>{profilInfos.birthdayDate}</Text>
+    <Text>{profilInfos.birthdayDate} <FontAwesome name='edit' onPress={()=> updateInfo('birthdayDate')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Sexe:</Text>
-    <Text>{profilInfos.sexe}</Text>
+    <Text>{profilInfos.sexe} <FontAwesome name='edit' onPress={()=> updateInfo('sexe')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Ligne Préférée:</Text>
-    <Text>{profilInfos.favoriteTransportLine}</Text>
+    <Text>{profilInfos.favoriteTransportLine} <FontAwesome name='edit' onPress={()=> updateInfo('favoriteTransportLine')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Voyager avec des personnes du même sexe:</Text>
-    <Text>{profilInfos.travelingWithSameSex}</Text>
+    <Text>{profilInfos.travelingWithSameSex} <FontAwesome name='edit' onPress={()=> updateInfo('travelingWithSameSex')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Afficher mon sexe sur le profil:</Text>
-    <Text>{profilInfos.showSexOnProfil}</Text>
+    <Text>{profilInfos.showSexOnProfil} <FontAwesome name='edit' onPress={()=> updateInfo('showSexOnProfil')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Date d'enregistrement:</Text>
-    <Text>{profilInfos.registerDate}</Text>
+    <Text>{profilInfos.registerDate} </Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Délai avant notification d'urgence:</Text>
-    <Text>{profilInfos.emergencyTime}</Text>
+    <Text>{profilInfos.emergencyTime} <FontAwesome name='edit' onPress={()=> updateInfo('emergencyTime')} size={25} color='#ec6e5b' /></Text>
+    
   </View>
   <View style ={styles.infoContainer}>
     <Text>Note:</Text>
-    <Text>{profilInfos.score}</Text>
+    <Text>{profilInfos.score} </Text>
   </View>
   </View>
   </View>

@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
   },
 
   btn1: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",   
+    borderRadius: 30,   
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center'
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 
   facebook: {   
     textAlign:'center',
-    fontFamily: "Montserrat", 
+    // fontFamily: "Montserrat", 
     fontSize: 20
      
   },
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 30,
     justifyContent: 'center',
     marginBottom: 15,
     alignSelf: 'center',    
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 30,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 30,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: "rgba(71, 139, 188, 0.4)",
