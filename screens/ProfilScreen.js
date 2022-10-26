@@ -4,23 +4,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { RollInRight } from 'react-native-reanimated';
 
 const ProfilScreen = () => {
   // const user = useSelector((state) => state.user.value);
-
+  const url = useSelector((state) => state.url.value);
   const [profilInfos, setProfilInfos] = useState([])
   const [firstNameM, setFirstNameM] = useState(false)
-
+  const [lastNameM, setLastNameM] = useState(false)
+  const [emailM, setEmailM] = useState(false)
+  const [birthDayDateM, setBirthDayDateM] = useState(false)
+  const [sexeM, setSexeM] = useState(false)
+  // updateProfilInfo('lastName')
+  let sendedInfo
 useEffect(() => {
-  fetch('http://192.168.10.173:3000/users/displayProfil', {
+  fetch(`http://${url}:3000/users/displayProfil`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: 'b6AWk7AnQIgDGmEg3WfXMfc62nTSL978', }),
+    body: JSON.stringify({ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'}),
   }).then(profilInfo => profilInfo.json()).then(profilInfo => {
       if(profilInfo.result){
         setProfilInfos(profilInfo.userInfo)
-        console.log(profilInfos)
-      }
+
+            }
     }
   )
   // userName: profilInfo.userName, firstName: profilInfo.firstName, sexe: profilInfo.sexe, 
@@ -28,23 +34,28 @@ useEffect(() => {
   // favoriteTransportLine: profilInfo.favoriteTransportLine, profilPhoto: profilInfo.profilPhoto, 
   // showProfilPhoto: profilInfo.showProfilPhoto, showSexOnProfil: profilInfo.showSexOnProfil, 
   // registerDate: profilInfo.registerDate, emergencyTime: profilInfo.emergencyTime, score: profilInfo.score
-}, [])
+}, [sendedInfo])
 
 const selectField = (fieldSelected) => {
   // setProfilInfos[fieldSelected]()
 }
 
-const updateProfilInfo = (fieldUpdated) => {
-  let sendedInfo={ token: 'b6AWk7AnQIgDGmEg3WfXMfc62nTSL978'};
-  sendedInfo[fieldUpdated] = 'test'
-    fetch(`http://192.168.10.173:3000/users/update`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(sendedInfo),
-    }).then(profilInfo => profilInfo.json()).then(profilInfo => {
-        if(profilInfo.result){
-          setProfilInfos(profilInfo.userInfo)
-          console.log(profilInfos)
+const validateProfilInfo = (fieldUpdated, valueUpdated) => {
+  sendedInfo={ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'};
+  sendedInfo[fieldUpdated] = valueUpdated
+  fetch(`http://${url}:3000/users/update`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(sendedInfo),
+  }).then(profilInfo => profilInfo.json()).then(profilInfo => {
+    if(profilInfo.result){
+      console.log(profilInfo);
+      setFirstNameM(false)
+      setLastNameM(false)
+      setEmailM(false)
+      setBirthDayDateM(false)
+      setSexeM(false)
+          console.log('Modification faites avec succès')
         }
       }
     )
@@ -54,7 +65,7 @@ const updateProfilInfo = (fieldUpdated) => {
     // showProfilPhoto: profilInfo.showProfilPhoto, showSexOnProfil: profilInfo.showSexOnProfil, 
     // registerDate: profilInfo.registerDate, emergencyTime: profilInfo.emergencyTime, score: profilInfo.score
   }
-  
+
   return (
   <View style = {styles.mainContainer}>
     <Image style = {styles.logo} source={require("../assets/imageProfil.png")}/>
@@ -62,27 +73,37 @@ const updateProfilInfo = (fieldUpdated) => {
       <View style ={styles.infoContainer}>
       {!firstNameM && <Text style ={styles.text1}>Prénom :</Text>}
       {!firstNameM && <Text style ={styles.text2}>{profilInfos.firstName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' /></Text>}
-        {firstNameM && <TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos.firstName(value)} value={profilInfos.firstName} style={styles.input} />}
+        {firstNameM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({firstName: value})} value={profilInfos.firstName} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('firstName', profilInfos.firstName)} size={25} color='#ec6e5b' />
+        {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Nom :</Text>
-        <Text style ={styles.text2}>{profilInfos.lastName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('lastName')} size={25} color='#ec6e5b' /></Text>
+      {!lastNameM && <Text style ={styles.text1}>Nom :</Text>}
+      {!lastNameM && <Text style ={styles.text2}>{profilInfos.lastName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setLastNameM(true)} size={25} color='#ec6e5b' /></Text>}
+      {lastNameM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({lastName: value})} value={profilInfos.lastName} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('lastName', profilInfos.lastName)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Email :</Text>
-        <Text style ={styles.text2}>{profilInfos.email} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('email')} size={25} color='#ec6e5b' /></Text>
+      {!emailM && <Text style ={styles.text1}>Email :</Text>}
+      {!emailM && <Text style ={styles.text2}>{profilInfos.email} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setEmailM(true)} size={25} color='#ec6e5b' /></Text>}
+      {emailM && <View style ={styles.editContainer}><TextInput placeholder="Email" onChangeText={(value) => setProfilInfos({email: value})} value={profilInfos.email} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('email', profilInfos.email)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Date de Naissance :</Text>
-        <Text style ={styles.text2}>{profilInfos.birthdayDate} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('birthdayDate')} size={25} color='#ec6e5b' /></Text>
+      {!birthDayDateM && <Text style ={styles.text1}>Date de Naissance :</Text>}
+        {!birthDayDateM &&<Text style ={styles.text2}>{profilInfos.birthDayDate} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setbirthDayDateM(true)} size={25} color='#ec6e5b' /></Text>}
+        {birthDayDateM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({birthDayDate: value})} value={profilInfos.birthDayDate} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('birthDayDate', profilInfos.birthDayDate)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-        <Text style ={styles.text1}>Sexe :</Text>
-        <Text style ={styles.text2}>{profilInfos.sexe} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('sexe')} size={25} color='#ec6e5b' /></Text>
+      {!sexeM &&<Text style ={styles.text1}>Sexe :</Text>}
+      {!sexeM &&<Text style ={styles.text2}>{profilInfos.sexe} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setSexeM(true)} size={25} color='#ec6e5b' /></Text>}
+      {sexeM && <View style ={styles.editContainer}><TextInput placeholder="Sexe" onChangeText={(value) => setProfilInfos({sexe: value})} value={profilInfos.sexe} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('sexe', profilInfos.sexe)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
-      <View style ={styles.infoContainer}>
+      {/* <View style ={styles.infoContainer}>
         <Text style ={styles.text1}>Ligne Préférée :</Text>
-        <Text style ={styles.text2}>{profilInfos.favoriteTransportLine} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('favoriteTransportLine')} size={25} color='#ec6e5b' /></Text>
+        <Text style ={styles.text2}>{profilInfos.favoriteTransportLine} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setFavoriteTransportLineM(true)} size={25} color='#ec6e5b' /></Text>
       </View>
       <View style ={styles.infoContainer}>
         <Text style ={styles.text1}>Voyager avec des personnes du même sexe :</Text>
@@ -91,7 +112,7 @@ const updateProfilInfo = (fieldUpdated) => {
       <View style ={styles.infoContainer}>
         <Text style ={styles.text1}>Afficher mon sexe sur le profil :</Text>
         <Text style ={styles.text2}>{profilInfos.showSexOnProfil} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('showSexOnProfil')} size={25} color='#ec6e5b' /></Text>
-      </View>
+      </View> */}
       <View style ={styles.infoContainer}>
         <Text style ={styles.text1}>Date d'enregistrement :</Text>
         <Text style ={styles.text2}>{profilInfos.registerDate} </Text>
@@ -100,10 +121,10 @@ const updateProfilInfo = (fieldUpdated) => {
         <Text style ={styles.text1}>Délai avant notification d'urgence :</Text>
         <Text style ={styles.text2}>{profilInfos.emergencyTime} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => updateProfilInfo('emergencyTime')} size={25} color='#ec6e5b' /></Text>
       </View>
-      <View style ={styles.infoContainer}>
+      {/* <View style ={styles.infoContainer}>
         <Text style ={styles.text1}>Note :</Text>
         <Text style ={styles.text2}>{profilInfos.score}</Text>
-      </View>
+      </View> */}
     </View>
   </View>
   )
@@ -147,10 +168,26 @@ const styles = StyleSheet.create({
 
   text1:{
     fontSize: 15,
+    width: '100%',
   },
 
   text2:{
     color: "#478bbc",
     fontSize: 15,
+    width: '100%',
+  },
+  editContainer:{
+    flexDirection:'row' ,
+    flexWrap: 'wrap',
+    width:'100%',
+    alignItems:'stretch',
+
+  },
+
+  editProfil:{
+textAlign:'right',
+  },
+  editingProfil:{
+    textAlign:'right',
   },
 })
