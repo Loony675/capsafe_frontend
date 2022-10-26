@@ -12,18 +12,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducers/users";
 
 export default function SignUpScreen({navigation}) {
   const [emailSignUp, setEmailSignUp] = useState();
   const [usernameSignUp, setUsernameSignUp] = useState();
   const [passwordSignUp, setPasswordSignUp] = useState();
+  const url = useSelector((state) => state.url.value);
 
   const dispatch = useDispatch();
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signUp", {
+    fetch(`http://${url}:3000/users/signUp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
