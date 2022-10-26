@@ -67,14 +67,15 @@ const Tab = createBottomTabNavigator();
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {/* first page for test */}
-          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
 
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* decommenter la ligne 78 après fin des test ligne 70 */}
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>
