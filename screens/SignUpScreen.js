@@ -124,10 +124,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
     marginTop: 25,
-    alignSelf: "center",
   },
   fieldBtnSignUp: {
     textAlign: "center",
+    alignItems:'center',
     color: "white",
     fontWeight: "600",
   },

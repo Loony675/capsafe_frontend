@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 // Botton Sheet
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import BottomSheet from '../components/BottomSheet';
 
 export default function MainScreen({ navigation }) {
   const [currentPosition, setCurrentPosition] = useState(null);
@@ -30,6 +31,7 @@ export default function MainScreen({ navigation }) {
 
   return (
     <GestureHandlerRootView style={styles.container}>
+      
       <MapView style={styles.map}>
         {currentPosition && (
           <Marker
@@ -39,7 +41,7 @@ export default function MainScreen({ navigation }) {
           />
         )}
       </MapView>
-      <BottomSheet />
+      <BottomSheet/>
     </GestureHandlerRootView>
   );
 }

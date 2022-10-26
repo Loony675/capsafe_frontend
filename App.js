@@ -11,6 +11,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import TchatScreen from './screens/TchatScreen';
+
 //Import redux
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -66,12 +67,16 @@ const Tab = createBottomTabNavigator();
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* first page for test */}
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* decommenter la ligne 78 après fin des test ligne 70 */}
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>
