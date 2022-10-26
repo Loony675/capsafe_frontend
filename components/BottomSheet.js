@@ -44,7 +44,7 @@ const BottomSheet = () => {
       console.log("Au mini");
     } 
     else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
-      translateY.value = withTiming(-SCREEN_HEIGHT +500)
+      translateY.value = withTiming(-SCREEN_HEIGHT +560)
       console.log("Au milieu");
 
     } 
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "rgba(	124, 96, 183, 1)",
     position: "absolute",
-    top: SCREEN_HEIGHT,
+    top: SCREEN_HEIGHT -40,
     borderRadius: 25,
   },
   line: {
