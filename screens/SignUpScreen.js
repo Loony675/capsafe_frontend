@@ -23,7 +23,7 @@ export default function SignUpScreen({navigation}) {
   const dispatch = useDispatch();
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signUp", {
+    fetch("http://192.168.1.1:3000/users/signUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -123,10 +123,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
     marginTop: 25,
-    alignSelf: "center",
   },
   fieldBtnSignUp: {
     textAlign: "center",
+    alignItems:'center',
     color: "white",
     fontWeight: "600",
   },

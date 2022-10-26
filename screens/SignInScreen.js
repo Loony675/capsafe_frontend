@@ -24,7 +24,7 @@ const SignInScreen = ({ navigation }) => {
     if(!EMAIL_REGEX.test(signInEmail)) {
       setEmailError(true);
     }
-    fetch("http://192.168.10.181:3000/users/signIn", {
+    fetch("http://192.168.1.1:3000/users/signIn", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: signInEmail, password: signInPassword }),
