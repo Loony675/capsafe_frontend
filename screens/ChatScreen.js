@@ -10,8 +10,7 @@ import {
 } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useSelector } from "react-redux";
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
 const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
 
