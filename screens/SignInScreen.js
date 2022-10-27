@@ -11,11 +11,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../reducers/users";
 const SignInScreen = ({ navigation }) => {
   const url = useSelector((state) => state.url.value);
-  
+  const dispatch = useDispatch();
   // Regex Email
   const EMAIL_REGEX =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Etats
@@ -36,6 +36,7 @@ const SignInScreen = ({ navigation }) => {
       .then((data) => {
         console.log(data);
         if (data.result) {
+          dispatch(login({username: data.username, token: data.token}))
           navigation.navigate("TabNavigator", { screen: "Main" });
           setSignInEmail("");
           setSignInPassword("");

@@ -13,18 +13,16 @@ import { useSelector } from "react-redux";
 import React from "react";
 import { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
-
 const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-const BACKEND_ADDRESS = "http://192.168.1.68:3000";
 
 export default function ChatScreen({ navigation, route: { params } }) {
+  const url = useSelector((state) => state.url.value);
   const username = useSelector((state) => state.users.value.username);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
-
   useEffect(() => {
-    fetch(`${BACKEND_ADDRESS}/message/sync`)
+    fetch(`http://${url}/message/sync`)
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
@@ -43,7 +41,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
       timestamp: new Date(),
       id: Math.floor(Math.random() * 100000),
     };
-    fetch(`${BACKEND_ADDRESS}/message/new`, {
+    fetch(`http://${url}/message/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -52,7 +50,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
     setMessageText("");
 //update
 
-    fetch(`${BACKEND_ADDRESS}/message/sync`)
+    fetch(`http://${url}/message/sync`)
     .then((response) => response.json())
     .then((data) => {
       setMessages(data)
@@ -63,14 +61,14 @@ export default function ChatScreen({ navigation, route: { params } }) {
   };
 
   useEffect(() => {
-    fetch(`${BACKEND_ADDRESS}/message/Benoit`, { method: "PUT" });
+    fetch(`http://${url}/message/Benoit`, { method: "PUT" });
 
     const subscription = pusher.subscribe("chat");
     subscription.bind("pusher:subscription_succeeded", () => {
       subscription.bind("message", handleReceiveMessage);
     });
 
-    return () => fetch(`${BACKEND_ADDRESS}/message/new`, { method: "DELETE" });
+    return () => fetch(`http://${url}/message/new`, { method: "DELETE" });
   }, []);
 
   return (
@@ -256,7 +254,7 @@ const styles = StyleSheet.create({
 
 
 // const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-// const BACKEND_ADDRESS = "http://192.168.1.21:3000";
+// const url = "http://192.168.1.21:3000";
 
 // export default function ChatScreen({ navigation, route: { params } }) {
 //   //const user = useSelector((state) => state.user.value.name);
@@ -264,7 +262,7 @@ const styles = StyleSheet.create({
 //   const [messageText, setMessageText] = useState(""); // contenu d'un message
 
 //   useEffect(() => {
-//     fetch(`${BACKEND_ADDRESS}/messages/sync`)
+//     fetch(`${url}/messages/sync`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         setMessages(data);
@@ -281,7 +279,7 @@ const styles = StyleSheet.create({
 //       timestamp: new Date(),
 //       id: Math.floor(Math.random() * 100000),
 //     };
-//     fetch(`${BACKEND_ADDRESS}/message/new`, { // On envoi au back 
+//     fetch(`${url}/message/new`, { // On envoi au back 
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify(payload),
@@ -295,13 +293,13 @@ const styles = StyleSheet.create({
 //   };
 
 //   useEffect(() => {
-//     fetch(`${BACKEND_ADDRESS}/message/Benoit`, { method: "PUT" });
+//     fetch(`${url}/message/Benoit`, { method: "PUT" });
 //     const subscription = pusher.subscribe("chat");
 //     subscription.bind("pusher:subscription_succeeded", () => {
 //     subscription.bind("message", handleReceiveMessage);
 //     });
 //   }, []);
-//   //return () => fetch(`${BACKEND_ADDRESS}/message/new`, { method: "DELETE" });
+//   //return () => fetch(`${url}/message/new`, { method: "DELETE" });
 
 //     return (
 //     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>

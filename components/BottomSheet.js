@@ -13,7 +13,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import OnVaOuScreen from "../screens/OnVaOuScreen.js";
+// import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 
 //hauteur = hauteur écran
@@ -74,7 +74,7 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         <OnVaOuScreen/>
+         {/* <OnVaOuScreen/> */}
          {/* <DepartureArrival/> */}
         </View>
       </Animated.View>

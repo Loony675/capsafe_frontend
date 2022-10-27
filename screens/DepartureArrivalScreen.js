@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import BottomSheet from "../components/BottomSheet";
+// import BottomSheet from "../components/BottomSheet";
 
 export default function DepartureArrival() {
   return (
