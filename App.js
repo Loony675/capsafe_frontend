@@ -11,6 +11,7 @@ import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import MessagingScreen from "./screens/MessagingScreen";
+import DepartureArrival from "./screens/DepartureArrivalScreen";
 //Import redux
 import { configureStore } from "@reduxjs/toolkit";
 import users from "./reducers/users";
@@ -73,6 +74,7 @@ export default function App() {
           <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="profil" component={ProfilScreen} />
+          <Stack.Screen name="DepartureArrival" component ={DepartureArrival} /> 
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

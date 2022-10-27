@@ -72,7 +72,7 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-          <OnVaOu/>
+         <OnVaOu/>
           {/* <DepartArrivee/> */}
         </View>
       </Animated.View>
