@@ -21,6 +21,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
+  console.log(username);
   useEffect(() => {
     fetch(`http://${url}/message/sync`)
       .then((response) => response.json())
@@ -28,8 +29,6 @@ export default function ChatScreen({ navigation, route: { params } }) {
         setMessages(data);
       });
   }, []);
-
-
 
   const handleSendMessage = () => {
     if (!messageText) {
@@ -48,7 +47,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
     });
     setSended(!sended);
     setMessageText("");
-//update
+    //update
 
     fetch(`http://${url}/message/sync`)
     .then((response) => response.json())
@@ -72,28 +71,68 @@ export default function ChatScreen({ navigation, route: { params } }) {
   }, []);
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <View style={styles.banner}>
-        <MaterialIcons name="keyboard-backspace" color="#ffffff" size={24} onPress={() => navigation.navigate("TabNavigator", { screen: "Messaging" })}/>
+        <MaterialIcons
+          name="keyboard-backspace"
+          color="#ffffff"
+          size={24}
+          onPress={() =>
+            navigation.navigate("TabNavigator", { screen: "Messaging" })
+          }
+        />
         <Text style={styles.greetingText}>Welcome {username} 👋</Text>
       </View>
       <View style={styles.inset}>
         <ScrollView style={styles.scroller}>
           {messages.map((message, i) => (
-            <View key={i} style={[styles.messageWrapper,{...(message.username === "Hmida"? styles.messageSent : styles.messageRecieved),},]}>
-              <View style={[styles.message,{...(message.username === "Benoit" ? styles.messageSentBg : styles.messageRecievedBg),},]}>
+            <View
+              key={i}
+              style={[
+                styles.messageWrapper,
+                {
+                  ...(message.username === "Hmida"
+                    ? styles.messageSent
+                    : styles.messageRecieved),
+                },
+              ]}
+            >
+              <View
+                style={[
+                  styles.message,
+                  {
+                    ...(message.username === "Benoit"
+                      ? styles.messageSentBg
+                      : styles.messageRecievedBg),
+                  },
+                ]}
+              >
                 <Text style={styles.messageText}>{message.message}</Text>
               </View>
               <Text style={styles.timeText}>
                 {new Date(message.timestamp).getHours()}:
-                {String(new Date(message.timestamp).getMinutes()).padStart(2,"0")}
+                {String(new Date(message.timestamp).getMinutes()).padStart(
+                  2,
+                  "0"
+                )}
               </Text>
             </View>
           ))}
         </ScrollView>
         <View style={styles.inputContainer}>
-          <TextInput onChangeText={(value) => setMessageText(value)} value={messageText} style={styles.input} autoFocus/>
-          <TouchableOpacity style={styles.sendButton} onPress={() => handleSendMessage(sended)} >
+          <TextInput
+            onChangeText={(value) => setMessageText(value)}
+            value={messageText}
+            style={styles.input}
+            autoFocus
+          />
+          <TouchableOpacity
+            style={styles.sendButton}
+            onPress={() => handleSendMessage(sended)}
+          >
             <MaterialIcons name="send" color="#ffffff" size={24} />
           </TouchableOpacity>
         </View>
@@ -159,8 +198,9 @@ const styles = StyleSheet.create({
   },
   messageWrapper: {
     alignItems: "flex-end",
-    marginBottom: 20,
+    marginBottom: 20,        
   },
+
   messageRecieved: {
     alignSelf: "flex-end",
     alignItems: "flex-end",
@@ -168,9 +208,10 @@ const styles = StyleSheet.create({
   messageSent: {
     alignSelf: "flex-start",
     alignItems: "flex-start",
+    backgroundColor: "rgba(71, 139, 188, 1)",
   },
   messageSentBg: {
-    backgroundColor: "#ffad99",
+    backgroundColor: "rgba(71, 139, 188, 1)",
   },
   messageRecievedBg: {
     backgroundColor: "#d6fff9",
@@ -196,6 +237,7 @@ const styles = StyleSheet.create({
     background: "transparent",
     paddingLeft: 20,
     paddingRight: 20,
+    
   },
   input: {
     backgroundColor: "#f0f0f0",
@@ -252,7 +294,6 @@ const styles = StyleSheet.create({
 // import React, { useEffect, useState } from "react";
 // import Pusher from "pusher-js/react-native";
 
-
 // const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
 // const url = "http://192.168.1.21:3000";
 
@@ -267,7 +308,7 @@ const styles = StyleSheet.create({
 //       .then((data) => {
 //         setMessages(data);
 //       });
-//   }, []);    
+//   }, []);
 // // Envoi d'un message dans le chat
 //   const handleSendMessage = () => {
 //     if (!messageText) { //Si message vide on Stop. Rien ne se passe.
@@ -279,7 +320,7 @@ const styles = StyleSheet.create({
 //       timestamp: new Date(),
 //       id: Math.floor(Math.random() * 100000),
 //     };
-//     fetch(`${url}/message/new`, { // On envoi au back 
+//     fetch(`${BACKEND_ADDRESS}/message/new`, { // On envoi au back 
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify(payload),
@@ -304,7 +345,7 @@ const styles = StyleSheet.create({
 //     return (
 //     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
 //       <View style={styles.banner}>
-//         <MaterialIcons name="keyboard-backspace" color="#ffffff" size={24} onPress={() => navigation.navigate('Messaging')}/>   
+//         <MaterialIcons name="keyboard-backspace" color="#ffffff" size={24} onPress={() => navigation.navigate('Messaging')}/>
 //         <Text style={styles.greetingText}>Welcome Benoit 👋</Text>
 //       </View>
 //       <View style={styles.inset}>

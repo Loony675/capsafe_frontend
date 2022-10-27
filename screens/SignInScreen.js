@@ -17,14 +17,15 @@ const SignInScreen = ({ navigation }) => {
   const url = useSelector((state) => state.url.value);
   const dispatch = useDispatch();
   // Regex Email
-  const EMAIL_REGEX =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const EMAIL_REGEX =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Etats
-  const [signInEmail, setSignInEmail] = useState("");
-  const [signInPassword, setSignInPassword] = useState("");
+  const [signInEmail, setSignInEmail] = useState("benoit@gmail.com");
+  const [signInPassword, setSignInPassword] = useState("1234");
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
-    if(!EMAIL_REGEX.test(signInEmail)) {
+    if (!EMAIL_REGEX.test(signInEmail)) {
       setEmailError(true);
     }
     fetch(`http://${url}:3000/users/signIn`, {
@@ -36,11 +37,10 @@ const SignInScreen = ({ navigation }) => {
       .then((data) => {
         console.log(data);
         if (data.result) {
-          dispatch(login({username: data.username, token: data.token}))
           navigation.navigate("TabNavigator", { screen: "Main" });
           setSignInEmail("");
           setSignInPassword("");
-        } 
+        }
       });
   };
 
@@ -52,15 +52,16 @@ const SignInScreen = ({ navigation }) => {
           onChangeText={(value) => setSignInEmail(value)}
           value={signInEmail}
           placeholder="Email"
+          autoCapitalize="none"
         />
         {emailError && <Text style={styles.error}>Adresse email invalide</Text>}
         <TextInput
           style={styles.passwordInput}
           onChangeText={(value) => setSignInPassword(value)}
-          type="password"
           value={signInPassword}
           placeholder="Mot de passe"
-          textContentType={"password"}
+          autoCapitalize="none" // Pas de majuscule
+          secureTextEntry={true} // cache le mdp
         />
         <TouchableOpacity style={styles.btn1}>
           <Text style={styles.connection} onPress={() => handleConnection()}>

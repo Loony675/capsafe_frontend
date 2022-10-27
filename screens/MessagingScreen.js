@@ -9,7 +9,7 @@ const MessagingScreen = ({navigation}) => {
 
   }
   return (
-    <View style={styles.container}>
+    <View style={styles.container}>      
       <Text style={styles.Titre}>Messages</Text>      
         <TouchableOpacity style = {styles.conversation} onPress={() => handleclic()}>
             <Image style = {styles.photo} source={require("../assets/beubeu.jpg")}/>
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
       fontSize: "20",
       marginLeft: "24%",
       alignItems: "center",
-
 
     },
 

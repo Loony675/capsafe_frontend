@@ -11,7 +11,12 @@ import SettingsScreen from './screens/SettingsScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ChatScreen from './screens/ChatScreen';
-
+import MessagingScreen from "./screens/MessagingScreen";
+import OnVaOuScreen from "./screens/OnVaOuScreen";
+import DepartureArrivalScreen from "./screens/DepartureArrivalScreen";
+//Import redux
+import users from "./reducers/users";
+import url from "./reducers/url";
 //Import redux
 import { Provider } from 'react-redux';
 
@@ -19,8 +24,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import users from './reducers/users';
-import url from './reducers/url';
 
 const store = configureStore({
   reducer: { users, url },
@@ -54,7 +57,7 @@ const Tab = createBottomTabNavigator();
     })}>
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={ChatScreen} />
+      <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
@@ -66,15 +69,15 @@ const Tab = createBottomTabNavigator();
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Messaging" component={MessagingScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
