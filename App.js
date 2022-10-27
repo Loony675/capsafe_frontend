@@ -12,7 +12,10 @@ import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ChatScreen from './screens/ChatScreen';
 import MessagingScreen from "./screens/MessagingScreen";
-import DepartureArrival from "./screens/DepartureArrivalScreen"
+import OnVaOuScreen from "./screens/OnVaOuScreen";
+import DepartureArrivalScreen from "./screens/DepartureArrivalScreen";
+//Import redux
+import { configureStore } from "@reduxjs/toolkit";
 import users from "./reducers/users";
 import url from "./reducers/url";
 //Import redux
@@ -79,7 +82,8 @@ export default function App() {
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="DepartureArrival" component ={DepartureArrival} /> 
+          <Stack.Screen name="OnVaOu" component={OnVaOuScreen} />
+          <Stack.Screen name="DepartureArrival" component ={DepartureArrivalScreen} /> 
         </Stack.Navigator>
       </NavigationContainer>
    </Provider>

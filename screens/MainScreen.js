@@ -11,8 +11,10 @@ import { useSelector } from "react-redux";
 // Botton Sheet
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from '../components/BottomSheet';
+import OnVaOuScreen from "./OnVaOuScreen";
 
 export default function MainScreen({ navigation }) {
+
   const [currentPosition, setCurrentPosition] = useState(null);
 
   // Demande accord géolocation
@@ -41,8 +43,8 @@ export default function MainScreen({ navigation }) {
           />
         )}
       </MapView>
-      <BottomSheet>
-      </BottomSheet>
+      <BottomSheet/>
+
     </GestureHandlerRootView>
   );
 }
