@@ -41,7 +41,8 @@ export default function MainScreen({ navigation }) {
           />
         )}
       </MapView>
-      <BottomSheet/>
+      <BottomSheet>
+      </BottomSheet>
     </GestureHandlerRootView>
   );
 }

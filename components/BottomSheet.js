@@ -12,12 +12,13 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import OnVaOu from "./OnVaOu";
+import DepartArrivee from "./DepartArrivee";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 // définie la hauteur max
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +50
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +80
 
 const BottomSheet = () => {
   // stockage déplacement axe Y (vertical)
@@ -70,8 +71,9 @@ const BottomSheet = () => {
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
-        <View style={styles.onVaOuContainer}>
+        <View hide={true} style={styles.onVaOuContainer}>
           <OnVaOu/>
+          {/* <DepartArrivee/> */}
         </View>
       </Animated.View>
     </GestureDetector>

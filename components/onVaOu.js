@@ -7,13 +7,17 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import DepartArrivee from "./DepartArrivee";
+import BottomSheet from "./BottomSheet";
 
 export default function onVaOu() {
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
         <TouchableOpacity style={styles.logoOVO} />
-        <TextInput placeholder="On va où ?"></TextInput>
+        <TouchableOpacity onPress={() => goToDepartArrivee()}>
+          <Text> On va où ?</Text>
+        </TouchableOpacity>
         <View style={styles.logoVoid}></View>
       </View>
       <View style={styles.container2}>
@@ -33,7 +37,7 @@ export default function onVaOu() {
         </TouchableOpacity>
         <TouchableOpacity style={styles.containerAddress}>
           <View style={styles.logoStar}>
-            <FontAwesome name={'star'} size={25} color={"white"} />
+            <FontAwesome name={"star"} size={25} color={"white"} />
           </View>
           <Text>Adresses</Text>
         </TouchableOpacity>
@@ -128,5 +132,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
 });
