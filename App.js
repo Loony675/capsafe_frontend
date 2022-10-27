@@ -15,7 +15,6 @@ import MessagingScreen from "./screens/MessagingScreen";
 import OnVaOuScreen from "./screens/OnVaOuScreen";
 import DepartureArrivalScreen from "./screens/DepartureArrivalScreen";
 //Import redux
-import { configureStore } from "@reduxjs/toolkit";
 import users from "./reducers/users";
 import url from "./reducers/url";
 //Import redux
@@ -58,7 +57,7 @@ const Tab = createBottomTabNavigator();
     >
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={ChatScreen} />
+      <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Route" component={RouteScreen} />
     </Tab.Navigator>
@@ -71,14 +70,14 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Messaging" component={MessagingScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
-          <Stack.Screen name="SignIn" component={SignInScreen} />
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
