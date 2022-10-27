@@ -45,6 +45,9 @@ const Tab = createBottomTabNavigator();
         } else if (route.name === 'Settings') {
           iconName = 'gear';
         }
+        else if (route.name === 'Route') {
+          iconName = 'road';
+        }
 
         return <FontAwesome name={iconName} size={size} color={color} />;
       },
@@ -57,6 +60,7 @@ const Tab = createBottomTabNavigator();
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Messaging" component={TchatScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Route" component={RouteScreen} />
     </Tab.Navigator>
   );
 };
