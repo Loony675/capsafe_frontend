@@ -11,8 +11,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const SignInScreen = ({ navigation }) => {
+  const url = useSelector((state) => state.url.value);
+  
   // Regex Email
   const EMAIL_REGEX =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Etats
@@ -24,7 +27,7 @@ const SignInScreen = ({ navigation }) => {
     if(!EMAIL_REGEX.test(signInEmail)) {
       setEmailError(true);
     }
-    fetch("http://192.168.10.181:3000/users/signIn", {
+    fetch(`http://${url}:3000/users/signIn`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: signInEmail, password: signInPassword }),

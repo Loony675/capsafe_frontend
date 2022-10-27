@@ -22,8 +22,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import users from './reducers/users';
+
 const store = configureStore({
-  reducer: { users },
+  reducer: { users, url },
 });
 
 const Stack = createNativeStackNavigator();
@@ -61,20 +63,20 @@ const TabNavigator = () => {
  export default function App() {
   return (
     <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="TabNavigator" component={TabNavigator} />
             <Stack.Screen name="Messaging" component={MessagingScreen} />
             <Stack.Screen name="Chat" component={ChatScreen} />
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Facebook" component={HomeScreen} />
-            <Stack.Screen name="Google" component={HomeScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="SignIn" component={SignInScreen} />
-            <Stack.Screen name="profil" component={ProfilScreen} />
-            <Stack.Screen name="Main" component={MainScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Facebook" component={HomeScreen} />
+          <Stack.Screen name="Google" component={HomeScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="profil" component={ProfilScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
    </Provider>
   );
 }

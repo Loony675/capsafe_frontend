@@ -5,10 +5,11 @@ import { useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
-
+import { useSelector } from 'react-redux';
 export default function HomeScreen({ navigation }) {
+  const url = useSelector((state) => state.url.value);
 
-  
+  console.log(url)
   return (
       <View style = {styles.background}>
         <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>

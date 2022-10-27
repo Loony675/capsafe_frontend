@@ -3,27 +3,48 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
+import * as Location from "expo-location";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const MainScreen = () => {
+// Botton Sheet
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import BottomSheet from '../components/BottomSheet';
+
+export default function MainScreen({ navigation }) {
+  const [currentPosition, setCurrentPosition] = useState(null);
+
+  // Demande accord géolocation
+  useEffect(() => {
+    (async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      console.log("Status", status);
+      if (status === "granted") {
+        Location.watchPositionAsync({ distanceInterval: 10 }, (location) => {
+          console.log("Location--->", location);
+          setCurrentPosition(location.coords);
+        });
+      }
+    })();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <MapView
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        style={styles.map}>
-        </MapView>
-
-      <Text> TEST </Text>
-    </View>
+    <GestureHandlerRootView style={styles.container}>
+      
+      <MapView style={styles.map}>
+        {currentPosition && (
+          <Marker
+            coordinate={currentPosition}
+            title="My position"
+            pinColor="#fecb2d"
+          />
+        )}
+      </MapView>
+      <BottomSheet/>
+    </GestureHandlerRootView>
   );
-};
-
-export default MainScreen;
+}
 
 const styles = StyleSheet.create({
   container: {

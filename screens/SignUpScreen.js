@@ -12,18 +12,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducers/users";
 
 export default function SignUpScreen({navigation}) {
   const [emailSignUp, setEmailSignUp] = useState();
   const [usernameSignUp, setUsernameSignUp] = useState();
   const [passwordSignUp, setPasswordSignUp] = useState();
+  const url = useSelector((state) => state.url.value);
 
   const dispatch = useDispatch();
 
   const handleRegister = () => {
-    fetch("http://192.168.1.1:3000/users/signUp", {
+    fetch(`http://${url}:3000/users/signUp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -37,7 +38,7 @@ export default function SignUpScreen({navigation}) {
         if (data.result) {
           dispatch(login({ username: usernameSignUp, token: data.token }));
           navigation.navigate('TabNavigator', { screen: 'Main' });
-
+          console.log(('navigate'));
         }
       });
   };
@@ -103,30 +104,30 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
   input: {
-    flex: "row",
+    flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 30,
     justifyContent: "center",
     marginBottom: 15,
     alignSelf: "center",
     padding: 15,
   },
   btnSignUp: {
-    flex: "row",
+    flexDirection: "row",
     width: "75%",
     height: "15%",
     backgroundColor: "rgba(71, 139, 188, 1)",
     borderWidth: 1,
-    borderRadius: "20%",
+    borderRadius: 30,
     justifyContent: "center",
     marginTop: 25,
-    alignSelf: "center",
   },
   fieldBtnSignUp: {
     textAlign: "center",
+    alignItems:'center',
     color: "white",
     fontWeight: "600",
   },
