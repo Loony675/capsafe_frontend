@@ -13,7 +13,7 @@ import BottomSheet from "../components/BottomSheet";
 export default function OnVaOuScreen() {
   const navigation = useNavigation();
   return (
-    <BottomSheet>
+    
       <View style={styles.globalContainer}>
         <View style={styles.container1}>
           <TouchableOpacity
@@ -50,7 +50,7 @@ export default function OnVaOuScreen() {
           </TouchableOpacity>
         </View>
       </View>
-    </BottomSheet>
+
   );
 }
 
@@ -142,3 +142,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+//test

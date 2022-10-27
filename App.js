@@ -21,9 +21,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import users from './reducers/users';
+import url from './reducers/url';
 
 const store = configureStore({
-  reducer: { users },
+  reducer: { users, url },
 });
 
 const Stack = createNativeStackNavigator();
