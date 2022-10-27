@@ -4,13 +4,14 @@ import React from 'react'
 const MessagingScreen = ({navigation}) => {
 
   const handleclic = () => {
+    console.log('clic');
     navigation.navigate('Chat')
 
   }
   return (
     <View style={styles.container}>
       <Text style={styles.Titre}>Messages</Text>      
-        <ScrollView style = {styles.conversation} onPress={() => handleclic}>
+        <TouchableOpacity style = {styles.conversation} onPress={() => handleclic()}>
             <Image style = {styles.photo} source={require("../assets/imageProfil.png")}/>
             <View style = {styles.left}>
               <Text style = {styles.username}>Benoit</Text>
@@ -20,7 +21,7 @@ const MessagingScreen = ({navigation}) => {
               <Text style = {styles.timestamp}>15h41</Text>
               <TouchableOpacity style = {styles.newMessage}></TouchableOpacity>
             </View>
-        </ScrollView>
+        </TouchableOpacity>
     </View>
   )
 }
