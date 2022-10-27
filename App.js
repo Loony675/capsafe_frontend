@@ -3,16 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 //Bibliothèque Fontwesome
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 //Import des screens
-<<<<<<< HEAD
-import HomeScreen from './screens/HomeScreen';
-import MainScreen from './screens/MainScreen';
-import ProfilScreen from './screens/ProfilScreen';
-import RouteScreen from './screens/RouteScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import SignInScreen from './screens/SignInScreen';
-import SignUpScreen from './screens/SignUpScreen';
-import ChatScreen from './screens/ChatScreen';
-=======
 import HomeScreen from "./screens/HomeScreen";
 import MainScreen from "./screens/MainScreen";
 import ProfilScreen from "./screens/ProfilScreen";
@@ -21,7 +11,6 @@ import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ChatScreen from "./screens/ChatScreen";
->>>>>>> d861ca0a09c180948e9504bf30e7dcf68fa9745e
 import MessagingScreen from "./screens/MessagingScreen";
 //Import redux
 import { Provider } from "react-redux";
@@ -33,17 +22,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import users from "./reducers/users";
 import url from "./reducers/url";
-<<<<<<< HEAD
-import { configureStore } from '@reduxjs/toolkit';
-//Import redux
-import { Provider } from 'react-redux';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-=======
->>>>>>> d861ca0a09c180948e9504bf30e7dcf68fa9745e
 
 const store = configureStore({
   reducer: { users, url },
@@ -97,10 +75,6 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
-<<<<<<< HEAD
-
-=======
->>>>>>> d861ca0a09c180948e9504bf30e7dcf68fa9745e
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />

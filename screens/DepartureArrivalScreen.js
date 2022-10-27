@@ -11,25 +11,34 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function DepartureArrival() {
   return (
-
-      <View style={styles.globalContainer}>
-        <View style={styles.container1}>
-          <TouchableOpacity>
-            <View>
-              <FontAwesome name={"arrow-left"} size={20} color={"grey"} />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonDepart}>
-            <Text>Départ</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity style={styles.buttonArrivee}>
-            <Text>Arrivée</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.globalContainer}>
+      <View style={styles.container1}>
+        <TouchableOpacity>
+          <View style={styles.arrowLeft}>
+            <FontAwesome
+              name={"arrow-left"}
+              size={20}
+              color={"rgb(170,170,170)"}
+            />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDepart}>
+          <Text>Départ</Text>
+        </TouchableOpacity>
       </View>
-
+      <View style={styles.container2}>
+        <View style={styles.arrowLeftVoid}>
+          <FontAwesome
+            name={"arrow-left"}
+            size={20}
+            color={"rgb(170,170,170,0)"}
+          />
+        </View>
+        <TouchableOpacity style={styles.buttonArrivee}>
+          <Text>Arrivée</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
@@ -37,25 +46,34 @@ const styles = StyleSheet.create({
   globalContainer: {
     height: "40%",
     width: "80%",
-    borderRadius: 25,
     justifyContent: "center",
   },
   container1: {
     flexDirection: "row",
-    borderWidth: 3,
-    borderColor: "blue",
+  },
+  arrowLeft: {
+    marginRight: 10,
   },
   buttonDepart: {
-    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "white",
     marginBottom: 20,
-    width: "100%",
+    width: "80%",
+    height: 50,
+  },
+  container2: {
+    flexDirection: "row",
+  },
+  arrowLeftVoid: {
+    marginRight: 10,
   },
   buttonArrivee: {
-    borderWidth: 2,
-    borderColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "white",
     marginBottom: 20,
-    width: "100%",
+
+    width: "80%",
   },
 });

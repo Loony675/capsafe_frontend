@@ -75,7 +75,7 @@ const BottomSheet = () => {
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
          {/* <OnVaOuScreen/> */}
-         {/* <DepartureArrival/> */}
+         <DepartureArrival/>
         </View>
       </Animated.View>
     </GestureDetector>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   onVaOuContainer: {
     alignItems:'center',
-    marginTop: 50,
+    marginTop: 40,
   }
 });
 //test
