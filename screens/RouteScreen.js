@@ -14,12 +14,16 @@ const RouteScreen = () => {
       if (status === "granted") {
        Location.watchPositionAsync({ distanceInterval: 10 }, (location) => {
           setCurrentPosition(location.coords);
+          fetch(`https://api.navitia.io/v1/journeys?from=${currentPosition.longitude};${currentPosition.latitude}&to=2.655400;48.542107?key=a3241d36-8169-4f8b-840c-214b769f3771`).then(
+  retourAPI => retourAPI.json().then(
+    retourAPI => {
+      console.log(retourAPI)}))
         });
       }
     })();
   }, []);
   
-  console.log(currentPosition)
+  console.log('current position', currentPosition)
   useEffect(() => {
     (async () => { 
 await (currentPosition)
