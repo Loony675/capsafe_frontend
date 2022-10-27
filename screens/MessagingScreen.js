@@ -12,7 +12,7 @@ const MessagingScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.Titre}>Messages</Text>      
         <TouchableOpacity style = {styles.conversation} onPress={() => handleclic()}>
-            <Image style = {styles.photo} source={require("../assets/imageProfil.png")}/>
+            <Image style = {styles.photo} source={require("../assets/beubeu.jpg")}/>
             <View style = {styles.left}>
               <Text style = {styles.username}>Benoit</Text>
               <Text style = {styles.text}>Salut ça va ? ...</Text>

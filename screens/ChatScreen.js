@@ -18,9 +18,10 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
 const BACKEND_ADDRESS = "http://192.168.1.21:3000";
 
 export default function ChatScreen({ navigation, route: { params } }) {
-  //const username = useSelector((state) => state.user.value.username);
+  const username = useSelector((state) => state.user.value.username);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
+  const [sended, setSended] = useState(false);
 
   useEffect(() => {
     fetch(`${BACKEND_ADDRESS}/messages/sync`)
@@ -28,26 +29,27 @@ export default function ChatScreen({ navigation, route: { params } }) {
       .then((data) => {
         setMessages(data);
       });
-  }, []);
+  }, [sended]);
+
+  
 
   const handleSendMessage = () => {
     if (!messageText) {
       return;
     }
-
     const payload = {
       message: messageText,
       name: "Benoit",
       timestamp: new Date(),
       id: Math.floor(Math.random() * 100000),
     };
-
     fetch(`${BACKEND_ADDRESS}/message/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-
+    setSended(!sended);
+    console.log(sended);
     setMessageText("");
   };
 
@@ -70,12 +72,12 @@ export default function ChatScreen({ navigation, route: { params } }) {
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <View style={styles.banner}>
         <MaterialIcons name="keyboard-backspace" color="#ffffff" size={24} onPress={() => navigation.navigate("TabNavigator", { screen: "Messaging" })}/>
-        <Text style={styles.greetingText}>Welcome Benoit 👋</Text>
+        <Text style={styles.greetingText}>Welcome {username} 👋</Text>
       </View>
       <View style={styles.inset}>
         <ScrollView style={styles.scroller}>
           {messages.map((message, i) => (
-            <View key={i} style={[styles.messageWrapper,{...(message.name === "Hmida"? styles.messageSent : styles.messageRecieved),},]}>
+            <View key={i} style={[styles.messageWrapper,{...(message.username === "Hmida"? styles.messageSent : styles.messageRecieved),},]}>
               <View style={[styles.message,{...(message.username === "Benoit" ? styles.messageSentBg : styles.messageRecievedBg),},]}>
                 <Text style={styles.messageText}>{message.message}</Text>
               </View>
@@ -88,7 +90,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
         </ScrollView>
         <View style={styles.inputContainer}>
           <TextInput onChangeText={(value) => setMessageText(value)} value={messageText} style={styles.input} autoFocus/>
-          <TouchableOpacity style={styles.sendButton} onPress={() => handleSendMessage()} >
+          <TouchableOpacity style={styles.sendButton} onPress={() => handleSendMessage(sended)} >
             <MaterialIcons name="send" color="#ffffff" size={24} />
           </TouchableOpacity>
         </View>

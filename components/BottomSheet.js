@@ -11,7 +11,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import OnVaOu from "./OnVaOu";
+import OnVaOu from "./onVaOu";
 import DepartArrivee from "./DepartArrivee";
 
 //hauteur = hauteur écran
