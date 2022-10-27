@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     height:100,
     width: 100,
-    borderRadius: 20
+    borderRadius: 9999
   },
   MainInfoContainer: {
     height: "68%",
