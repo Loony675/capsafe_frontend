@@ -11,14 +11,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-// import OnVaOu from "./onVaOu";
+import OnVaOu from "./onVaOu";
 import DepartArrivee from "./DepartArrivee";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 // définie la hauteur max
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +80
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +50
 
 const BottomSheet = () => {
   // stockage déplacement axe Y (vertical)
@@ -45,7 +45,7 @@ const BottomSheet = () => {
       console.log("Au mini");
     } 
     else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
-      translateY.value = withTiming(-SCREEN_HEIGHT +560)
+      translateY.value = withTiming(-SCREEN_HEIGHT +500)
       console.log("Au milieu");
 
     } 
@@ -71,9 +71,8 @@ const BottomSheet = () => {
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
-        <View hide={true} style={styles.onVaOuContainer}>
+        <View style={styles.onVaOuContainer}>
           <OnVaOu/>
-          {/* <DepartArrivee/> */}
         </View>
       </Animated.View>
     </GestureDetector>
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "rgba(	124, 96, 183, 1)",
     position: "absolute",
-    top: SCREEN_HEIGHT -40,
+    top: SCREEN_HEIGHT,
     borderRadius: 25,
   },
   line: {
