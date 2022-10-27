@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 //Bibliothèque Fontwesome
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 //Import des screens
 import HomeScreen from './screens/HomeScreen';
 import MainScreen from './screens/MainScreen';
@@ -11,20 +11,16 @@ import SettingsScreen from './screens/SettingsScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ChatScreen from './screens/ChatScreen';
-import MessagingScreen from "./screens/MessagingScreen";
-import OnVaOuScreen from "./screens/OnVaOuScreen";
-import DepartureArrivalScreen from "./screens/DepartureArrivalScreen";
-//Import redux
-import { configureStore } from "@reduxjs/toolkit";
-import users from "./reducers/users";
-import url from "./reducers/url";
+
 //Import redux
 import { Provider } from 'react-redux';
 
-//Import pour la vavigation
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import users from './reducers/users';
+import url from './reducers/url';
 
 const store = configureStore({
   reducer: { users, url },
@@ -35,37 +31,37 @@ const Tab = createBottomTabNavigator();
 
  const TabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName = "";
-          if (route.name === "Profil") {
-            iconName = "user";
-          } else if (route.name === "Main") {
-            iconName = "home";
-          } else if (route.name === "Messaging") {
-            iconName = "envelope";
-          } else if (route.name === "Settings") {
-            iconName = "gear";
-          }
-          return <FontAwesome name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: "#478bbc",
-        tabBarInactiveTintColor: "#335561",
-        headerShown: false,
-      })}
-    >
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ color, size }) => {
+        let iconName = '';
+
+        if (route.name === 'Profil') {
+          iconName = 'user';
+        } else if (route.name === 'Main') {
+          iconName = 'home';
+        } else if (route.name === 'Messaging') {
+          iconName = 'envelope';
+        } else if (route.name === 'Settings') {
+          iconName = 'gear';
+        }
+
+        return <FontAwesome name={iconName} size={size} color={color} />;
+      },
+
+      tabBarActiveTintColor: '#478bbc',
+      tabBarInactiveTintColor: '#335561',
+      headerShown: false,
+    })}>
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Messaging" component={ChatScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Route" component={RouteScreen} />
     </Tab.Navigator>
   );
 };
-//update
 
-export default function App() {
+ 
+ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -73,6 +69,7 @@ export default function App() {
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Messaging" component={MessagingScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
@@ -81,8 +78,6 @@ export default function App() {
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="OnVaOu" component={OnVaOuScreen} />
-          <Stack.Screen name="DepartureArrival" component ={DepartureArrivalScreen} /> 
         </Stack.Navigator>
       </NavigationContainer>
    </Provider>
