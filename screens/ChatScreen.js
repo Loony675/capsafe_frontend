@@ -50,6 +50,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
     });
     setSended(!sended);
     setMessageText("");
+//update
 
     fetch(`${BACKEND_ADDRESS}/message/sync`)
     .then((response) => response.json())

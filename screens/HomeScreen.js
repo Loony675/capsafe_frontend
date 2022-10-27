@@ -8,6 +8,7 @@ import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { useSelector } from 'react-redux';
 export default function HomeScreen({ navigation }) {
   const url = useSelector((state) => state.url.value);
+//update
 
   console.log(url)
   return (

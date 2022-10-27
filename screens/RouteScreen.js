@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect,useState } from 'react';
 import * as Location from "expo-location";
+//update
 
 const RouteScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(null);
