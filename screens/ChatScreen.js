@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
 
 const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-const BACKEND_ADDRESS = "http://192.168.1.21:3000";
+const BACKEND_ADDRESS = "http://192.168.1.68:3000";
 
 export default function ChatScreen({ navigation, route: { params } }) {
   //const username = useSelector((state) => state.user.value.username);
@@ -24,14 +24,14 @@ export default function ChatScreen({ navigation, route: { params } }) {
   const [sended, setSended] = useState(false);
 
   useEffect(() => {
-    fetch(`${BACKEND_ADDRESS}/messages/sync`)
+    fetch(`${BACKEND_ADDRESS}/message/sync`)
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
       });
-  }, [sended]);
+  }, []);
 
-  
+
 
   const handleSendMessage = () => {
     if (!messageText) {
@@ -49,10 +49,15 @@ export default function ChatScreen({ navigation, route: { params } }) {
       body: JSON.stringify(payload),
     });
     setSended(!sended);
-    console.log(sended);
     setMessageText("");
-  };
+//update
 
+    fetch(`${BACKEND_ADDRESS}/message/sync`)
+    .then((response) => response.json())
+    .then((data) => {
+      setMessages(data)
+      
+  })}
   const handleReceiveMessage = (data) => {
     setMessages((messages) => [...messages, data]);
   };
