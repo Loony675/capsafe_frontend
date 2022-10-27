@@ -4,7 +4,6 @@ import React from 'react'
 const MessagingScreen = ({navigation}) => {
 
   const handleclic = () => {
-    console.log('clic');
     navigation.navigate('Chat')
 
   }

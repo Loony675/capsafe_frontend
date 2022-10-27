@@ -11,7 +11,8 @@ import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import MessagingScreen from "./screens/MessagingScreen";
-import DepartureArrival from "./screens/DepartureArrivalScreen";
+import OnVaOuScreen from "./screens/OnVaOuScreen";
+import DepartureArrivalScreen from "./screens/DepartureArrivalScreen";
 //Import redux
 import { configureStore } from "@reduxjs/toolkit";
 import users from "./reducers/users";
@@ -74,7 +75,8 @@ export default function App() {
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="DepartureArrival" component ={DepartureArrival} /> 
+          <Stack.Screen name="OnVaOu" component={OnVaOuScreen} />
+          <Stack.Screen name="DepartureArrival" component ={DepartureArrivalScreen} /> 
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

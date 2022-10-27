@@ -11,8 +11,9 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import OnVaOu from "./OnVaOu";
-import DepartArrivee from "./DepartArrivee";
+
+import OnVaOuScreen from "../screens/OnVaOuScreen.js";
+import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -72,8 +73,8 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         <OnVaOu/>
-          {/* <DepartArrivee/> */}
+         <OnVaOuScreen/>
+         {/* <DepartureArrival/> */}
         </View>
       </Animated.View>
     </GestureDetector>

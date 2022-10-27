@@ -7,42 +7,50 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import DepartArrivee from "./DepartArrivee";
-import BottomSheet from "./BottomSheet";
+import { useNavigation } from "@react-navigation/native";
+import BottomSheet from "../components/BottomSheet";
 
-export default function onVaOu() {
+export default function OnVaOuScreen() {
+  const navigation = useNavigation();
   return (
-    <View style={styles.globalContainer}>
-      <View style={styles.container1}>
-        <TouchableOpacity style={styles.logoOVO} />
-        <TouchableOpacity onPress={() => goToDepartArrivee()}>
-          <Text> On va où ?</Text>
-        </TouchableOpacity>
-        <View style={styles.logoVoid}></View>
+    <BottomSheet>
+      <View style={styles.globalContainer}>
+        <View style={styles.container1}>
+          <TouchableOpacity
+            style={styles.logoOVO}
+            onPress={() => navigation.navigate("DepartureArrival")}
+          />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DepartureArrival")}
+          >
+            <Text> On va où ?</Text>
+          </TouchableOpacity>
+          <View style={styles.logoVoid}></View>
+        </View>
+        <View style={styles.container2}>
+          <TouchableOpacity style={styles.backgroundLogoHome}>
+            <View style={styles.iconHome}>
+              <FontAwesome name={"home"} size={30} color={"white"} />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button1}>
+            <Text style={styles.textHome}>Rentrer à la maison</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.logoWork}>
+              <FontAwesome name={"briefcase"} size={25} color={"white"} />
+            </View>
+            <Text>Boulot</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.containerAddress}>
+            <View style={styles.logoStar}>
+              <FontAwesome name={"star"} size={25} color={"white"} />
+            </View>
+            <Text>Adresses</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.container2}>
-        <TouchableOpacity style={styles.backgroundLogoHome}>
-          <View style={styles.iconHome}>
-            <FontAwesome name={"home"} size={30} color={"white"} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button1}>
-          <Text style={styles.textHome}>Rentrer à la maison</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.logoWork}>
-            <FontAwesome name={"briefcase"} size={25} color={"white"} />
-          </View>
-          <Text>Boulot</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.containerAddress}>
-          <View style={styles.logoStar}>
-            <FontAwesome name={"star"} size={25} color={"white"} />
-          </View>
-          <Text>Adresses</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </BottomSheet>
   );
 }
 
