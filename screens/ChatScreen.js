@@ -18,7 +18,7 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
 const BACKEND_ADDRESS = "http://192.168.1.21:3000";
 
 export default function ChatScreen({ navigation, route: { params } }) {
-  const username = useSelector((state) => state.user.value.username);
+  //const username = useSelector((state) => state.user.value.username);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
@@ -72,7 +72,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <View style={styles.banner}>
         <MaterialIcons name="keyboard-backspace" color="#ffffff" size={24} onPress={() => navigation.navigate("TabNavigator", { screen: "Messaging" })}/>
-        <Text style={styles.greetingText}>Welcome {username} 👋</Text>
+        <Text style={styles.greetingText}>Welcome Benoit 👋</Text>
       </View>
       <View style={styles.inset}>
         <ScrollView style={styles.scroller}>
