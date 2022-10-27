@@ -13,8 +13,8 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import OnVaOuScreen from "../screens/OnVaOuScreen.js";
-import DepartureArrival from "../screens/DepartureArrivalScreen.js";
+// import OnVaOuScreen from "../screens/OnVaOuScreen.js";
+// import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
