@@ -9,7 +9,10 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import { useDispatch, useSelector } from "react-redux";
-import { isVisibleDeparture, isVisibleAddressList } from "../reducers/isVisible";
+import {
+  isVisibleDeparture,
+  isVisibleAddressList,
+} from "../reducers/isVisible";
 
 export default function OnVaOuScreen() {
   const dispatch = useDispatch();
@@ -45,7 +48,9 @@ export default function OnVaOuScreen() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.containerAddress}
-          onPress={() => dispatch(isVisibleAddressList({ isVisibleAddressList: true }))}
+          onPress={() =>
+            dispatch(isVisibleAddressList({ isVisibleAddressList: true }))
+          }
         >
           <View style={styles.logoStar}>
             <FontAwesome name={"star"} size={25} color={"white"} />
@@ -59,6 +64,7 @@ export default function OnVaOuScreen() {
 
 const styles = StyleSheet.create({
   globalContainer: {
+    marginTop: 20,
     height: "40%",
     width: "80%",
     backgroundColor: "white",

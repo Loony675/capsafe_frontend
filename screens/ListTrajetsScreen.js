@@ -9,23 +9,42 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
 import { useDispatch } from "react-redux";
-import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible";
+import { isVisibleDeparture } from "../reducers/isVisible";
 
-export default function DepartureArrival() {
+export default function ListTrajet() {
+  const listTrajet = [
+    { logo: "0", nbrMembre: "11  membres sur votre trajet", timer: "23 min" },
+    { logo: "1", nbrMembre: "7 membres sur votre trajet", timer: "10 min" },
+    { logo: "2", nbrMembre: "4 membres sur votre trajet", timer: "111 min" },
+  ];
+
+  const mapListAddress = listTrajet.map((data, i) => {
+    return (
+      <View key={i} style={styles.mapStyle}>
+        <View style={styles.mapDirection}>
+          <TouchableOpacity>
+            <Text>{data.logo}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ fontWeight: "600" }}>
+            <Text>{data.nbrMembre}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>{data.timer}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  });
+
   const dispatch = useDispatch();
-  const rechercher =() => {
-    console.log('click');
-    dispatch(isVisibleDeparture({isVisibleDA:false}));
-    console.log('ferme DA');
-    dispatch(isVisibleListTraj({ isVisibleListTrajet: true }))
-    console.log('ouvre trajet');
-  }
-
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
         <TouchableOpacity
-          onPress={() => dispatch(isVisibleDeparture({ isVisibleDA: false }))}
+          onPress={
+            (() => dispatch(isVisibleDeparture({ isVisibleDA: false })),
+            dispatch(isVisibleDeparture({ isVisibleDA: true })))
+          }
         >
           <View style={styles.arrowLeft}>
             <FontAwesome
@@ -42,7 +61,7 @@ export default function DepartureArrival() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-          <Text style={styles.textDepart}>Départ</Text>
+          <Text>56 boulevard Pereire, 75017 Paris</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container2}>
@@ -61,26 +80,19 @@ export default function DepartureArrival() {
             style={styles.pin}
           />
 
-          <Text style={styles.textArrivee}>Arrivée</Text>
+          <Text>41 Rue de Pet Unia, 75017 Paris</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
-        <TouchableOpacity
-          onPress={() =>
-            rechercher()
-          }
-        >
-          <Text>Rechercher</Text>
-        </TouchableOpacity>
+        <Text>Suggérés</Text>
       </View>
+      <View style={styles.container4}>{mapListAddress}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop:20,
-    height: "40%",
     width: "80%",
     justifyContent: "center",
   },
@@ -104,9 +116,6 @@ const styles = StyleSheet.create({
   locationArrow: {
     marginLeft: 10,
   },
-  textDepart: {
-    marginLeft: "30%",
-  },
   container2: {
     flexDirection: "row",
   },
@@ -117,7 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "white",
-    marginBottom: 20,
+    marginBottom: 10,
     width: "80%",
     height: 40,
     borderRadius: 10,
@@ -126,15 +135,29 @@ const styles = StyleSheet.create({
   pin: {
     marginLeft: 10,
   },
-  textArrivee: {
-    marginLeft: "32%",
-  },
   container3: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgb(10,200,10)",
+    marginBottom: 10,
+    fontWeight: "600",
+  },
+  container4: {
+    backgroundColor: "white",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: "60%",
+  },
+  mapStyle: {},
+  mapDirection: {
     height: 40,
-    borderRadius: 10,
+    flexDirection: "row",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 5,
+    borderBottomWidth: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderColor: "grey",
   },
 });
