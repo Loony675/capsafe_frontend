@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isVisibleDA : false
+  isVisibleDA : false,
+  isVisibleAddress : false,
 };
 
 export const isVisibleSlice = createSlice({
@@ -11,9 +12,11 @@ export const isVisibleSlice = createSlice({
     isVisibleDeparture: (state, action) => {
       state.isVisibleDA = action.payload;
     },
-
+    isVisibleAddressList: (state, action) => {
+        state.isVisibleAddress = action.payload;
+    }
   },
 });
 
-export const { isVisibleDeparture} = isVisibleSlice.actions;
+export const { isVisibleDeparture, isVisibleAddressList} = isVisibleSlice.actions;
 export default isVisibleSlice.reducer;
