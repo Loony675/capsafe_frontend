@@ -15,10 +15,12 @@ const ProfilScreen = () => {
   const [emailM, setEmailM] = useState(false)
   const [birthDayDateM, setBirthDayDateM] = useState(false)
   const [sexeM, setSexeM] = useState(false)
+  const [usernameM, setUsernameM] = useState(false)
+
   // updateProfilInfo('lastName')
   let sendedInfo
 useEffect(() => {
-  fetch(`http://${url}:3000/users/displayProfil`, {
+  fetch(`http://${url}:3000/users/displayOneUser`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'}),
@@ -82,6 +84,12 @@ const validateProfilInfo = (fieldUpdated, valueUpdated) => {
       {!lastNameM && <Text style ={styles.text2}>{profilInfos.lastName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setLastNameM(true)} size={25} color='#ec6e5b' /></Text>}
       {lastNameM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({lastName: value})} value={profilInfos.lastName} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('lastName', profilInfos.lastName)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
+      </View>
+      <View style ={styles.infoContainer}>
+      {!usernameM && <Text style ={styles.text1}>Username :</Text>}
+      {!usernameM && <Text style ={styles.text2}>{profilInfos.username} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setUsernameM(true)} size={25} color='#ec6e5b' /></Text>}
+      {usernameM && <View style ={styles.editContainer}><TextInput placeholder="Username" onChangeText={(value) => setProfilInfos({username: value})} value={profilInfos.username} style={styles.input} />
+        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('username', profilInfos.username)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
       {!emailM && <Text style ={styles.text1}>Email :</Text>}
