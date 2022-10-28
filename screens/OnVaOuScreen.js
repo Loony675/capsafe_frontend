@@ -7,22 +7,24 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
-import BottomSheet from "../components/BottomSheet";
+
+import { useDispatch, useSelector } from "react-redux";
+import {isVisibleDeparture} from "../reducers/isVisible";
 
 export default function OnVaOuScreen() {
-  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   return (
     
       <View style={styles.globalContainer}>
         <View style={styles.container1}>
           <TouchableOpacity
             style={styles.logoOVO}
-            onPress={() => navigation.navigate("DepartureArrival")}
+            onPress={() => dispatch(isVisibleDeparture({isVisibleDA: true}))}
           />
           <TouchableOpacity
-            onPress={() => navigation.navigate("DepartureArrival")}
-          >
+            onPress={() => dispatch(isVisibleDeparture({isVisibleDA: true}))}
+            >
             <Text> On va où ?</Text>
           </TouchableOpacity>
           <View style={styles.logoVoid}></View>
