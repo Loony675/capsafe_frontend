@@ -5,7 +5,7 @@ import {
   Gesture,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
-//update
+//update1
 
 import Animated, {
   useAnimatedStyle,
@@ -73,12 +73,14 @@ const BottomSheet = () => {
 
   // test = Screen visible
   let screenVisible; 
-	const visibleOuNon= useSelector((state) => state.isVisible.isVisibleDA);
-  console.log('-->', visibleOuNon );
-  if (visibleOuNon.isVisibleDA === true ) {
-    console.log("test passed");
+	const visibleDA= useSelector((state) => state.isVisible.isVisibleDA);
+  const visibleAddress = useSelector((state) => state.isVisible.isVisibleAddress)
+  console.log('-->', visibleAddress.isVisibleAddressList);
+  if (visibleDA.isVisibleDA === true ) {
     screenVisible= (<DepartureArrival/>)
-  } else {
+  } else if (visibleAddress.isVisibleAddressList === true) {
+    screenVisible=(<Adresses/>)
+  }else {
     screenVisible= (<OnVaOuScreen/>)
   }
 
@@ -87,8 +89,8 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         {/* {screenVisible} */}
-         <Adresses/>
+         {screenVisible}
+         {/* <Adresses/> */}
         </View>
       </Animated.View>
     </GestureDetector>

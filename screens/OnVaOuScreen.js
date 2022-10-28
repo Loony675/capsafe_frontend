@@ -9,50 +9,51 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import { useDispatch, useSelector } from "react-redux";
-import {isVisibleDeparture} from "../reducers/isVisible";
+import { isVisibleDeparture, isVisibleAddressList } from "../reducers/isVisible";
 
 export default function OnVaOuScreen() {
   const dispatch = useDispatch();
 
   return (
-    
-      <View style={styles.globalContainer}>
-        <View style={styles.container1}>
-          <TouchableOpacity
-            style={styles.logoOVO}
-            onPress={() => dispatch(isVisibleDeparture({isVisibleDA: true}))}
-          />
-          <TouchableOpacity
-            onPress={() => dispatch(isVisibleDeparture({isVisibleDA: true}))}
-            >
-            <Text> On va où ?</Text>
-          </TouchableOpacity>
-          <View style={styles.logoVoid}></View>
-        </View>
-        <View style={styles.container2}>
-          <TouchableOpacity style={styles.backgroundLogoHome}>
-            <View style={styles.iconHome}>
-              <FontAwesome name={"home"} size={30} color={"white"} />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button1}>
-            <Text style={styles.textHome}>Rentrer à la maison</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.logoWork}>
-              <FontAwesome name={"briefcase"} size={25} color={"white"} />
-            </View>
-            <Text>Boulot</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.containerAddress}>
-            <View style={styles.logoStar}>
-              <FontAwesome name={"star"} size={25} color={"white"} />
-            </View>
-            <Text>Adresses</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.globalContainer}>
+      <View style={styles.container1}>
+        <TouchableOpacity
+          style={styles.logoOVO}
+          onPress={() => dispatch(isVisibleDeparture({ isVisibleDA: true }))}
+        />
+        <TouchableOpacity
+          onPress={() => dispatch(isVisibleDeparture({ isVisibleDA: true }))}
+        >
+          <Text> On va où ?</Text>
+        </TouchableOpacity>
+        <View style={styles.logoVoid}></View>
       </View>
-
+      <View style={styles.container2}>
+        <TouchableOpacity style={styles.backgroundLogoHome}>
+          <View style={styles.iconHome}>
+            <FontAwesome name={"home"} size={30} color={"white"} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button1}>
+          <Text style={styles.textHome}>Rentrer à la maison</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.logoWork}>
+            <FontAwesome name={"briefcase"} size={25} color={"white"} />
+          </View>
+          <Text>Boulot</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.containerAddress}
+          onPress={() => dispatch(isVisibleAddressList({ isVisibleAddressList: true }))}
+        >
+          <View style={styles.logoStar}>
+            <FontAwesome name={"star"} size={25} color={"white"} />
+          </View>
+          <Text>Adresses</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 

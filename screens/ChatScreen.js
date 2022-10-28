@@ -15,7 +15,11 @@ import { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
 
 const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
+<<<<<<< HEAD
+const BACKEND_ADDRESS = "http://192.168.1.21:3000";
+=======
 const BACKEND_ADDRESS = "http://192.168.1.68:3000";
+>>>>>>> 2f7a8737a340e44b9482a692c76060c04ad27e95
 
 export default function ChatScreenTest({ navigation, route: { params } }) {
   const username = useSelector((state) => state.users.value.username);
@@ -48,6 +52,7 @@ export default function ChatScreenTest({ navigation, route: { params } }) {
     });
     setSended(!sended);
     setMessageText("");
+    this.scrollView.scrollToEnd();
     //update
 
     fetch(`${BACKEND_ADDRESS}/message/sync`)
@@ -72,9 +77,7 @@ export default function ChatScreenTest({ navigation, route: { params } }) {
   }, []);
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.banner}>
         <MaterialIcons
@@ -88,7 +91,7 @@ export default function ChatScreenTest({ navigation, route: { params } }) {
         <Text style={styles.greetingText}>Welcome {username} 👋</Text>
       </View>
       <View style={styles.inset}>
-        <ScrollView style={styles.scroller}>
+        <ScrollView style={styles.scroller} ref={scrollView => this.scrollView = scrollView}>
           {messages.map((message, i) => (
             <View
               key={i}
