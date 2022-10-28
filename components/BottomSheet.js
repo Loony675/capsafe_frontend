@@ -23,7 +23,7 @@ import Adresses from "../screens/AdressesScreen.js";
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 // définie la hauteur max
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +80
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 80;
 
 const BottomSheet = () => {
   // stockage déplacement axe Y (vertical)
@@ -34,36 +34,36 @@ const BottomSheet = () => {
 
   // detection deplacement axe Y
   const gesture = Gesture.Pan()
-  .onStart(() => {
-    context.value = { y: translateY.value}
-  })
-  .onUpdate((event) => {
-    console.log(event.translationY);
-    translateY.value = event.translationY + context.value.y;
-    // définie la hauteur max
-    translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
-  })
-  .onEnd(() => {
-    //définie la hauteur mini
-    if (translateY.value > -SCREEN_HEIGHT / 6) {
-      translateY.value = withTiming(-120)
-      console.log("Au mini");
-    } 
-    else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
-      translateY.value = withTiming(-SCREEN_HEIGHT +500)
-      console.log("Au milieu");
-
-    } 
-    else if (translateY.value < -SCREEN_HEIGHT / 2) {
-      translateY.value = withTiming(MAX_TRANSLATE_Y)
-      console.log("Tout en haut");
-    }
-  });
-
+    .onStart(() => {
+      context.value = { y: translateY.value };
+    })
+    .onUpdate((event) => {
+      console.log(event.translationY);
+      translateY.value = event.translationY + context.value.y;
+      // définie la hauteur max
+      translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
+    })
+    .onEnd(() => {
+      //définie la hauteur mini
+      if (translateY.value > -SCREEN_HEIGHT / 6) {
+        translateY.value = withTiming(-120);
+        console.log("Au mini");
+      } else if (
+        translateY.value < -SCREEN_HEIGHT / 5 &&
+        translateY.value > -SCREEN_HEIGHT / 2
+      ) {
+        translateY.value = withTiming(-SCREEN_HEIGHT + 500);
+        console.log("Au milieu");
+      } else if (translateY.value < -SCREEN_HEIGHT / 2) {
+        translateY.value = withTiming(MAX_TRANSLATE_Y);
+        console.log("Tout en haut");
+      }
+    });
+  //up
   // affixes
   useEffect(() => {
-    translateY.value = withTiming(-SCREEN_HEIGHT / 3)
-  },[]);
+    translateY.value = withTiming(-SCREEN_HEIGHT / 3);
+  }, []);
 
   const rBottomSheetStyle = useAnimatedStyle(() => {
     return {
@@ -72,14 +72,14 @@ const BottomSheet = () => {
   });
 
   // test = Screen visible
-  let screenVisible; 
-	const visibleOuNon= useSelector((state) => state.isVisible.isVisibleDA);
-  console.log('-->', visibleOuNon );
-  if (visibleOuNon.isVisibleDA === true ) {
+  let screenVisible;
+  const visibleOuNon = useSelector((state) => state.isVisible.isVisibleDA);
+  console.log("-->", visibleOuNon);
+  if (visibleOuNon.isVisibleDA === true) {
     console.log("test passed");
-    screenVisible= (<DepartureArrival/>)
+    screenVisible = <DepartureArrival />;
   } else {
-    screenVisible= (<OnVaOuScreen/>)
+    screenVisible = <OnVaOuScreen />;
   }
 
   return (
@@ -87,8 +87,8 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         {/* {screenVisible} */}
-         <Adresses/>
+          {/* {screenVisible} */}
+          <Adresses />
         </View>
       </Animated.View>
     </GestureDetector>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "rgba(	124, 96, 183, 1)",
     position: "absolute",
-    top: SCREEN_HEIGHT -40,
+    top: SCREEN_HEIGHT - 40,
     borderRadius: 25,
   },
   line: {
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   onVaOuContainer: {
-    alignItems:'center',
+    alignItems: "center",
     marginTop: 40,
-  }
+  },
 });
 //test

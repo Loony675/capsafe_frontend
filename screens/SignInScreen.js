@@ -21,8 +21,8 @@ const SignInScreen = ({ navigation }) => {
   const EMAIL_REGEX =
     /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
   // Etats
-  const [signInEmail, setSignInEmail] = useState("a@a.aa");
-  const [signInPassword, setSignInPassword] = useState("a");
+  const [signInEmail, setSignInEmail] = useState("benoit@gmail.com");
+  const [signInPassword, setSignInPassword] = useState("1234");
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
