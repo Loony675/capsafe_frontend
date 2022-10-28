@@ -74,8 +74,8 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         <OnVaOuScreen/>
-         {/* <DepartureArrival/> */}
+         {/* <OnVaOuScreen/> */}
+         <DepartureArrival/>
         </View>
       </Animated.View>
     </GestureDetector>
