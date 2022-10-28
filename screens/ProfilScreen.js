@@ -20,7 +20,7 @@ const ProfilScreen = () => {
   // updateProfilInfo('lastName')
   let sendedInfo
 useEffect(() => {
-  fetch(`http://${url}:3000/users/displayProfil`, {
+  fetch(`http://${url}:3000/users/displayOneUser`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'}),

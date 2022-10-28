@@ -10,19 +10,21 @@ import {
 } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
-const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
 
-export default function ChatScreen({ navigation, route: { params } }) {
-  const url = useSelector((state) => state.url.value);
+const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
+const BACKEND_ADDRESS = "http://192.168.1.68:3000";
+
+export default function ChatScreenTest({ navigation, route: { params } }) {
   const username = useSelector((state) => state.users.value.username);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
   console.log(username);
   useEffect(() => {
-    fetch(`http://${url}/message/sync`)
+    fetch(`${BACKEND_ADDRESS}/message/sync`)
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
@@ -39,7 +41,7 @@ export default function ChatScreen({ navigation, route: { params } }) {
       timestamp: new Date(),
       id: Math.floor(Math.random() * 100000),
     };
-    fetch(`http://${url}/message/new`, {
+    fetch(`${BACKEND_ADDRESS}/message/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -48,25 +50,25 @@ export default function ChatScreen({ navigation, route: { params } }) {
     setMessageText("");
     //update
 
-    fetch(`http://${url}/message/sync`)
-    .then((response) => response.json())
-    .then((data) => {
-      setMessages(data)
-      
-  })}
+    fetch(`${BACKEND_ADDRESS}/message/sync`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMessages(data);
+      });
+  };
   const handleReceiveMessage = (data) => {
     setMessages((messages) => [...messages, data]);
   };
 
   useEffect(() => {
-    fetch(`http://${url}/message/Benoit`, { method: "PUT" });
+    fetch(`${BACKEND_ADDRESS}/message/Benoit`, { method: "PUT" });
 
     const subscription = pusher.subscribe("chat");
     subscription.bind("pusher:subscription_succeeded", () => {
       subscription.bind("message", handleReceiveMessage);
     });
 
-    return () => fetch(`http://${url}/message/new`, { method: "DELETE" });
+    return () => fetch(`${BACKEND_ADDRESS}/message/new`, { method: "DELETE" });
   }, []);
 
   return (
@@ -294,7 +296,7 @@ const styles = StyleSheet.create({
 // import Pusher from "pusher-js/react-native";
 
 // const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-// const url = "http://192.168.1.21:3000";
+// const BACKEND_ADDRESS = "http://192.168.1.21:3000";
 
 // export default function ChatScreen({ navigation, route: { params } }) {
 //   //const user = useSelector((state) => state.user.value.name);
@@ -302,7 +304,7 @@ const styles = StyleSheet.create({
 //   const [messageText, setMessageText] = useState(""); // contenu d'un message
 
 //   useEffect(() => {
-//     fetch(`${url}/messages/sync`)
+//     fetch(`${BACKEND_ADDRESS}/messages/sync`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         setMessages(data);
@@ -319,7 +321,7 @@ const styles = StyleSheet.create({
 //       timestamp: new Date(),
 //       id: Math.floor(Math.random() * 100000),
 //     };
-//     fetch(`${BACKEND_ADDRESS}/message/new`, { // On envoi au back 
+//     fetch(`${BACKEND_ADDRESS}/message/new`, { // On envoi au back
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify(payload),
@@ -333,13 +335,13 @@ const styles = StyleSheet.create({
 //   };
 
 //   useEffect(() => {
-//     fetch(`${url}/message/Benoit`, { method: "PUT" });
+//     fetch(`${BACKEND_ADDRESS}/message/Benoit`, { method: "PUT" });
 //     const subscription = pusher.subscribe("chat");
 //     subscription.bind("pusher:subscription_succeeded", () => {
 //     subscription.bind("message", handleReceiveMessage);
 //     });
 //   }, []);
-//   //return () => fetch(`${url}/message/new`, { method: "DELETE" });
+//   //return () => fetch(`${BACKEND_ADDRESS}/message/new`, { method: "DELETE" });
 
 //     return (
 //     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>

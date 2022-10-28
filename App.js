@@ -12,6 +12,9 @@ import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ChatScreen from "./screens/ChatScreen";
 import MessagingScreen from "./screens/MessagingScreen";
+import ChatScreenTest from "./screens/ChatScreenTest";
+import MessagingScreenTest from "./screens/MessagingScreenTest";
+
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -56,9 +59,11 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Messaging" component={MessagingScreen} />      
+      <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
+      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
     </Tab.Navigator>
   );
 };
