@@ -13,8 +13,8 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-// import OnVaOuScreen from "../screens/OnVaOuScreen.js";
-// import DepartureArrival from "../screens/DepartureArrivalScreen.js";
+import OnVaOuScreen from "../screens/OnVaOuScreen.js";
+import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -43,7 +43,7 @@ const BottomSheet = () => {
   .onEnd(() => {
     //définie la hauteur mini
     if (translateY.value > -SCREEN_HEIGHT / 6) {
-      translateY.value = withTiming(-80)
+      translateY.value = withTiming(-120)
       console.log("Au mini");
     } 
     else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
@@ -74,8 +74,8 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         {/* <OnVaOuScreen/> */}
-         <DepartureArrival/>
+         <OnVaOuScreen/>
+         {/* <DepartureArrival/> */}
         </View>
       </Animated.View>
     </GestureDetector>

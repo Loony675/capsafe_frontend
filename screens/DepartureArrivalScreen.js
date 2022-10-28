@@ -31,10 +31,11 @@ export default function DepartureArrival() {
           <FontAwesome
             name={"arrow-left"}
             size={20}
-            color={"rgb(170,170,170,0)"}
+            color={"rgba(255,255,255,0)"}
           />
         </View>
         <TouchableOpacity style={styles.buttonArrivee}>
+          <View style={styles.iconDepart}></View>
           <Text>Arrivée</Text>
         </TouchableOpacity>
       </View>
@@ -60,7 +61,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginBottom: 20,
     width: "80%",
-    height: 50,
+    height: 40,
+    borderRadius:10,
+    borderWidth:1,
+  },
+  iconDepart:{
+    height:30,
+    backgroundColor:'blue',
   },
   container2: {
     flexDirection: "row",
@@ -73,7 +80,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     marginBottom: 20,
-
     width: "80%",
+    height:40,
+    borderRadius:10,
+    borderWidth:1,
   },
 });
