@@ -23,7 +23,7 @@ import Adresses from "../screens/AdressesScreen.js";
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 // définie la hauteur max
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +50
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +80
 
 const BottomSheet = () => {
   // stockage déplacement axe Y (vertical)
