@@ -23,7 +23,13 @@ export default function DepartureArrival() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonDepart}>
-          <Text>Départ</Text>
+          <FontAwesome
+            name={"location-arrow"}
+            size={25}
+            color={"rgba(71, 139, 188, 1)"}
+            style={styles.locationArrow}
+          />
+          <Text style={styles.textDepart}>Départ</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container2}>
@@ -31,11 +37,18 @@ export default function DepartureArrival() {
           <FontAwesome
             name={"arrow-left"}
             size={20}
-            color={"rgb(170,170,170,0)"}
+            color={"rgba(255,255,255,0)"}
           />
         </View>
         <TouchableOpacity style={styles.buttonArrivee}>
-          <Text>Arrivée</Text>
+          <FontAwesome
+            name={"map-marker"}
+            size={25}
+            color={"rgba(71, 139, 188, 1)"}
+            style={styles.pin}
+          />
+
+          <Text style={styles.textArrivee}>Arrivée</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -53,14 +66,23 @@ const styles = StyleSheet.create({
   },
   arrowLeft: {
     marginRight: 10,
+    marginTop: 10,
   },
   buttonDepart: {
-    justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
     backgroundColor: "white",
     marginBottom: 20,
     width: "80%",
-    height: 50,
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  locationArrow: {
+    marginLeft: 10,
+  },
+  textDepart: {
+    marginLeft: "30%",
   },
   container2: {
     flexDirection: "row",
@@ -69,11 +91,19 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   buttonArrivee: {
-    justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
     backgroundColor: "white",
     marginBottom: 20,
-
     width: "80%",
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  pin: {
+    marginLeft: 10,
+  },
+  textArrivee: {
+    marginLeft: "32%",
   },
 });

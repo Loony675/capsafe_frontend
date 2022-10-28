@@ -13,14 +13,17 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-// import OnVaOuScreen from "../screens/OnVaOuScreen.js";
- import DepartureArrival from "../screens/DepartureArrivalScreen.js";
+import { useDispatch, useSelector } from "react-redux";
+
+import OnVaOuScreen from "../screens/OnVaOuScreen.js";
+import DepartureArrival from "../screens/DepartureArrivalScreen.js";
+import Adresses from "../screens/AdressesScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 // définie la hauteur max
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +50
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT +80
 
 const BottomSheet = () => {
   // stockage déplacement axe Y (vertical)
@@ -43,7 +46,7 @@ const BottomSheet = () => {
   .onEnd(() => {
     //définie la hauteur mini
     if (translateY.value > -SCREEN_HEIGHT / 6) {
-      translateY.value = withTiming(-80)
+      translateY.value = withTiming(-120)
       console.log("Au mini");
     } 
     else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
@@ -68,14 +71,24 @@ const BottomSheet = () => {
     };
   });
 
+  // test = Screen visible
+  let screenVisible; 
+	const visibleOuNon= useSelector((state) => state.isVisible.isVisibleDA);
+  console.log('-->', visibleOuNon );
+  if (visibleOuNon.isVisibleDA === true ) {
+    console.log("test passed");
+    screenVisible= (<DepartureArrival/>)
+  } else {
+    screenVisible= (<OnVaOuScreen/>)
+  }
 
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-         {/* <OnVaOuScreen/> */}
-         <DepartureArrival/>
+         {/* {screenVisible} */}
+         <Adresses/>
         </View>
       </Animated.View>
     </GestureDetector>
@@ -90,7 +103,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "rgba(	124, 96, 183, 1)",
     position: "absolute",
-    top: SCREEN_HEIGHT,
+    top: SCREEN_HEIGHT -40,
     borderRadius: 25,
   },
   line: {

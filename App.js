@@ -12,6 +12,9 @@ import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ChatScreen from "./screens/ChatScreen";
 import MessagingScreen from "./screens/MessagingScreen";
+import ChatScreenTest from "./screens/ChatScreenTest";
+import MessagingScreenTest from "./screens/MessagingScreenTest";
+
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -22,9 +25,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import users from "./reducers/users";
 import url from "./reducers/url";
+import isVisible from "./reducers/isVisible";
 
 const store = configureStore({
-  reducer: { users, url },
+  reducer: { users, url, isVisible },
 });
 
 const Stack = createNativeStackNavigator();
@@ -56,9 +60,11 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Messaging" component={MessagingScreen} />      
+      <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
+      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
     </Tab.Navigator>
   );
 };
@@ -68,10 +74,10 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-          <Stack.Screen name="Messaging" component={MessagingScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />

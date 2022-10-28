@@ -19,10 +19,10 @@ const SignInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   // Regex Email
   const EMAIL_REGEX =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
   // Etats
-  const [signInEmail, setSignInEmail] = useState("benoit@gmail.com");
-  const [signInPassword, setSignInPassword] = useState("1234");
+  const [signInEmail, setSignInEmail] = useState("a@a.aa");
+  const [signInPassword, setSignInPassword] = useState("a");
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
@@ -43,8 +43,8 @@ const SignInScreen = ({ navigation }) => {
           setSignInEmail("");
           setSignInPassword("");
         }
-      });
-  };
+      })}
+  
 
   return (
     <View style={styles.background}>
@@ -75,15 +75,15 @@ const SignInScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
-  );
-};
+  )}
 
-export default SignInScreen;
+
+export default SignInScreen
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "rgba(	124, 96, 183, 0.4)",
+    backgroundColor: "rgba(    124, 96, 183, 0.4)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
   },
-});
+})
