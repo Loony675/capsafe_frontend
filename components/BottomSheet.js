@@ -76,7 +76,6 @@ const BottomSheet = () => {
 	const visibleOuNon= useSelector((state) => state.isVisible.isVisibleDA);
   console.log('-->', visibleOuNon );
   if (visibleOuNon.isVisibleDA === true ) {
-    console.log("test passed");
     screenVisible= (<DepartureArrival/>)
   } else {
     screenVisible= (<OnVaOuScreen/>)
