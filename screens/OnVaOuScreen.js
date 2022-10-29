@@ -70,6 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     borderRadius: 25,
+    shadowOffset:{width:0, height:10},
+    shadowColor:'black',
+    shadowOpacity:0.7,
+    shadowRadius:10,
   },
   container1: {
     flexDirection: "row",

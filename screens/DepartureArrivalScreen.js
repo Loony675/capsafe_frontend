@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 1,
+    shadowOffset:{width:0, height:3},
+    shadowColor:'black',
+    shadowOpacity:0.7,
+    shadowRadius:3,
   },
   locationArrow: {
     marginLeft: 10,
@@ -119,6 +123,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 1,
+    shadowOffset:{width:0, height:3},
+    shadowColor:'black',
+    shadowOpacity:0.7,
+    shadowRadius:3,
   },
   pin: {
     marginLeft: 10,
@@ -133,5 +141,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(10,200,10)",
     height: 40,
     borderRadius: 10,
+    shadowOffset:{width:0, height:3},
+    shadowColor:'black',
+    shadowOpacity:0.7,
+    shadowRadius:3,
   },
 });
