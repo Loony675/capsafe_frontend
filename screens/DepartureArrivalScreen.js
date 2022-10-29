@@ -76,7 +76,7 @@ export default function DepartureArrival() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop:20,
+    marginTop:30,
     height: "40%",
     width: "80%",
     justifyContent: "center",

@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   onVaOuContainer: {
     alignItems: "center",
-    marginTop: 10,
+
   },
 });
 //test

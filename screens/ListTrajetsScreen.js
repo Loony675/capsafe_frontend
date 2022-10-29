@@ -89,7 +89,7 @@ export default function ListTrajet() {
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
-        <Text>Suggérés</Text>
+        <Text style={{color:'white', fontWeight:'600', fontSize:'15'}}>Suggérés</Text>
       </View>
       <View style={styles.container4}>{mapListAddress}</View>
     </View>
@@ -98,6 +98,7 @@ export default function ListTrajet() {
 
 const styles = StyleSheet.create({
   globalContainer: {
+    marginTop:-10,
     width: "80%",
     justifyContent: "center",
   },
