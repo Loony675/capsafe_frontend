@@ -14,6 +14,7 @@ import ChatScreen from "./screens/ChatScreen";
 import MessagingScreen from "./screens/MessagingScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
 import MessagingScreenTest from "./screens/MessagingScreenTest";
+import MiseEnRelation from "./screens/MiseEnRelationScreen";
 
 //Import redux
 import { Provider } from "react-redux";
@@ -36,7 +37,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator
+    <Tab.Navigator 
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName = "";
@@ -54,17 +55,19 @@ const TabNavigator = () => {
           return <FontAwesome name={iconName} size={size} color={color} />;
         },
 
-        tabBarActiveTintColor: "#478bbc",
+        tabBarActiveTintColor: "#61BEFF",
         tabBarInactiveTintColor: "#335561",
         headerShown: false,
+        tabBarStyle:{backgroundColor:'black'}
       })}
     >
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={MessagingScreen} />      
-      <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
-      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
+      <Tab.Screen name="Messaging" component={MessagingScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+
+      {/* <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
+      <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
     </Tab.Navigator>
   );
 };
@@ -74,12 +77,13 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
@@ -92,10 +96,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  containerTabNav:{
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:'black',
+  }
 });
