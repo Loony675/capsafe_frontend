@@ -21,24 +21,18 @@ export default function OnVaOuScreen() {
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
         <TouchableOpacity
-          style={styles.logoOVO}
-          onPress={() => dispatch(isVisibleDeparture({ isVisibleDA: true }))}
-        />
-        <TouchableOpacity
+          style={styles.buttonTop}
           onPress={() => dispatch(isVisibleDeparture({ isVisibleDA: true }))}
         >
-          <Text> On va où ?</Text>
+          <Text style={styles.colorOVO}> On va où ?</Text>
         </TouchableOpacity>
-        <View style={styles.logoVoid}></View>
       </View>
       <View style={styles.container2}>
-        <TouchableOpacity style={styles.backgroundLogoHome}>
+        <TouchableOpacity>
           <View style={styles.iconHome}>
             <FontAwesome name={"home"} size={30} color={"white"} />
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button1}>
-          <Text style={styles.textHome}>Rentrer à la maison</Text>
+          <Text style={styles.house}>Maison</Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.logoWork}>
@@ -70,38 +64,38 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     borderRadius: 25,
-    shadowOffset:{width:0, height:10},
-    shadowColor:'black',
-    shadowOpacity:0.7,
-    shadowRadius:10,
+    shadowOffset: { width: 0, height: 10 },
+    shadowColor: "black",
+    shadowOpacity: 0.7,
+    shadowRadius: 10,
   },
   container1: {
     flexDirection: "row",
     borderBottomWidth: 1,
     borderColor: "grey",
-    alignItems: "center",
-    justifyContent: "space-between",
     width: "100%",
     height: "50%",
-  },
-  logoOVO: {
-    height: 40,
-    width: 40,
-    backgroundColor: "rgba(71, 139, 188, 1)",
-    borderRadius: 9999,
-    borderColor: "black",
-    borderWidth: 1,
-    marginLeft: 10,
-  },
-  buttonOVO: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
-  logoVoid: {
+  buttonTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "80%",
     height: 40,
-    width: 40,
-    backgroundColor: "white",
-    marginRight: 10,
+    justifyContent: "center",
+    borderRadius: 25,
+    borderWidth: 1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: "black",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
+    backgroundColor: "rgba(71, 139, 188, 1)",
+  },
+  colorOVO: {
+    color: "white",
+    fontWeight: "600",
+    fontSize: 16,
   },
   container2: {
     width: "100%",
@@ -109,26 +103,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-  },
-  backgroundLogoHome: {
-    height: 40,
-    width: 40,
-    backgroundColor: "rgba(71, 139, 188, 1)",
-    borderRadius: 9999,
-    borderColor: "black",
-    borderWidth: 1,
     marginLeft: 10,
   },
   iconHome: {
     height: 40,
     width: 40,
-    paddingBottom: 4,
-    paddingRight: 2,
+    paddingBottom: 3,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "rgba(71, 139, 188, 1)",
+    borderRadius: 9999,
+    borderColor: "black",
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 10,
   },
-  textHome: {
-    fontSize: 12,
+  house: {
+    marginLeft: 7,
   },
   logoWork: {
     height: 40,

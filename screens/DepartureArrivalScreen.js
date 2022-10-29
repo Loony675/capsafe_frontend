@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   container1: {
     flexDirection: "row",
+
   },
   arrowLeft: {
     marginRight: 10,
