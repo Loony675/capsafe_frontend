@@ -10,6 +10,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
 import { useDispatch } from "react-redux";
 import { isVisibleListTraj } from "../reducers/isVisible";
+import { isVisibleDeparture } from "../reducers/isVisible";
 
 export default function ListTrajet() {
   const listTrajet = [
@@ -37,13 +38,17 @@ export default function ListTrajet() {
   });
 
   const dispatch = useDispatch();
+
+  const backToDA = () => {
+    dispatch(isVisibleListTraj({ isVisibleListTrajet : false}));
+    dispatch(isVisibleDeparture({isVisibleDA : true}))
+  }
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
         <TouchableOpacity
           onPress={
-            (() => dispatch(isVisibleListTraj({ isVisibleListTrajet: false })))
-
+            (() => backToDA())
           }
         >
           <View style={styles.arrowLeft}>
