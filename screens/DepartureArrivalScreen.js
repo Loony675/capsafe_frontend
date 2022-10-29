@@ -64,8 +64,8 @@ export default function DepartureArrival() {
       <View style={styles.container3}>
         <TouchableOpacity
           onPress={() =>
-            rechercher()
-          }
+            rechercher()}
+          style={styles.buttonRechercher}
         >
           <Text style={styles.textRechercher}>Rechercher</Text>
         </TouchableOpacity>
@@ -143,6 +143,9 @@ const styles = StyleSheet.create({
 
   },
   container3: {
+
+  },
+  buttonRechercher:{
     width:'50%',
     marginLeft:'45%',
     flexDirection: "row",
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgb(195,227,163)",
     height: 40,
-    borderRadius: 20,
+    borderRadius: 10,
     shadowOffset:{width:0, height:3},
     shadowColor:'black',
     shadowOpacity:0.7,
@@ -159,6 +162,5 @@ const styles = StyleSheet.create({
   textRechercher:{
     fontWeight:'600',
     fontSize: 16,
-
   }
 });
