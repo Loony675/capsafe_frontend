@@ -14,11 +14,8 @@ import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible";
 export default function DepartureArrival() {
   const dispatch = useDispatch();
   const rechercher =() => {
-    console.log('click');
     dispatch(isVisibleDeparture({isVisibleDA:false}));
-    console.log('ferme DA');
     dispatch(isVisibleListTraj({ isVisibleListTrajet: true }))
-    console.log('ouvre trajet');
   }
 
   return (
