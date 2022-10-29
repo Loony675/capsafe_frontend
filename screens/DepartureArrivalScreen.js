@@ -67,7 +67,7 @@ export default function DepartureArrival() {
             rechercher()
           }
         >
-          <Text>Rechercher</Text>
+          <Text style={styles.textRechercher}>Rechercher</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     height: "40%",
     width: "80%",
     justifyContent: "center",
+
   },
   container1: {
     flexDirection: "row",
@@ -108,6 +109,9 @@ const styles = StyleSheet.create({
   },
   textDepart: {
     marginLeft: "30%",
+    fontWeight:'600',
+    fontSize: 16,
+
   },
   container2: {
     flexDirection: "row",
@@ -134,17 +138,27 @@ const styles = StyleSheet.create({
   },
   textArrivee: {
     marginLeft: "32%",
+    fontWeight:'600',
+    fontSize: 16,
+
   },
   container3: {
+    width:'50%',
+    marginLeft:'45%',
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgb(10,200,10)",
+    backgroundColor: "rgb(195,227,163)",
     height: 40,
-    borderRadius: 10,
+    borderRadius: 20,
     shadowOffset:{width:0, height:3},
     shadowColor:'black',
     shadowOpacity:0.7,
     shadowRadius:3,
   },
+  textRechercher:{
+    fontWeight:'600',
+    fontSize: 16,
+
+  }
 });
