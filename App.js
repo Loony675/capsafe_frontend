@@ -15,6 +15,7 @@ import MessagingScreen from "./screens/MessagingScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
 import MessagingScreenTest from "./screens/MessagingScreenTest";
 import MiseEnRelation from "./screens/MiseEnRelationScreen";
+import SelectTrajet from "./screens/SelectTrajet";
 
 //Import redux
 import { Provider } from "react-redux";
@@ -37,7 +38,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName = "";
@@ -58,11 +59,11 @@ const TabNavigator = () => {
         tabBarActiveTintColor: "#61BEFF",
         tabBarInactiveTintColor: "#335561",
         headerShown: false,
-        tabBarStyle:{backgroundColor:'black'}
+        tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
 
@@ -96,9 +97,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  containerTabNav:{
-    alignItems:'center',
-    justifyContent:'center',
-    backgroundColor:'black',
-  }
+  containerTabNav: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+  },
 });
