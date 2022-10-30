@@ -18,6 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 import Adresses from "../screens/AdressesScreen.js";
+import ListTrajet from "../screens/ListTrajetsScreen.js";
+import { isVisibleDeparture } from "../reducers/isVisible.js";
+import SelectTrajet from "../screens/SelectTrajet.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
   bottomSheetContainer: {
     height: SCREEN_HEIGHT,
     width: "100%",
-    backgroundColor: "rgba(	124, 96, 183, 1)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     position: "absolute",
     top: SCREEN_HEIGHT - 40,
     borderRadius: 25,
@@ -113,8 +116,8 @@ const styles = StyleSheet.create({
   line: {
     width: 75,
     height: 4,
-    backgroundColor: "rgba(71, 139, 188, 1)",
-    borderRadius: 2,
+    backgroundColor: "black",
+    borderRadius: 9999,
     alignSelf: "center",
     marginTop: 15,
   },
