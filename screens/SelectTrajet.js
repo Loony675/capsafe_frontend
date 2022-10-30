@@ -84,6 +84,9 @@ const styles = StyleSheet.create({
   mapStyle:{
     flexDirection:'row',
     justifyContent:'space-between',
+    height:30,
+    marginLeft:4,
+    marginRight:4,
   },
   avatarPic:{
     height:20,
