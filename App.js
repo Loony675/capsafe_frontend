@@ -62,8 +62,8 @@ const TabNavigator = () => {
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Messaging" component={MessagingScreen} />      
-      <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
+      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
+      <Tab.Screen name="Route" component={RouteScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
     </Tab.Navigator>
   );
@@ -76,7 +76,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />

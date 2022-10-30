@@ -22,7 +22,7 @@ import {
     const [messages, setMessages] = useState([]);
     const [messageText, setMessageText] = useState("");
     const [sended, setSended] = useState(false);
-    console.log(username);
+    // console.log(username);
     useEffect(() => {
       fetch(`${BACKEND_ADDRESS}/message/sync`)
         .then((response) => response.json())

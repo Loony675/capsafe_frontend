@@ -22,7 +22,7 @@ export default function Adresses() {
     },
   ];
   const mapListAddress = listAddress.map((data, i) => {
-    console.log(data);
+    // console.log(data);
     return (
       <View key={i} style={styles.mapStyle}>
         <FontAwesome

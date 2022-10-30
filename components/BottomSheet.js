@@ -38,7 +38,7 @@ const BottomSheet = () => {
     context.value = { y: translateY.value}
   })
   .onUpdate((event) => {
-    console.log(event.translationY);
+    // console.log(event.translationY);
     translateY.value = event.translationY + context.value.y;
     // définie la hauteur max
     translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
@@ -47,16 +47,16 @@ const BottomSheet = () => {
     //définie la hauteur mini
     if (translateY.value > -SCREEN_HEIGHT / 6) {
       translateY.value = withTiming(-120)
-      console.log("Au mini");
+      // console.log("Au mini");
     } 
     else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
       translateY.value = withTiming(-SCREEN_HEIGHT +500)
-      console.log("Au milieu");
+      // console.log("Au milieu");
 
     } 
     else if (translateY.value < -SCREEN_HEIGHT / 2) {
       translateY.value = withTiming(MAX_TRANSLATE_Y)
-      console.log("Tout en haut");
+      // console.log("Tout en haut");
     }
   });
 
@@ -75,7 +75,7 @@ const BottomSheet = () => {
   let screenVisible; 
 	const visibleDA= useSelector((state) => state.isVisible.isVisibleDA);
   const visibleAddress = useSelector((state) => state.isVisible.isVisibleAddress)
-  console.log('-->', visibleAddress.isVisibleAddressList);
+  // console.log('-->', visibleAddress.isVisibleAddressList);
   if (visibleDA.isVisibleDA === true ) {
     screenVisible= (<DepartureArrival/>)
   } else if (visibleAddress.isVisibleAddressList === true) {

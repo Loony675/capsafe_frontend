@@ -21,10 +21,10 @@ export default function MainScreen({ navigation }) {
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      console.log("Status", status);
+      // console.log("Status", status);
       if (status === "granted") {
         Location.watchPositionAsync({ distanceInterval: 10 }, (location) => {
-          console.log("Location--->", location);
+          // console.log("Location--->", location);
           setCurrentPosition(location.coords);
         });
       }
