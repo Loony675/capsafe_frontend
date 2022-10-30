@@ -102,7 +102,6 @@ const BottomSheet = () => {
     };
   });
 
-<<<<<<< HEAD
   // test = Screen visible
   let screenVisible; 
 	const visibleDA= useSelector((state) => state.isVisible.isVisibleDA);
@@ -115,29 +114,6 @@ const BottomSheet = () => {
   }else {
     screenVisible= (<OnVaOuScreen/>)
   }
-=======
-  const dispatch = useDispatch();
-  let screenVisible;
-  const visibleDA = useSelector((state) => state.isVisible.isVisibleDA);
-  const visibleAddress = useSelector(
-    (state) => state.isVisible.isVisibleAddress
-  );
-  const visibleTrajet = useSelector(
-    (state) => state.isVisible.isVisibleListTrajet
-  );
-
-    if (visibleDA.isVisibleDA === true) {
-      screenVisible = <DepartureArrival />;
-    } else if (visibleAddress.isVisibleAddressList === true) {
-      screenVisible = <Adresses />;
-    } else if (visibleTrajet.isVisibleListTrajet === true) {
-      screenVisible = <ListTrajet />;
-    } else {
-      screenVisible = <OnVaOuScreen />;
-    }
-  
- 
->>>>>>> b3240eace01a26e3ece4529f5bbec37b74b5a157
 
   return (
     <GestureDetector gesture={gesture}>
