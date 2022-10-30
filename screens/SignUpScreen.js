@@ -40,7 +40,7 @@ export default function SignUpScreen({navigation}) {
         if (data.result) {
           dispatch(login({ username: usernameSignUp, token: data.token }));
           navigation.navigate('TabNavigator', { screen: 'Main' });
-          console.log(('navigate'));
+          // console.log(('navigate'));
         }
       });
   };

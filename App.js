@@ -64,11 +64,11 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Messaging" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
-
-      {/* <Tab.Screen name="MessagingTest" component={MessagingScreenTest} />
-      <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
+      <Tab.Screen name="Main" component={MainScreen} />
+      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
+      <Tab.Screen name="Route" component={RouteScreen} />
+      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
     </Tab.Navigator>
   );
 };

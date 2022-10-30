@@ -9,7 +9,7 @@ export const urlSlice = createSlice({
   initialState,
   reducers: {
     url: (state, action) => {
-      state.value = '192.168.1.68'
+      state.value = '192.168.10.114'
     },
   },
 });

@@ -10,7 +10,7 @@ export default function HomeScreen({ navigation }) {
   const url = useSelector((state) => state.url.value);
 //update
 
-  console.log(url)
+  // console.log(url)
   return (
       <View style = {styles.background}>
         <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>

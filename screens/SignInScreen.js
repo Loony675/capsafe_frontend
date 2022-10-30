@@ -36,7 +36,7 @@ const SignInScreen = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.result) {
           dispatch(login({ username: data.username, token: data.token }));
           navigation.navigate("TabNavigator", { screen: "Main" });
