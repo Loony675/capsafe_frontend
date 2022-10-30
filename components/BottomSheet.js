@@ -37,6 +37,33 @@ const BottomSheet = () => {
 
   // detection deplacement axe Y
   const gesture = Gesture.Pan()
+<<<<<<< HEAD
+  .onStart(() => {
+    context.value = { y: translateY.value}
+  })
+  .onUpdate((event) => {
+    // console.log(event.translationY);
+    translateY.value = event.translationY + context.value.y;
+    // définie la hauteur max
+    translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
+  })
+  .onEnd(() => {
+    //définie la hauteur mini
+    if (translateY.value > -SCREEN_HEIGHT / 6) {
+      translateY.value = withTiming(-120)
+      // console.log("Au mini");
+    } 
+    else if ((translateY.value < -SCREEN_HEIGHT / 5) && (translateY.value >-SCREEN_HEIGHT / 2)){
+      translateY.value = withTiming(-SCREEN_HEIGHT +500)
+      // console.log("Au milieu");
+
+    } 
+    else if (translateY.value < -SCREEN_HEIGHT / 2) {
+      translateY.value = withTiming(MAX_TRANSLATE_Y)
+      // console.log("Tout en haut");
+    }
+  });
+=======
     .onStart(() => {
       context.value = { y: translateY.value };
     })
@@ -62,6 +89,7 @@ const BottomSheet = () => {
         console.log("Tout en haut");
       }
     });
+>>>>>>> b3240eace01a26e3ece4529f5bbec37b74b5a157
 
   // affixes
   useEffect(() => {
@@ -75,18 +103,16 @@ const BottomSheet = () => {
   });
 
   // test = Screen visible
-  let screenVisible;
-  const visibleDA = useSelector((state) => state.isVisible.isVisibleDA);
-  const visibleAddress = useSelector(
-    (state) => state.isVisible.isVisibleAddress
-  );
-  console.log("-->", visibleAddress.isVisibleAddressList);
-  if (visibleDA.isVisibleDA === true) {
-    screenVisible = <DepartureArrival />;
+  let screenVisible; 
+	const visibleDA= useSelector((state) => state.isVisible.isVisibleDA);
+  const visibleAddress = useSelector((state) => state.isVisible.isVisibleAddress)
+  // console.log('-->', visibleAddress.isVisibleAddressList);
+  if (visibleDA.isVisibleDA === true ) {
+    screenVisible= (<DepartureArrival/>)
   } else if (visibleAddress.isVisibleAddressList === true) {
-    screenVisible = <Adresses />;
-  } else {
-    screenVisible = <OnVaOuScreen />;
+    screenVisible=(<Adresses/>)
+  }else {
+    screenVisible= (<OnVaOuScreen/>)
   }
 
   return (

@@ -51,13 +51,13 @@ const validateProfilInfo = (fieldUpdated, valueUpdated) => {
     body: JSON.stringify(sendedInfo),
   }).then(profilInfo => profilInfo.json()).then(profilInfo => {
     if(profilInfo.result){
-      console.log(profilInfo);
+      // console.log(profilInfo);
       setFirstNameM(false)
       setLastNameM(false)
       setEmailM(false)
       setBirthDayDateM(false)
       setSexeM(false)
-          console.log('Modification faites avec succès')
+          // console.log('Modification faites avec succès')
         }
       }
     )

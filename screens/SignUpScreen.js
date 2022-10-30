@@ -24,6 +24,7 @@ export default function SignUpScreen({navigation}) {
   const dispatch = useDispatch();
 
   const handleRegister = () => {
+
     fetch(`http://${url}:3000/users/signUp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,10 +36,11 @@ export default function SignUpScreen({navigation}) {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.result) {
           dispatch(login({ username: usernameSignUp, token: data.token }));
           navigation.navigate('TabNavigator', { screen: 'Main' });
-          console.log(('navigate'));
+          // console.log(('navigate'));
         }
       });
   };

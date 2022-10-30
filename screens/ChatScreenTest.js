@@ -10,30 +10,58 @@ import {
   } from "react-native";
   import MaterialIcons from "react-native-vector-icons/MaterialIcons";
   import { useSelector } from "react-redux";
-  import React from "react";
+  import React, { useRef } from "react";
   import { useEffect, useState } from "react";
   import Pusher from "pusher-js/react-native";
   
   const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-  const BACKEND_ADDRESS = "http://192.168.1.68:3000";
   
   export default function ChatScreenTest({ navigation, route: { params } }) {
-
+    
+    const url = useSelector((state) => state.url.value);
+    const BACKEND_ADDRESS = `http://${url}:3000`;
     const token = useSelector((state) => state.users.value.token); 
     const username = useSelector((state) => state.users.value.username);
     const [messages, setMessages] = useState([]);
+    const [messagesA, setMessagesA] = useState([]);
     const [messageText, setMessageText] = useState("");
     const [sended, setSended] = useState(false);
-    console.log(username);
+    // console.log(username);
+    const scrollRef = useRef()
 
     useEffect(() => {
-      fetch(`${BACKEND_ADDRESS}/message/sync`)
+      fetch(`${BACKEND_ADDRESS}/message/sync`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({token: token }),
+      })
         .then((response) => response.json())
         .then((data) => {
           setMessages(data);
+        //   const nbMessage = messages.length 
+        //   for(let i = 0; i < nbMessage; i++){
+        //     if(data[i].token=== token){
+        //       console.log(nbMessage)
+        //     // console.log(messages)         
+        //     setMessages([...messages], data); 
+        //   }
+        //   else{
+        //     console.log('ne rentre pas dans le if');
+        //   }
+        // }
+          // let myMessage=[]
+          // const myMessages= messages.map(myMessagesReceived => {
+          //   console.log(myMessagesReceived.name);
+          //   // if(myMessagesReceived.token === token){
+          //   //  return myMessage.push(myMessagesReceived)
+          //   // }
+          //   // setMessages(myMessages);
+
+          // })
+
+          // console.log(data)
         });
     }, []);
-  
     const handleSendMessage = () => {
       if (!messageText) {
         return;
@@ -42,8 +70,8 @@ import {
         message: messageText,
         name: username,
         timestamp: new Date(),
-        token: token,
-        tokenSender: '3wJnhFNP58Tv2qyrt8a94duJ5ZUjWRDu',
+        tokenSender: token,
+        tokenReceiver: 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO',
         id: Math.floor(Math.random() * 100000),
       };
       fetch(`${BACKEND_ADDRESS}/message/new`, {
@@ -51,16 +79,32 @@ import {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      setSended(!sended);
+      // setSended(!sended);
       setMessageText("");
       //update
-  
-      fetch(`${BACKEND_ADDRESS}/message/sync`)
+      fetch(`${BACKEND_ADDRESS}/message/sync`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({token: token }),
+      })
         .then((response) => response.json())
         .then((data) => {
+          // console.log(data);
           setMessages(data);
-        });
+          // let myMessage=[]
+          // const myMessages= messages.map(myMessagesReceived => {
+          //   console.log(myMessagesReceived.message);
+          //   if(myMessagesReceived.token === token){
+          //     console.log(myMessagesReceived);
+          //    myMessage.push(myMessagesReceived)
+          //   }
+        })
+
+        
+        // );
     };
+
+
     const handleReceiveMessage = (data) => {
       setMessages((messages) => [...messages, data]);
     };
@@ -93,16 +137,17 @@ import {
           <Text style={styles.greetingText}>Welcome {username} 👋</Text>
         </View>
         <View style={styles.inset}>
-          <ScrollView style={styles.scroller}>
+          <ScrollView style={styles.scroller}  ref={scrollRef} onContentSizeChange={() => scrollRef.current.scrollToEnd()}>
             {messages.map((message, i) => (
-              <View key={i} style={[styles.messageWrapper,{...(message.name === username? styles.messageSent : styles.messageRecieved),
+              // console.log(message))
+              <View key={i} style={[styles.messageWrapper,{...(message.tokenReceiver === !token? styles.messageSent : styles.messageRecieved),
                   },
                 ]}>
-                <View style={[styles.message,{...(message.name === !username? styles.messageSentBg: styles.messageRecievedBg),
+                <View style={[styles.message,{...(message.tokenReceiver=== token? styles.messageSentBg: styles.messageRecievedBg),
                     },
                   ]}>   
-                    <Text style={styles.messageText}>{message.name}</Text>
-                  <Text style={styles.messageText}>{message.message}</Text>
+                    <Text style={message.tokenReceiver=== !token ? styles.messageTextSend : styles.messageTextRecieved}>{message.name}</Text>
+                  <Text style={message.tokenReceiver=== !token ? styles.messageTextSend : styles.messageTextRecieved}>{message.message}</Text>
                 </View>
                 <Text style={styles.timeText}>
                   {new Date(message.timestamp).getHours()}:
@@ -203,13 +248,19 @@ import {
       backgroundColor: "white",
     },
     messageSentBg: {
-      backgroundColor: "white",
+      backgroundColor: "rgba(71, 139, 188, 1)",
+
     },
     messageRecievedBg: {
-      backgroundColor: "#d6fff9",
+      backgroundColor: "#f0f0f0",
+
     },
-    messageText: {
-      color: "#506568",
+    messageTextSend: {
+      color: "black",
+      fontWeight: "400",
+    },
+    messageTextReceived:{
+      color: "white",
       fontWeight: "400",
     },
     timeText: {

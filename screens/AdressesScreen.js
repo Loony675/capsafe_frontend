@@ -22,6 +22,7 @@ export default function Adresses() {
     },
   ];
   const mapListAddress = listAddress.map((data, i) => {
+    // console.log(data);
     return (
       <View key={i} style={styles.mapStyle}>
         <FontAwesome
@@ -41,7 +42,7 @@ export default function Adresses() {
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
-        <TouchableOpacity style={styles.container1Field} onPress={() => dispatch(isVisibleAddressList({isVisibleAddressList:false}))}>
+        <TouchableOpacity style={styles.container1Field} onPress={() => dispatch(isVisibleAddressList({isVisibleAddressList: false}))}>
           <FontAwesome
             name={"arrow-left"}
             size={20}

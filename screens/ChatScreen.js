@@ -15,14 +15,17 @@ import { useEffect, useState } from "react";
 import Pusher from "pusher-js/react-native";
 
 const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
-const BACKEND_ADDRESS = "http://192.168.1.21:3000";
 
 export default function ChatScreenTest({ navigation, route: { params } }) {
+
+  const url = useSelector((state) => state.url.value);
+  const BACKEND_ADDRESS = `http://${url}:3000`;
+
   const username = useSelector((state) => state.users.value.username);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
-  console.log(username);
+  // console.log(username);
   useEffect(() => {
     fetch(`${BACKEND_ADDRESS}/message/sync`)
       .then((response) => response.json())
