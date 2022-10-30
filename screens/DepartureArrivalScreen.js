@@ -8,12 +8,15 @@ import {
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
+import { useDispatch } from "react-redux";
+import { isVisibleDeparture } from "../reducers/isVisible";
 
 export default function DepartureArrival() {
+  const dispatch = useDispatch();
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => dispatch(isVisibleDeparture({isVisibleDA: false}))}>
           <View style={styles.arrowLeft}>
             <FontAwesome
               name={"arrow-left"}

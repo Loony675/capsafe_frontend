@@ -23,9 +23,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import users from "./reducers/users";
 import url from "./reducers/url";
+import isVisible from "./reducers/isVisible";
 
 const store = configureStore({
-  reducer: { users, url },
+  reducer: { users, url, isVisible },
 });
 
 const Stack = createNativeStackNavigator();
