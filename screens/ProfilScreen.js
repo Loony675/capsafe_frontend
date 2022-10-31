@@ -9,7 +9,8 @@ import { RollInRight } from 'react-native-reanimated';
 const ProfilScreen = () => {
   // const user = useSelector((state) => state.user.value);
   const url = useSelector((state) => state.url.value);
-  const token = useSelector
+  const token = useSelector((state) => state.users.value.token)
+  console.log('Token-->', token);
   const [profilInfos, setProfilInfos] = useState([])
   const [firstNameM, setFirstNameM] = useState(false)
   const [lastNameM, setLastNameM] = useState(false)
@@ -21,10 +22,10 @@ const ProfilScreen = () => {
   // updateProfilInfo('lastName')
   let sendedInfo
 useEffect(() => {
-  fetch(`http://${url}:3000/users/displayProfil`, {
+  fetch(`http://${url}:3000/users/displayOneUser`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'}),
+    body: JSON.stringify({ token: token}),
   }).then(profilInfo => profilInfo.json()).then(profilInfo => {
       if(profilInfo.result){
         setProfilInfos(profilInfo.userInfo)
