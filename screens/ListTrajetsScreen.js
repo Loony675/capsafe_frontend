@@ -9,8 +9,11 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
 import { useDispatch } from "react-redux";
-import { isVisibleListTraj } from "../reducers/isVisible";
-import { isVisibleDeparture } from "../reducers/isVisible";
+import {
+  isVisibleListTraj,
+  isVisibleDeparture,
+  isVisibleSelectTraj,
+} from "../reducers/isVisible";
 
 export default function ListTrajet() {
   const listTrajet = [
@@ -19,17 +22,24 @@ export default function ListTrajet() {
     { logo: "2", nbrMembre: "4 membres sur votre trajet", timer: "111 min" },
   ];
 
+  const dispatch = useDispatch();
+  const goToSelectTrajet = () => {
+    dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
+    dispatch(isVisibleDeparture({ isVisibleDA: false }));
+    dispatch(isVisibleSelectTraj({isVisibleSelectTrajet : true}))
+
+  }
   const mapListAddress = listTrajet.map((data, i) => {
     return (
       <View key={i} style={styles.mapStyle}>
         <View style={styles.mapDirection}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              goToSelectTrajet()
+            }
+          >
             <Text>{data.logo}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{ fontWeight: "600" }}>
-            <Text>{data.nbrMembre}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
+            <Text style={{ fontWeight: "600" }}>{data.nbrMembre}</Text>
             <Text>{data.timer}</Text>
           </TouchableOpacity>
         </View>
@@ -37,20 +47,16 @@ export default function ListTrajet() {
     );
   });
 
-  const dispatch = useDispatch();
+  /* retour DepartureArrival*/
 
   const backToDA = () => {
-    dispatch(isVisibleListTraj({ isVisibleListTrajet : false}));
-    dispatch(isVisibleDeparture({isVisibleDA : true}))
-  }
+    dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
+    dispatch(isVisibleDeparture({ isVisibleDA: true }));
+  };
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
-        <TouchableOpacity
-          onPress={
-            (() => backToDA())
-          }
-        >
+        <TouchableOpacity onPress={() => backToDA()}>
           <View style={styles.arrowLeft}>
             <FontAwesome
               name={"arrow-left"}
@@ -89,7 +95,9 @@ export default function ListTrajet() {
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
-        <Text style={{color:'white', fontWeight:'600', fontSize:'15'}}>Suggérés</Text>
+        <Text style={{ color: "white", fontWeight: "600", fontSize: "15" }}>
+          Suggérés
+        </Text>
       </View>
       <View style={styles.container4}>{mapListAddress}</View>
     </View>
@@ -98,7 +106,7 @@ export default function ListTrajet() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop:-10,
+    marginTop: -10,
     width: "80%",
     justifyContent: "center",
   },
@@ -154,10 +162,11 @@ const styles = StyleSheet.create({
     borderRightWidth: 2,
     height: "60%",
   },
-  mapStyle: {},
+  mapStyle: {
+    flexDirection:'row',
+  },
   mapDirection: {
     height: 40,
-    flexDirection: "row",
     marginLeft: 5,
     marginRight: 5,
     marginBottom: 5,

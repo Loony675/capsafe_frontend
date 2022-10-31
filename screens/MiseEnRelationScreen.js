@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 
-export default function MiseEnRelation() {
+export default function MiseEnRelation({ route: { params } }) {
   return (
     <View style={styles.globalContainer}>
       <Text>TEST</Text>
