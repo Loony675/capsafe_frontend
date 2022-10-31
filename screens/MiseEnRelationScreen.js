@@ -7,7 +7,9 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 export default function MiseEnRelation() {
+  const navigation = useNavigation()
   const avis = [
     { avatar: "0", com: "Plûtot marrant avec sa moustache" },
     { avatar: "1", com: "Agréable et souriant" },
@@ -55,6 +57,11 @@ export default function MiseEnRelation() {
         <TouchableOpacity style={styles.buttons}>
           <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
             Signaler/bloquer
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate('TabNavigator')}>
+          <Text style={{ color: "white", fontSize: 15, fontWeight: "600" }}>
+            BACK
           </Text>
         </TouchableOpacity>
       </View>
@@ -115,4 +122,13 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
   },
+  buttonBack:{
+    marginTop:20,
+    height:50,
+    width:50,
+    backgroundColor:'red',
+    borderRadius:9999,
+    alignItems:'center',
+    justifyContent:'center'
+  }
 });

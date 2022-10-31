@@ -78,7 +78,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelation} />
+          {/* <Stack.Screen name="MiseEnRelation" component={MiseEnRelation} /> */}
 
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
@@ -86,11 +86,12 @@ export default function App() {
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="ListTrajet" component={MainScreen} />
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelation} />
 
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* decommenter la ligne 80 après fin des test ligne 70 */}
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>

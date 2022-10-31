@@ -33,14 +33,12 @@ export default function ListTrajet() {
     return (
       <View key={i} style={styles.mapStyle}>
         <View style={styles.mapDirection}>
-          <TouchableOpacity
+          <TouchableOpacity style={styles.trajetButton}
             onPress={() =>
               goToSelectTrajet()
             }
           >
-            <Text>{data.logo}</Text>
-            <Text style={{ fontWeight: "600" }}>{data.nbrMembre}</Text>
-            <Text>{data.timer}</Text>
+            <Text style={{ fontWeight: "600" }}>{data.logo} {data.nbrMembre} {data.timer}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -164,15 +162,19 @@ const styles = StyleSheet.create({
   },
   mapStyle: {
     flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
   },
   mapDirection: {
     height: 40,
     marginLeft: 5,
     marginRight: 5,
-    marginBottom: 5,
     borderBottomWidth: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "center",
+    alignItems: "space-between",
     borderColor: "grey",
   },
+  trajetButton:{
+
+  }
 });
