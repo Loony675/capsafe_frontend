@@ -8,9 +8,13 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+
 // import BottomSheet from "../components/BottomSheet";
 
-export default function SelectTrajet({ navigation }) {
+export default function SelectTrajet() {
+
+  const navigation = useNavigation()
   const membresMatch = [
     { name: "Medhi", communStations: 5, starRate: 3.5 },
     { name: "Beubeu31", communStations: 3, starRate: 4.9 },
@@ -28,14 +32,14 @@ export default function SelectTrajet({ navigation }) {
   const mapMembresMatch = membresMatch.map((data, i) => {
     return (
       <View key={i} style={styles.mapStyle}>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.test} onPress={() => navigation.navigate('MiseEnRelation')}>
           <View style={styles.avatarPic}>
             <FontAwesome name={"user"} color={"white"} size={15} />
           </View>
-          <Text>{data.name}</Text>
-          <Text>{data.communStations} stations en commun</Text>
-          <Text>{data.starRate}</Text>
+          <Text>{data.name} {data.communStations} stations en commun {data.starRate}
           <FontAwesome name={"star"} color={"yellow"} size={15} />
+
+          </Text>
         </TouchableOpacity>
       </View>
     );

@@ -21,6 +21,7 @@ import Adresses from "../screens/AdressesScreen.js";
 import ListTrajet from "../screens/ListTrajetsScreen.js";
 import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible.js";
 import SelectTrajet from "../screens/SelectTrajet.js";
+import MiseEnRelation from "../screens/MiseEnRelationScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -100,7 +101,8 @@ const BottomSheet = () => {
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
           {/* {screenVisible} */}
-          <SelectTrajet/>
+          {/* <SelectTrajet/> */}
+          <MiseEnRelation/>
         </View>
       </Animated.View>
     </GestureDetector>
