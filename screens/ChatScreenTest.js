@@ -91,17 +91,7 @@ import {
         .then((data) => {
           // console.log(data);
           setMessages(data);
-          // let myMessage=[]
-          // const myMessages= messages.map(myMessagesReceived => {
-          //   console.log(myMessagesReceived.message);
-          //   if(myMessagesReceived.token === token){
-          //     console.log(myMessagesReceived);
-          //    myMessage.push(myMessagesReceived)
-          //   }
         })
-
-        
-        // );
     };
 
 
