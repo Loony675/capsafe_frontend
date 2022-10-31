@@ -9,6 +9,7 @@ import { RollInRight } from 'react-native-reanimated';
 const ProfilScreen = () => {
   // const user = useSelector((state) => state.user.value);
   const url = useSelector((state) => state.url.value);
+  const token = useSelector
   const [profilInfos, setProfilInfos] = useState([])
   const [firstNameM, setFirstNameM] = useState(false)
   const [lastNameM, setLastNameM] = useState(false)
@@ -20,7 +21,7 @@ const ProfilScreen = () => {
   // updateProfilInfo('lastName')
   let sendedInfo
 useEffect(() => {
-  fetch(`http://${url}:3000/users/displayOneUser`, {
+  fetch(`http://${url}:3000/users/displayProfil`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: '6iEdjdbOMxm5F6zOtRyWLC3AViDmdXAr'}),
@@ -82,7 +83,7 @@ const validateProfilInfo = (fieldUpdated, valueUpdated) => {
       <View style ={styles.infoContainer}>
       {!lastNameM && <Text style ={styles.text1}>Nom :</Text>}
       {!lastNameM && <Text style ={styles.text2}>{profilInfos.lastName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setLastNameM(true)} size={25} color='#ec6e5b' /></Text>}
-      {lastNameM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({lastName: value})} value={profilInfos.lastName} style={styles.input} />
+      {lastNameM && <View style ={styles.editContainer}><TextInput placeholder="Nom" onChangeText={(value) => setProfilInfos({lastName: value})} value={profilInfos.lastName} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('lastName', profilInfos.lastName)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
@@ -98,7 +99,7 @@ const validateProfilInfo = (fieldUpdated, valueUpdated) => {
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('email', profilInfos.email)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-      {!birthDayDateM && <Text style ={styles.text1}>Date de Naissance :</Text>}
+      {!birthDayDateM && <Text style ={styles.text1}>Date de naissance :</Text>}
         {!birthDayDateM &&<Text style ={styles.text2}>{profilInfos.birthDayDate} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setbirthDayDateM(true)} size={25} color='#ec6e5b' /></Text>}
         {birthDayDateM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({birthDayDate: value})} value={profilInfos.birthDayDate} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('birthDayDate', profilInfos.birthDayDate)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}

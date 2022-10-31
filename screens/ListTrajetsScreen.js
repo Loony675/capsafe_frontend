@@ -39,6 +39,8 @@ export default function ListTrajet() {
 
   const dispatch = useDispatch();
 
+  /* retour DepartureArrival*/
+  
   const backToDA = () => {
     dispatch(isVisibleListTraj({ isVisibleListTrajet : false}));
     dispatch(isVisibleDeparture({isVisibleDA : true}))
