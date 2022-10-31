@@ -32,6 +32,7 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity style = {styles.btn4}>
             <Text style = {styles.signIn} onPress={() => navigation.navigate('profil')}>profil</Text>
           </TouchableOpacity>
+          
         </View>
       </View>
   )
