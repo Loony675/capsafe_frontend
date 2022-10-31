@@ -7,9 +7,8 @@ import * as Location from "expo-location";
 //update
 
 const RouteScreen = () => {
-  var affichage
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [trajet, setTrajet] = useState(null);
+  const [trajet, setTrajet] = useState([]);
 
   useEffect(() => {
     async function reponseAPI() {
@@ -24,24 +23,21 @@ return reponseAPIJson
 
 }
 reponseAPI().then(reponseAPIJson => {
-  console.log(reponseAPIJson.journeys[0]);
-  return setTrajet(reponseAPIJson.journeys[0])
+  return setTrajet([...trajet,reponseAPIJson.journeys[0]])
 }
 )
 
   }, [])
-  affichage = (
-   !trajet? <Text style = {styles.departure}> recherche en cours</Text> : 
-   trajet.map((data, i)=>{
-    if(data){<Text style = {styles.departure}> De: {data.sections[i].from.name} {/* {trajet.sections[0].mode}  */}
-    jusqu'à:{data.sections[i].to.name}
-    </Text>}
+  //  !trajet? <Text style = {styles.departure}> recherche en cours</Text> : 
+ let affichage =  trajet.map((data, i)=>{
+  console.log(data.sections[i].type );
+    if(data.sections[i].type !== 'waiting'){
+      console.log("hy !!!!");
+  return  <Text style = {styles.departure}> De: {data.sections[i].from.name}  jusqu'à:{data.sections[i].to.name}</Text>}
    }
 
-   )
-)
+ )
 
-console.log(trajet);
 
   return (
   <View style={styles.container}>
