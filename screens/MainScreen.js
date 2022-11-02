@@ -31,7 +31,7 @@ export default function MainScreen({ navigation }) {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <MapView style={styles.map}>
+      <MapView style={styles.map}  mapType="hybrid">
         {currentPosition && (
           <Marker
             coordinate={currentPosition}
