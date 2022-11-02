@@ -21,6 +21,7 @@ import Adresses from "../screens/AdressesScreen.js";
 import ListTrajet from "../screens/ListTrajetsScreen.js";
 import { isVisibleDeparture, isVisibleListTrajet } from "../reducers/isVisible.js";
 import SelectTrajet from "../screens/SelectTrajet.js";
+import MiseEnRelation from "../screens/MiseEnRelationScreen.js";
 
 //hauteur = hauteur écran
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -99,9 +100,14 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
-          {screenVisible}
+          {/* {screenVisible} */}
           {/* <SelectTrajet/> */}
+<<<<<<< HEAD
           {/* <ListTrajet/> */}
+=======
+          {/* <MiseEnRelation/> */}
+          <DepartureArrival/>
+>>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
         </View>
       </Animated.View>
     </GestureDetector>
@@ -129,7 +135,7 @@ const styles = StyleSheet.create({
   },
   onVaOuContainer: {
     alignItems: "center",
-
+    marginTop: 40,
   },
 });
-
+//test

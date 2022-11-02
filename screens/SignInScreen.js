@@ -21,8 +21,8 @@ const SignInScreen = ({ navigation }) => {
   const EMAIL_REGEX =
     /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
   // Etats
-  const [signInEmail, setSignInEmail] = useState("a@a.aa");
-  const [signInPassword, setSignInPassword] = useState("a");
+  const [signInEmail, setSignInEmail] = useState("benoit@gmail.com");
+  const [signInPassword, setSignInPassword] = useState("1234");
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
@@ -36,7 +36,7 @@ const SignInScreen = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         if (data.result) {
           dispatch(login({ username: data.username, token: data.token }));
           navigation.navigate("TabNavigator", { screen: "Main" });
@@ -48,6 +48,7 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
+      <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
       <View style={styles.container}>
         <TextInput
           style={styles.emailInput}
@@ -56,7 +57,7 @@ const SignInScreen = ({ navigation }) => {
           placeholder="Email"
           autoCapitalize="none"
         />
-        {emailError && <Text style={styles.error}>Adresse email invalide</Text>}
+          {emailError && <Text style={styles.errorEmail}>Adresse email invalide</Text>}
         <TextInput
           style={styles.passwordInput}
           onChangeText={(value) => setSignInPassword(value)}
@@ -65,13 +66,13 @@ const SignInScreen = ({ navigation }) => {
           autoCapitalize="none" // Pas de majuscule
           secureTextEntry={true} // cache le mdp
         />
-        <TouchableOpacity style={styles.btn1}>
-          <Text style={styles.connection} onPress={() => handleConnection()}>
+        <TouchableOpacity style={styles.btnSignIn}>
+          <Text style={styles.textSignIn} onPress={() => handleConnection()}>
             Se connecter
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn2}>
-          <Text style={styles.mdp}>Mot de passe oublié ?</Text>
+        <TouchableOpacity style={styles.btnPassword}>
+          <Text style={styles.textPassword}>Mot de passe oublié ?</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -83,21 +84,24 @@ export default SignInScreen
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "rgba(    124, 96, 183, 0.4)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     alignItems: "center",
     justifyContent: "center",
   },
 
   logo: {
     marginTop: "10%",
-    height: "40%",
-    width: "60%",
+    height:300,
+    width: 300,
+    borderRadius:9999
   },
 
   container: {
-    marginTop: "80%",
     height: "40%",
     width: "75%",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginTop: "5%",
   },
 
   emailInput: {
@@ -109,9 +113,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     paddingLeft: 15,
+    marginTop: 10
   },
 
-  error: {
+  errorEmail: {
     textAlign: "center",
     color: "red",
   },
@@ -124,38 +129,38 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 1,
     borderRadius: 20,
-    marginTop: 15,
-    marginBottom: 60,
     paddingLeft: 15,
   },
 
-  btn1: {
-    width: "100%",
+  btnSignIn: {
+    width: "75%",
     height: "15%",
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 30,
     justifyContent: "center",
-    marginBottom: 30,
   },
-  connection: {
+  textSignIn: {
     textAlign: "center",
-    fontSize: 20,
+    alignItems:'center',
     color: "white",
+    fontWeight: "600",
+    fontSize: 20
   },
 
-  btn2: {
-    width: "100%",
+  btnPassword: {
+    width: "75%",
     height: "15%",
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 30,
     justifyContent: "center",
-    marginBottom: 15,
   },
-  mdp: {
+  textPassword: {
     textAlign: "center",
-    fontSize: 20,
+    alignItems:'center',
     color: "white",
+    fontWeight: "600",
+    fontSize: 20
   },
 })

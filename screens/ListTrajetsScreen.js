@@ -157,7 +157,7 @@ setLigne(mapListAddress)
             style={styles.pin}
           />
 
-          <Text>41 Rue de Pet Unia, 77000 Melun</Text>
+          <Text>41 Rue du Président Despatys, 77000 Melun</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
@@ -254,15 +254,16 @@ const styles = StyleSheet.create({
   },
   mapStyle: {
     flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
   },
   mapDirection: {
     height: 40,
     marginLeft: 5,
     marginRight: 5,
-    marginBottom: 5,
     borderBottomWidth: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "center",
+    alignItems: "space-between",
     borderColor: "grey",
   },
   suggests:{
