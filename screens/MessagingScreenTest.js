@@ -6,7 +6,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'rea
 import React from 'react'
 //update
 
-const MessagingScreen = ({navigation}) => {
+const MessagingScreenTest = ({navigation}) => {
 
   const handleclic = () => {
     navigation.navigate('Chat')
@@ -30,7 +30,7 @@ const MessagingScreen = ({navigation}) => {
   )
 }
 
-export default MessagingScreen
+export default MessagingScreenTest
 
 const styles = StyleSheet.create({
 
