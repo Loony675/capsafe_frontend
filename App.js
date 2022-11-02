@@ -10,6 +10,7 @@ import RouteScreen from "./screens/RouteScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
+import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
 // import ChatScreen from "./screens/ChatScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
 import MessagingScreen from "./screens/MessagingScreen";
@@ -61,7 +62,6 @@ const TabNavigator = () => {
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Main" component={MainScreen} />
       {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
       <Tab.Screen name="Route" component={RouteScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
@@ -74,21 +74,20 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
-          <Stack.Screen name="Home" component={HomeScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
-
-          <Stack.Screen name="Facebook" component={HomeScreen} />
-          <Stack.Screen name="Google" component={HomeScreen} />
-          {/* decommenter la ligne 78 après fin des test ligne 70 */}
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ChatTest" component={ChatScreenTest} />
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
+          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
+
+          {/* <Stack.Screen name="Facebook" component={HomeScreen} /> */}
+          {/* <Stack.Screen name="Google" component={HomeScreen} /> */}
+          {/* decommenter la ligne 78 après fin des test ligne 70 */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
