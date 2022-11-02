@@ -19,7 +19,7 @@ import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 import Adresses from "../screens/AdressesScreen.js";
 import ListTrajet from "../screens/ListTrajetsScreen.js";
-import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible.js";
+import { isVisibleDeparture, isVisibleListTrajet } from "../reducers/isVisible.js";
 import SelectTrajet from "../screens/SelectTrajet.js";
 
 //hauteur = hauteur écran
@@ -101,6 +101,7 @@ const BottomSheet = () => {
         <View hide={true} style={styles.onVaOuContainer}>
           {screenVisible}
           {/* <SelectTrajet/> */}
+          {/* <ListTrajet/> */}
         </View>
       </Animated.View>
     </GestureDetector>

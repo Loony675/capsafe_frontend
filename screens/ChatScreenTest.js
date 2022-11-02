@@ -30,14 +30,18 @@ import {
     const scrollRef = useRef()
 
     useEffect(() => {
+      // const interval = setInterval(() => {
+      //   console.log('This will be called every 2 seconds');
+      // }, 2000);
       fetch(`${BACKEND_ADDRESS}/message/sync`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({token: token }),
+        body: JSON.stringify({token: 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO' }),
       })
         .then((response) => response.json())
         .then((data) => {
           setMessages(data);
+
         //   const nbMessage = messages.length 
         //   for(let i = 0; i < nbMessage; i++){
         //     if(data[i].token=== token){
@@ -60,8 +64,11 @@ import {
           // })
 
           // console.log(data)
+          // return () => clearInterval(interval);
+
         });
     }, []);
+
     const handleSendMessage = () => {
       if (!messageText) {
         return;
@@ -70,8 +77,8 @@ import {
         message: messageText,
         name: username,
         timestamp: new Date(),
-        tokenSender: token,
-        tokenReceiver: 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO',
+        token: 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH',
+        token2: 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO',
         id: Math.floor(Math.random() * 100000),
       };
       fetch(`${BACKEND_ADDRESS}/message/new`, {
@@ -85,7 +92,7 @@ import {
       fetch(`${BACKEND_ADDRESS}/message/sync`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({token: token }),
+        body: JSON.stringify({token: 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO' }),
       })
         .then((response) => response.json())
         .then((data) => {

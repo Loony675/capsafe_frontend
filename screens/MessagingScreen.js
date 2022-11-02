@@ -7,10 +7,9 @@ import React from 'react'
 //update
 
 const MessagingScreen = ({navigation}) => {
-
+let token2 = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
   const handleclic = () => {
-    navigation.navigate('Chat')
-
+    navigation.navigate('MessagesNew', {token2});
   }
   return (
     <View style={styles.container}>
