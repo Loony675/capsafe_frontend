@@ -74,39 +74,45 @@ const validateProfilInfo = (fieldUpdated, valueUpdated) => {
   <View style = {styles.mainContainer}>
     <Image style = {styles.logo} source={require("../assets/imageProfil.png")}/>
     <View style = {styles.MainInfoContainer}>
-      <View style ={styles.infoContainer}>
-      {!firstNameM && <Text style ={styles.text1}>Prénom :</Text>}
-      {!firstNameM && <Text style ={styles.text2}>{profilInfos.firstName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' /></Text>}
-        {firstNameM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({firstName: value})} value={profilInfos.firstName} style={styles.input} />
-        <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('firstName', profilInfos.firstName)} size={25} color='#ec6e5b' />
-        {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
+      <View style ={styles.cadre}>
+            <View style ={styles.left}>
+              <Text style ={styles.prenom}>Prénom :</Text>
+              <TextInput style={styles.input1} placeholder="Prénom" onChangeText={(value) => setProfilInfos({firstName: value})} value={profilInfos.firstName}/>
+            </View>
+            <Text style ={styles.test2}>{profilInfos.firstName}</Text>
+            {firstNameM} 
+            {/* <View style ={styles.editContainer1}>
+            <FontAwesome style ={styles.editingProfil1} name='check-circle' onPress={() => validateProfilInfo('firstName', profilInfos.firstName)} size={25} color='#ec6e5b'/>
+        </View> */}
+        {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
+            <FontAwesome style ={styles.crayon} name='edit' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b'/>
       </View>
       <View style ={styles.infoContainer}>
-      {!lastNameM && <Text style ={styles.text1}>Nom :</Text>}
+      <Text style ={styles.text1}>Nom :</Text>
       {!lastNameM && <Text style ={styles.text2}>{profilInfos.lastName} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setLastNameM(true)} size={25} color='#ec6e5b' /></Text>}
       {lastNameM && <View style ={styles.editContainer}><TextInput placeholder="Nom" onChangeText={(value) => setProfilInfos({lastName: value})} value={profilInfos.lastName} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('lastName', profilInfos.lastName)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-      {!usernameM && <Text style ={styles.text1}>Username :</Text>}
+      <Text style ={styles.text1}>Username :</Text>
       {!usernameM && <Text style ={styles.text2}>{profilInfos.username} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setUsernameM(true)} size={25} color='#ec6e5b' /></Text>}
       {usernameM && <View style ={styles.editContainer}><TextInput placeholder="Username" onChangeText={(value) => setProfilInfos({username: value})} value={profilInfos.username} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('username', profilInfos.username)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-      {!emailM && <Text style ={styles.text1}>Email :</Text>}
+      <Text style ={styles.text1}>Email :</Text>
       {!emailM && <Text style ={styles.text2}>{profilInfos.email} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setEmailM(true)} size={25} color='#ec6e5b' /></Text>}
       {emailM && <View style ={styles.editContainer}><TextInput placeholder="Email" onChangeText={(value) => setProfilInfos({email: value})} value={profilInfos.email} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('email', profilInfos.email)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-      {!birthDayDateM && <Text style ={styles.text1}>Date de naissance :</Text>}
+      <Text style ={styles.text1}>Date de naissance :</Text>
         {!birthDayDateM &&<Text style ={styles.text2}>{profilInfos.birthDayDate} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setbirthDayDateM(true)} size={25} color='#ec6e5b' /></Text>}
         {birthDayDateM && <View style ={styles.editContainer}><TextInput placeholder="Prénom" onChangeText={(value) => setProfilInfos({birthDayDate: value})} value={profilInfos.birthDayDate} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('birthDayDate', profilInfos.birthDayDate)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
       </View>
       <View style ={styles.infoContainer}>
-      {!sexeM &&<Text style ={styles.text1}>Sexe :</Text>}
+      <Text style ={styles.text1}>Sexe :</Text>
       {!sexeM &&<Text style ={styles.text2}>{profilInfos.sexe} <FontAwesome style ={styles.editProfil} name='edit' onPress={() => setSexeM(true)} size={25} color='#ec6e5b' /></Text>}
       {sexeM && <View style ={styles.editContainer}><TextInput placeholder="Sexe" onChangeText={(value) => setProfilInfos({sexe: value})} value={profilInfos.sexe} style={styles.input} />
         <FontAwesome style ={styles.editingProfil} name='check-circle' onPress={() => validateProfilInfo('sexe', profilInfos.sexe)} size={25} color='#ec6e5b' />{/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}</View>}
@@ -145,7 +151,7 @@ export default ProfilScreen
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,    
-    backgroundColor: "rgba(	124, 96, 183, 0.4)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     alignItems: "center",
     justifyContent : "center",
   },
@@ -159,26 +165,21 @@ const styles = StyleSheet.create({
     height: "68%",
     width: "80%",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: "15%",
-    backgroundColor: "white",
+    justifyContent: "space-evenly",
+    marginTop: "10%",
+    backgroundColor: "#f4a261",
     borderRadius: 20,
   },
 
   infoContainer: {
-  //   // height: 30,
-    width: "100%",
+    width: "90%",
     alignItems: "flex-start",
     justifyContent: "center",
-    backgroundColor: "rgba(	124, 96, 183, 0.1)",
+    backgroundColor: "white",
     marginTop: 20,
-    marginLeft: 20,
     fontSize: 18,
-  },
-
-  text1:{
-    fontSize: 15,
-    width: '100%',
+    borderRadius: 10,
+    paddingLeft: 10
   },
 
   text2:{
@@ -186,18 +187,69 @@ const styles = StyleSheet.create({
     fontSize: 15,
     width: '100%',
   },
+
   editContainer:{
     flexDirection:'row' ,
     flexWrap: 'wrap',
     width:'100%',
     alignItems:'stretch',
-
   },
 
   editProfil:{
-textAlign:'right',
+    marginleft: 80,
   },
+
   editingProfil:{
     textAlign:'right',
+  },
+// test
+
+cadre: {
+  width: "90%",
+  height: "7%",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+
+  backgroundColor: "white",
+  borderRadius: 10,
+  paddingLeft: 10,
+},
+
+left:{
+  height: "100%",
+  borderWidth: 1,
+},
+  prenom:{
+    height: "50%",
+  },
+
+  test2:{
+    color: "#478bbc",
+    fontSize: 15,
+    borderWidth: 1,
+
+  },
+  
+  crayon:{
+  },
+
+  editContainer1:{
+    flexDirection:'row' ,
+    flexWrap: 'wrap',
+    width:'50%',
+    alignItems:'stretch',
+    borderWidth: 1,
+
+  },
+
+  input1: {
+    borderWidth: 1,
+
+  },
+  
+  editingProfil1:{
+    borderWidth: 1,
+
   },
 })

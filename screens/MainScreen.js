@@ -37,6 +37,7 @@ export default function MainScreen({ navigation }) {
             coordinate={currentPosition}
             title="My position"
             pinColor="#fecb2d"
+            opacity= "0.1"            
           />
         )}
       </MapView>
