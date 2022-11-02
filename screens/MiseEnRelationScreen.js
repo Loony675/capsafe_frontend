@@ -8,8 +8,12 @@ import {
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
-export default function MiseEnRelation() {
-  const navigation = useNavigation()
+import { NavigationContainer } from '@react-navigation/native';
+
+
+export default function MiseEnRelationScreen({navigation}) {
+
+  // const navigation = useNavigation()
   const avis = [
     { avatar: "0", com: "Plûtot marrant avec sa moustache" },
     { avatar: "1", com: "Agréable et souriant" },
@@ -18,7 +22,7 @@ export default function MiseEnRelation() {
   const mapAvis = avis.map((data, i) => {
     return (
       <View key={i}>
-        <Text>
+        <Text style={styles.avis}>
           {data.avatar} {data.com}
         </Text>
       </View>
@@ -40,27 +44,27 @@ export default function MiseEnRelation() {
       </View>
       <View style={styles.container3}>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+          <Text style= {styles.textBtn} onPress= {() => navigation.navigate('TabNavigator', { screen: 'ChatTest' })}>
             Envoyer un message
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+          <Text style={styles.textBtn}>
             Téléphoner
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+          <Text style={styles.textBtn}>
             Rejoindre
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+          <Text style={styles.textBtn}>
             Signaler/bloquer
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate('TabNavigator')}>
-          <Text style={{ color: "white", fontSize: 15, fontWeight: "600" }}>
+          <Text style={styles.textBtn}>
             BACK
           </Text>
         </TouchableOpacity>
@@ -71,30 +75,35 @@ export default function MiseEnRelation() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    backgroundColor: "rgba(	124, 96, 183, 1)",
-    height: "100%",
-    flex: 1,
+    flex: 1,    
+    backgroundColor: "rgba(71, 139, 188, 1)",
   },
+
   container1: {
-    marginTop: "20%",
     alignItems: "center",
     justifyContent: "center",
+    height: "25%",
   },
+
   username: {
     fontSize: 40,
     fontWeight: "800",
     color: "white",
+    marginTop: 40
   },
+
   rate: {
     color: "white",
-    fontSize: 20,
+    fontSize: 25,
     marginBottom: 10,
   },
+
   memberSince: {
     color: "white",
     fontSize: 15,
     marginBottom: 5,
   },
+
   borderBottom: {
     width: "80%",
     borderBottomWidth: 5,
@@ -102,31 +111,45 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   container2: {
-    marginLeft: 20,
     alignItems: "flex-start",
+    borderWidth: 1,
+    height: "20%",
+    paddingLeft: 15,
+    color: 'white'
   },
+
+  avis: {
+    color: 'white'
+  },
+
   container3: {
-    flex: 2,
     alignItems: "center",
+    justifyContent: "space-evenly",
+    height: "55%",
   },
+
   buttons: {
-    height: 30,
-    marginTop: 50,
-    marginBottom: 20,
-    backgroundColor: "rgba(71, 139, 188, 1)",
-    width: "80%",
+    backgroundColor: "#f4a261",
+    width: "75%",
+    height: "12%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 9999,
-    borderColor: "black",
-    borderWidth: 1,
+    borderRadius: 30,
+    
   },
+
+  textBtn: {
+    fontWeight: "600",
+    fontSize: 20,
+    color: 'white'
+  },
+
   buttonBack:{
-    marginTop:20,
-    height:50,
-    width:50,
-    backgroundColor:'red',
+    height:70,
+    width:70,
+    backgroundColor:'#f4a261',
     borderRadius:9999,
     alignItems:'center',
     justifyContent:'center'
