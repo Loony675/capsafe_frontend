@@ -25,10 +25,10 @@ const MessagingScreen = ({ navigation }) => {
       .then((data) => data.json())
       .then((data) => {
          const newConversation = data.map((data, i) => {
-         console.log(data.tokenReceiver);
+        //  console.log(data.tokenReceiver);
           if (!data.tokenReceiver === token ) {
             myMessages.push({ token: data.tokenSender });
-          } else if(){
+          } else {
             myMessages.push({ token: data.tokenReceiver });
 
           }

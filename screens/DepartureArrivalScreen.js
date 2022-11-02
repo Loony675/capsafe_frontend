@@ -43,6 +43,7 @@ export default function DepartureArrival() {
         </TouchableOpacity>
       </View>
       <View style={styles.container2}>
+        {/* element invisible servant au centrage du container1 */}
         <View style={styles.arrowLeftVoid}>
           <FontAwesome
             name={"arrow-left"}

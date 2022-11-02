@@ -9,7 +9,6 @@ import {
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
-import { useDispatch } from "react-redux";
 
 export default function SelectTrajet() {
 

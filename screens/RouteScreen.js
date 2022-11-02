@@ -11,34 +11,42 @@ const RouteScreen = () => {
   const [trajet, setTrajet] = useState([]);
 
   useEffect(() => {
-        const options = {
-          headers: {
-            Authorization: "a3241d36-8169-4f8b-840c-214b769f3771"
-          }
-        };
- fetch(`https://api.navitia.io/v1/journeys?from=2.3036095;48.8877713&to=2.655400;48.542107`, options).then(
-  retourAPI => retourAPI.json().then(
-    retourAPI => {   
-      setTrajet(retourAPI)
-      console.log(trajet);
-  }))}, []);
-  return (
-    <View style={styles.container}>
-        {trajet ==! undefined && <View style = {styles.left}>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[0].from.name} {trajet.journeys[0].sections[0].mode}jusqu'à:{trajet.journeys[0].sections[0].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[1].from.name} {trajet.journeys[0].sections[1].mode}jusqu'à:{trajet.journeys[0].sections[1].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[2].from.name} {trajet.journeys[0].sections[2].mode}jusqu'à:{trajet.journeys[0].sections[3].to.name}</Text>
-              {/* <Text style = {styles.departure}>De:{trajet.journeys[0].sections[3].from.name} {trajet.journeys[0].sections[3].mode}jusqu'à:{trajet.journeys[0].sections[3].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[4].from.name} {trajet.journeys[0].sections[4].mode}jusqu'à:{trajet.journeys[0].sections[4].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[5].from.name} {trajet.journeys[0].sections[5].mode}jusqu'à:{trajet.journeys[0].sections[5].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[6].from.name} {trajet.journeys[0].sections[6].mode}jusqu'à:{trajet.journeys[0].sections[6].to.name}</Text>
-              <Text style = {styles.departure}>De:{trajet.journeys[0].sections[7].from.name} {trajet.journeys[0].sections[7].mode}jusqu'à:{trajet.journeys[0].sections[7].to.name}</Text> */}
+    async function reponseAPI() {
+      const options = {
+        headers: {
+          Authorization: "a3241d36-8169-4f8b-840c-214b769f3771"
+        }
+      };
+let reponseAPI = await fetch(`https://api.navitia.io/v1/journeys?from=2.3036095;48.8877713&to=2.655400;48.542107`, options)
+let reponseAPIJson = await reponseAPI.json()
+return reponseAPIJson
 
-
-            </View>}
-    </View>
-  )
 }
+reponseAPI().then(reponseAPIJson => {
+  return setTrajet([...trajet,reponseAPIJson.journeys[0]])
+}
+)
+
+  }, [])
+  //  !trajet? <Text style = {styles.departure}> recherche en cours</Text> : 
+ let affichage =  trajet.map((data, i)=>{
+  console.log(data.sections[i].type );
+    if(data.sections[i].type !== 'waiting'){
+      console.log("hy !!!!");
+  return  <Text style = {styles.departure}> De: {data.sections[i].from.name}  jusqu'à:{data.sections[i].to.name}</Text>}
+   }
+
+ )
+
+
+  return (
+  <View style={styles.container}>
+       
+      <View style = {styles.left}>
+{affichage}
+ </View>
+  </View>
+)}
 
 export default RouteScreen
 
@@ -51,5 +59,13 @@ const styles = StyleSheet.create({
 left: {
   marginLeft: 20,
   height: '100%',
+  width: '100%',
+  alignItems:'center',
+  justifyContent:'center',
 },
+departure:{
+  borderWidth: 3,
+  borderColor: 'red',
+  backgroundColor: 'white',
+}
 })

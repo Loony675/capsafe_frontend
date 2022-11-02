@@ -19,7 +19,7 @@ import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 import Adresses from "../screens/AdressesScreen.js";
 import ListTrajet from "../screens/ListTrajetsScreen.js";
-import { isVisibleDeparture } from "../reducers/isVisible.js";
+import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible.js";
 import SelectTrajet from "../screens/SelectTrajet.js";
 
 //hauteur = hauteur écran
@@ -78,12 +78,19 @@ const BottomSheet = () => {
   let screenVisible; 
 	const visibleDA= useSelector((state) => state.isVisible.isVisibleDA);
   const visibleAddress = useSelector((state) => state.isVisible.isVisibleAddress)
-  // console.log('-->', visibleAddress.isVisibleAddressList);
+  const visibleListTraj = useSelector((state => state.isVisible.isVisibleListTrajet))
+  const visibleSelectTraj = useSelector((state) => state.isVisible.isVisibleSelectTrajet)
+  console.log('-->', visibleListTraj.isVisibleListTrajet);
   if (visibleDA.isVisibleDA === true ) {
     screenVisible= (<DepartureArrival/>)
   } else if (visibleAddress.isVisibleAddressList === true) {
     screenVisible=(<Adresses/>)
-  }else {
+  } else if (visibleListTraj.isVisibleListTrajet === true){
+    screenVisible =(<ListTrajet/>)
+  } else if (visibleSelectTraj.isVisibleSelectTrajet === true) {
+    screenVisible = (<SelectTrajet/>)
+  }
+  else {
     screenVisible= (<OnVaOuScreen/>)
   }
 
@@ -93,7 +100,7 @@ const BottomSheet = () => {
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
           {screenVisible}
-          {/* <Adresses/> */}
+          {/* <SelectTrajet/> */}
         </View>
       </Animated.View>
     </GestureDetector>

@@ -22,6 +22,7 @@ export default function ChatScreenTest({ navigation, route: { params } }) {
   const BACKEND_ADDRESS = `http://${url}:3000`;
 
   const username = useSelector((state) => state.users.value.username);
+  const token = useSelector((state) => state.users.value.token);
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [sended, setSended] = useState(false);
@@ -39,11 +40,18 @@ export default function ChatScreenTest({ navigation, route: { params } }) {
       return;
     }
     const payload = {
-      message: messageText,
-      name: "Benoit",
-      timestamp: new Date(),
-      id: Math.floor(Math.random() * 100000),
+      token1: token,
+      token2: "ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO",
+      chanel: Math.floor(Math.random() * 100000),
+      messageContent: [
+        { message: messageText,
+          username: username,
+          timestamp: new Date(),
+          sended: sended
+        },
+      ],        
     };
+
     fetch(`${BACKEND_ADDRESS}/message/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

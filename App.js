@@ -58,13 +58,12 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
-      {/* <Tab.Screen name="Main" component={MainScreen} /> */}
-      <Tab.Screen name="Messaging" component={MessagingScreen} />      
-      <Tab.Screen name="Route" component={RouteScreen} />
+      <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
+      {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
     </Tab.Navigator>
   );
 };
@@ -82,9 +81,12 @@ export default function App() {
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
-
+          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="ListTrajet" component={MainScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="Facebook" component={HomeScreen} />
+          {/* decommenter la ligne 80 après fin des test ligne 70 */}
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>
