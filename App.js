@@ -25,9 +25,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import users from "./reducers/users";
 import url from "./reducers/url";
 import isVisible from "./reducers/isVisible";
+import position from "./reducers/position";
 
 const store = configureStore({
-  reducer: { users, url, isVisible },
+  reducer: { users, url, isVisible, position },
 });
 
 const Stack = createNativeStackNavigator();
@@ -59,6 +60,8 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />

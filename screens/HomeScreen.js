@@ -26,8 +26,8 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity style = {styles.btn3} onPress={() => navigation.navigate('SignUp')}>
             <Text style = {styles.signUp}>S’enregistrer par email</Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.btn4}>
-            <Text style = {styles.signIn} onPress={() => navigation.navigate('SignIn')}>Déjà un compte ?</Text>
+          <TouchableOpacity style = {styles.btn4} onPress={() => navigation.navigate('SignIn')}>
+            <Text style = {styles.signIn} >Déjà un compte ?</Text>
           </TouchableOpacity>
           {/* <TouchableOpacity style = {styles.btn4}>
             <Text style = {styles.signIn} onPress={() => navigation.navigate('profil')}>profil</Text>

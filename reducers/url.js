@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: '192.168.10.213',
+  value: '172.20.10.7',
 };
 
 export const urlSlice = createSlice({

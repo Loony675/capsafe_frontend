@@ -8,16 +8,22 @@ import {
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible";
+import { positionDeparture, positionArrival } from "../reducers/position";
 
 export default function DepartureArrival() {
   const dispatch = useDispatch();
   const rechercher =() => {
     dispatch(isVisibleDeparture({isVisibleDA:false}));
     dispatch(isVisibleListTraj({ isVisibleListTrajet: true }))
+    dispatch(positionDeparture({positionDeparture : {latitude: 48.884674072265625, longitude: 2.2963457107543945} }))
+    dispatch(positionArrival({positionArrival : {latitude: 48.54366683959961, longitude: 2.6590490341186523} }))
   }
+  const pinPositionDeparture= useSelector((state) => state.position.pinDeparture)
+  const pinPositionArrival= useSelector((state) => state.position.pinArrival)
 
+  console.log('Pin arrivée departure -->', pinPositionArrival);
   return (
     <View style={styles.globalContainer}>
       <View style={styles.container1}>
@@ -77,7 +83,7 @@ export default function DepartureArrival() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop:30,
+    marginTop:20,
     height: "40%",
     width: "80%",
     justifyContent: "center",

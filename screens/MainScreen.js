@@ -28,16 +28,36 @@ export default function MainScreen({ navigation }) {
       }
     })();
   }, []);
-
+  const pinPositionDeparture = useSelector(
+    (state) => state.position.pinDeparture
+  );
+  const pinPositionArrival = useSelector(
+    (state) => state.position.pinArrival
+  );
+  console.log('Pin arrivée-->', pinPositionArrival);
   return (
     <GestureHandlerRootView style={styles.container}>
-      <MapView style={styles.map}  mapType="hybrid">
+      <MapView style={styles.map} mapType="hybrid">
         {currentPosition && (
           <Marker
             coordinate={currentPosition}
             title="My position"
             pinColor="#fecb2d"
             opacity= "0.1"            
+          />
+        )}
+        {pinPositionDeparture && (
+          <Marker
+            coordinate={pinPositionDeparture.positionDeparture}
+            title="Position départ"
+            pinColor="red"
+          />
+        )}
+        {pinPositionArrival && (
+          <Marker
+            coordinate={pinPositionArrival.positionArrival}
+            title="Position arrivée"
+            pinColor="blue"
           />
         )}
       </MapView>
