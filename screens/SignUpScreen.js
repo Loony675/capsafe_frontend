@@ -45,9 +45,9 @@ export default function SignUpScreen({navigation}) {
   };
 
   return (
-    <SafeAreaView style={styles.background}>
+    <View style={styles.background}>
         <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
-      <View style={styles.inputContainer}>
+      <View style={styles.container}>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -61,7 +61,7 @@ export default function SignUpScreen({navigation}) {
         <TextInput
           style={styles.input}
           placeholder="Pseudo"
-          autoCapitalize="yes"
+          autoCapitalize="none"
           onChangeText={(value) => setUsernameSignUp(value)}
           value={usernameSignUp}
         />
@@ -72,22 +72,20 @@ export default function SignUpScreen({navigation}) {
           secureTextEntry={true}
           onChangeText={(value) => setPasswordSignUp(value)}
           value={passwordSignUp}
+          
         />
-        <TouchableOpacity
-          style={styles.btnSignUp}
-          onPress={() => handleRegister()}
-        >
+        <TouchableOpacity style={styles.btnSignUp} onPress={() => handleRegister()}>
           <Text style={styles.fieldBtnSignUp}>Rejoindre Capsafe</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "rgba(	124, 96, 183, 0.7)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -97,30 +95,33 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius:9999
   },
-  inputContainer: {
+
+  container: {
     height: "40%",
     width: "75%",
     alignItems: "center",
     justifyContent: "center",
     marginTop: "5%",
   },
+
   input: {
     flexDirection: "row",
     width: "100%",
     height: "15%",
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: 30,
+    borderRadius: 20,
     justifyContent: "center",
     marginBottom: 15,
     alignSelf: "center",
     padding: 15,
   },
+
   btnSignUp: {
     flexDirection: "row",
     width: "75%",
     height: "15%",
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderWidth: 1,
     borderRadius: 30,
     alignItems:'center',
@@ -132,5 +133,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
     color: "white",
     fontWeight: "600",
+    fontSize: 20
   },
 });
