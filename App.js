@@ -24,9 +24,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import users from "./reducers/users";
 import url from "./reducers/url";
 import isVisible from "./reducers/isVisible";
+import position from "./reducers/position";
 
 const store = configureStore({
-  reducer: { users, url, isVisible },
+  reducer: { users, url, isVisible, position },
 });
 
 const Stack = createNativeStackNavigator();
@@ -58,10 +59,11 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Main" component={MainScreen} />
+      {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
       {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
       <Tab.Screen name="Route" component={RouteScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
@@ -74,10 +76,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-          <Stack.Screen name="Home" component={HomeScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
@@ -87,7 +86,7 @@ export default function App() {
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* decommenter la ligne 78 après fin des test ligne 70 */}
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
         </Stack.Navigator>
       </NavigationContainer>
