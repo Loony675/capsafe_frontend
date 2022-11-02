@@ -21,8 +21,8 @@ const SignInScreen = ({ navigation }) => {
   const EMAIL_REGEX =
     /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
   // Etats
-  const [signInEmail, setSignInEmail] = useState("a@a.aa");
-  const [signInPassword, setSignInPassword] = useState("a");
+  const [signInEmail, setSignInEmail] = useState("test@gmail.com");
+  const [signInPassword, setSignInPassword] = useState("test");
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
@@ -36,7 +36,7 @@ const SignInScreen = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         if (data.result) {
           dispatch(login({ username: data.username, token: data.token }));
           navigation.navigate("TabNavigator", { screen: "Main" });

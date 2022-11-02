@@ -89,7 +89,7 @@ export default function ListTrajet() {
             style={styles.pin}
           />
 
-          <Text>41 Rue de Pet Unia, 75017 Paris</Text>
+          <Text>41 Rue du Président Despatys, 77000 Melun</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>

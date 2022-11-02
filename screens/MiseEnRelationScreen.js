@@ -8,8 +8,9 @@ import {
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
+
 export default function MiseEnRelation() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const avis = [
     { avatar: "0", com: "Plûtot marrant avec sa moustache" },
     { avatar: "1", com: "Agréable et souriant" },
@@ -40,9 +41,16 @@ export default function MiseEnRelation() {
       </View>
       <View style={styles.container3}>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
-            Envoyer un message
-          </Text>
+          <View style={styles.sendMessage}>
+            <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+              <FontAwesome
+                name="envelope"
+                color="orange"
+                size="30"
+              ></FontAwesome>
+              Envoyer un message
+            </Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
           <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
@@ -59,7 +67,10 @@ export default function MiseEnRelation() {
             Signaler/bloquer
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate('TabNavigator')}>
+        <TouchableOpacity
+          style={styles.buttonBack}
+          onPress={() => navigation.navigate("TabNavigator")}
+        >
           <Text style={{ color: "white", fontSize: 15, fontWeight: "600" }}>
             BACK
           </Text>
@@ -110,6 +121,9 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: "center",
   },
+  sendMessage:{
+
+  },
   buttons: {
     height: 30,
     marginTop: 50,
@@ -122,13 +136,13 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
   },
-  buttonBack:{
-    marginTop:20,
-    height:50,
-    width:50,
-    backgroundColor:'red',
-    borderRadius:9999,
-    alignItems:'center',
-    justifyContent:'center'
-  }
+  buttonBack: {
+    marginTop: 20,
+    height: 50,
+    width: 50,
+    backgroundColor: "red",
+    borderRadius: 9999,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

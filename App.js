@@ -17,6 +17,8 @@ import MessagingScreenTest from "./screens/MessagingScreenTest";
 import MiseEnRelation from "./screens/MiseEnRelationScreen";
 import SelectTrajet from "./screens/SelectTrajet";
 
+import TestProfilScreen from "./screens/TestProfil";
+
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -62,7 +64,8 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Profil" component={ProfilScreen} />
+      {/* <Tab.Screen name="Profil" component={ProfilScreen} /> */}
+      <Tab.Screen name="TestProfil" component={TestProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
@@ -87,6 +90,7 @@ export default function App() {
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="ListTrajet" component={MainScreen} />
           <Stack.Screen name="MiseEnRelation" component={MiseEnRelation} />
+          <Stack.Screen name="TestProfil" component={TestProfilScreen} />
 
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
