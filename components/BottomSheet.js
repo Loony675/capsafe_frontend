@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: SCREEN_HEIGHT - 40,
     borderRadius: 25,
+
   },
   line: {
     width: 75,
@@ -132,7 +133,8 @@ const styles = StyleSheet.create({
   },
   onVaOuContainer: {
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 10,
+    borderWidth:1,
   },
 });
 //test

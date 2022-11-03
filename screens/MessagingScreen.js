@@ -10,45 +10,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 //update
 
-<<<<<<< HEAD
 const MessagingScreen = ({navigation}) => {
 let token2 = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
   const handleclic = () => {
     navigation.navigate('MessagesNew', {token2});
   }
-=======
-const MessagingScreen = ({ navigation }) => {
-  const url = useSelector((state) => state.url.value);
-  const token = useSelector((state) => state.users.value.token);
-  const BACKEND_ADDRESS = `http://${url}:3000`;
-  const [myMessages, setMyMessages] = useState([{ token: "" }]);
-
-  useEffect(() => {
-    fetch(`${BACKEND_ADDRESS}/message/sync`, {//je récupère tous les messages avec le token de lutilisateur qui est connecté
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: token }), //On veux envoyer le token au back via le req.body
-    })
-      .then((data) => data.json())
-      .then((data) => {
-         const newConversation = data.map((data, i) => {
-        //  console.log(data.tokenReceiver);
-          if (!data.tokenReceiver === token ) {
-            myMessages.push({ token: data.tokenSender });
-          } else {
-            myMessages.push({ token: data.tokenReceiver });
-
-          }
-        });
-        //console.log(myMessages);
-      });
-    }, []);
-    // 
-  const handleclic = () => {
-    navigation.navigate("Chat");
-  };
-
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
   return (
     <View style={styles.container}>
       <Text style={styles.Titre}>Messages</Text>

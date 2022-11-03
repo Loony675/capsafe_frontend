@@ -22,7 +22,7 @@ export default function ListTrajet() {
 
   const options = {
     headers: {
-      Authorization: "",
+      Authorization: "3e7944d3-0cff-4af5-a721-a09dbfaa01bd",
     },
   };
 
@@ -34,6 +34,10 @@ export default function ListTrajet() {
   const [arrivee, setArrivee] = useState("");
   const [coordDepart, setCoordDepart] = useState();
   const [coordArrivee, setCoordArrivee] = useState();
+
+  const [onDepartureInput, setOnDepartureInput] = useState(false);
+  const [onArrivalInput, setOnArrivalInput] = useState();
+
 
   const [departurePossible, setDeparturePossible] = useState([]);
   const [arrivalPossible, setArrivalPossible] = useState([]);
@@ -82,6 +86,7 @@ export default function ListTrajet() {
           depLat: city.coord.stop_area.coord.lat,
         })
       );
+      setOnDepartureInput(false)
     } else {
       setArrivee("");
       setArrivee(city.places);
@@ -116,7 +121,10 @@ export default function ListTrajet() {
         }
       })
     );
-
+  }
+  const writingOnDeparture = (value)=>{
+    setDepart(value)
+    setOnDepartureInput(true)
     // let journey = await fetch(`http://${url}:3000/displayJourney`)
     // let journeyJson = await journey.json()
     // setTrajet([...trajet, journeyJson])
@@ -189,16 +197,25 @@ export default function ListTrajet() {
   };
   return (
     <View style={styles.globalContainer}>
-      <View style={styles.container1}>
-        <TouchableOpacity onPress={() => backToDA()}>
-          <View style={styles.arrowLeft}>
-            <FontAwesome
-              name={"arrow-left"}
-              size={20}
-              color={"rgb(170,170,170)"}
+      <View style={styles.container0}>
+        <TouchableOpacity>
+        <FontAwesome
+              onPress={() => backToDA()}
+              name={"arrow-circle-left"}
+              size={40}
+              color={"#f4a261"}
             />
-          </View>
+         </TouchableOpacity>
+        <TouchableOpacity>
+        <FontAwesome
+              name={"play-circle-o"}
+              size={40}
+              color={"#f4a261"}
+            />
         </TouchableOpacity>
+      </View>
+      <View style={styles.container1}>
+        
         <View style={styles.buttonDepart}>
           <FontAwesome
             name={"location-arrow"}
@@ -208,18 +225,18 @@ export default function ListTrajet() {
           />
           <TextInput
             placeholder="Départ"
-            onChangeText={(value) => setDepart(value)}
+            onChangeText={(value) => writingOnDeparture(value)}
             value={depart}
             style={styles.input}
           />
           <View style={styles.popSuggest}>
-            {departurePossible?.map((city, i) => (
+          {onDepartureInput && departurePossible?.map((city, i) => (
               <TouchableOpacity
                 key={i}
                 style={styles.buttonSuggere}
                 onPress={() => citySelected(city, "depart")}
               >
-                <Text>{city.places}</Text>
+                 <Text>{city.places}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -240,6 +257,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.pin}
           />
+          
           <TextInput
             placeholder="Arrivée"
             onChangeText={(value) => setArrivee(value)}
@@ -255,6 +273,7 @@ export default function ListTrajet() {
               >
                 <Text>{city.places}</Text>
               </TouchableOpacity>
+
             ))}
           </View>
         </TouchableOpacity>
@@ -295,17 +314,29 @@ export default function ListTrajet() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop: -10,
-    width: "80%",
+    width: "100%",
     justifyContent: "center",
+    borderWidth:1,
+    borderColor: "red"
+  },
+  container0:{
+    
+    marginBottom: 15,
+    height: 40,
+    borderWidth: 1,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   container1: {
     flexDirection: "row",
+    justifyContent:"center",
+    width:"100%",
+    
   },
-  arrowLeft: {
-    marginRight: 10,
-    marginTop: 10,
-  },
+
   buttonDepart: {
     flexDirection: "row",
     alignItems: "center",
@@ -321,9 +352,10 @@ const styles = StyleSheet.create({
   },
   container2: {
     flexDirection: "row",
-  },
-  arrowLeftVoid: {
-    marginRight: 10,
+    justifyContent:'center',
+    width: '100%',
+    borderColor: "red",
+
   },
   buttonArrivee: {
     flexDirection: "row",
@@ -334,6 +366,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 1,
+    
   },
   pin: {
     marginLeft: 10,
@@ -384,4 +417,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
   },
+  input:{
+    width: '100%'
+  }
 });

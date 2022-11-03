@@ -13,10 +13,7 @@ import SignUpScreen from "./screens/SignUpScreen";
 import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
 // import ChatScreen from "./screens/ChatScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
-import MessagingScreenTest from "./screens/MessagingScreenTest";
-import MiseEnRelation from "./screens/MiseEnRelationScreen";
-import SelectTrajet from "./screens/SelectTrajet";
-import MessagesScreen from "./screens/MessagesScreen";
+import MessagingScreen from "./screens/MessagingScreen";
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -78,14 +75,19 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+<<<<<<< HEAD
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen   name="MiseEnRelation" component={MiseEnRelation} />
+=======
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen   name="MiseEnRelation" component={MiseEnRelation} /> */}
+>>>>>>> caa4351f7babfb36d2b4916cf365f4d2c871370e
 
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
 
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="ListTrajet" component={MainScreen} />
 
@@ -95,13 +97,8 @@ export default function App() {
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
           <Stack.Screen name="ChatTest" component={ChatScreenTest} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
-          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
-
-          {/* <Stack.Screen name="Facebook" component={HomeScreen} /> */}
-          {/* <Stack.Screen name="Google" component={HomeScreen} /> */}
-          {/* decommenter la ligne 78 après fin des test ligne 70 */}
+          {/* <Stack.Screen name="Facebook" component={HomeScreen} />
+          <Stack.Screen name="Google" component={HomeScreen} />           */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
