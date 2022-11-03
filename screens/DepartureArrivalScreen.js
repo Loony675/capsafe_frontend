@@ -6,7 +6,7 @@ import {
   TextInput,
 } from "react-native";
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,15 +16,30 @@ import { addDeparture, addArrival } from "../reducers/trajets";
 
 export default function DepartureArrival() {
   const dispatch = useDispatch();
-  const rechercher =() => {
-    dispatch(isVisibleDeparture({isVisibleDA:false}));
-    dispatch(isVisibleListTraj({ isVisibleListTrajet: true }))
-    dispatch(positionDeparture({positionDeparture : {latitude: 48.884674072265625, longitude: 2.2963457107543945} }))
-    dispatch(positionArrival({positionArrival : {latitude: 48.54366683959961, longitude: 2.6590490341186523} }))
-  }
-  const pinPositionDeparture= useSelector((state) => state.position.pinDeparture)
-  const pinPositionArrival= useSelector((state) => state.position.pinArrival)
-
+  const rechercher = () => {
+    dispatch(isVisibleDeparture({ isVisibleDA: false }));
+    dispatch(isVisibleListTraj({ isVisibleListTrajet: true }));
+    dispatch(
+      positionDeparture({
+        positionDeparture: {
+          latitude: 48.884674072265625,
+          longitude: 2.2963457107543945,
+        },
+      })
+    );
+    dispatch(
+      positionArrival({
+        positionArrival: {
+          latitude: 48.54366683959961,
+          longitude: 2.6590490341186523,
+        },
+      })
+    );
+  };
+  const pinPositionDeparture = useSelector(
+    (state) => state.position.pinDeparture
+  );
+  const pinPositionArrival = useSelector((state) => state.position.pinArrival);
 
   const [trajet, setTrajet] = useState([]);
   const [ligne, setLigne] = useState([]);
@@ -36,18 +51,15 @@ export default function DepartureArrival() {
   const [onDepartureInput, setOnDepartureInput] = useState(false);
   const [onArrivalInput, setOnArrivalInput] = useState();
 
-
   const [departurePossible, setDeparturePossible] = useState([]);
   const [arrivalPossible, setArrivalPossible] = useState([]);
   const coordSelected = useSelector((state) => state.trajets.value);
-
 
   const options = {
     headers: {
       Authorization: "3e7944d3-0cff-4af5-a721-a09dbfaa01bd",
     },
   };
-
 
   useEffect(() => {
     fetch(
@@ -84,15 +96,14 @@ export default function DepartureArrival() {
   // console.log(depart);
   // console.log(departurePossible);
 
-  const writingOnDeparture = (value)=>{
-    setDepart(value)
-    setOnDepartureInput(true)
+  const writingOnDeparture = (value) => {
+    setDepart(value);
+    setOnDepartureInput(true);
     // let journey = await fetch(`http://${url}:3000/displayJourney`)
     // let journeyJson = await journey.json()
     // setTrajet([...trajet, journeyJson])
     // console.log('here');
   };
-
 
   // console.log(trajet);
 
@@ -109,7 +120,7 @@ export default function DepartureArrival() {
           depCity: city?.places,
         })
       );
-      setOnDepartureInput(false)
+      setOnDepartureInput(false);
     } else {
       setArrivee("");
       setArrivee(city?.places);
@@ -138,32 +149,33 @@ export default function DepartureArrival() {
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonDepart}>
+        <TouchableOpacity style={styles.buttonDepart} >
           <FontAwesome
             name={"location-arrow"}
             size={25}
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-                    <TextInput
+          <TextInput
             placeholder="Départ"
             onChangeText={(value) => writingOnDeparture(value)}
             value={depart}
             style={styles.input}
           />
-          <View style={styles.popSuggest}>
-          {onDepartureInput && departurePossible?.map((city, i) => (
-              <TouchableOpacity
-                key={i}
-                style={styles.buttonSuggere}
-                onPress={() => citySelected(city, "depart")}
-              >
-              <View style={styles.resultSuggest}>
-                 <Text>{city.places}</Text>
+          {onDepartureInput &&
+            departurePossible?.map((city, i) => (
+              <View style={styles.popSuggestDepart}>
+                <TouchableOpacity
+                  key={i}
+                  style={styles.buttonSuggere}
+                  onPress={() => citySelected(city, "depart")}
+                >
+                  <View style={styles.resultSuggest}>
+                    <Text>{city.places}</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
-              </TouchableOpacity>
             ))}
-          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.container2}>
@@ -183,14 +195,13 @@ export default function DepartureArrival() {
             style={styles.pin}
           />
 
-                    
-<TextInput
+          <TextInput
             placeholder="Arrivée"
             onChangeText={(value) => setArrivee(value)}
             value={arrivee}
             style={styles.input}
           />
-          <View style={styles.popSuggest}>
+          <View style={styles.popSuggestArrivee}>
             {arrivalPossible?.map((city, i) => (
               <TouchableOpacity
                 key={i}
@@ -199,17 +210,15 @@ export default function DepartureArrival() {
               >
                 <View style={styles.resultSuggest}>
                   <Text>{city.places}</Text>
-                  </View>
+                </View>
               </TouchableOpacity>
-
             ))}
           </View>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
         <TouchableOpacity
-          onPress={() =>
-            rechercher()}
+          onPress={() => rechercher()}
           style={styles.buttonRechercher}
         >
           <Text style={styles.textRechercher}>Rechercher</Text>
@@ -221,15 +230,13 @@ export default function DepartureArrival() {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    marginTop:20,
+    marginTop: 20,
     height: "40%",
     width: "80%",
     justifyContent: "center",
-
   },
   container1: {
     flexDirection: "row",
-
   },
   arrowLeft: {
     marginRight: 10,
@@ -244,19 +251,18 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 1,
-    shadowOffset:{width:0, height:3},
-    shadowColor:'black',
-    shadowOpacity:0.7,
-    shadowRadius:3,
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: "black",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
   },
   locationArrow: {
     marginLeft: 10,
   },
   textDepart: {
     marginLeft: "30%",
-    fontWeight:'600',
+    fontWeight: "600",
     fontSize: 16,
-
   },
   container2: {
     flexDirection: "row",
@@ -272,43 +278,64 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 40,
     borderRadius: 10,
+
+  },
+  popSuggestDepart:{
+    position:'absolute',
+    top:'0%',
+    left:'0%',
+    height:40,
+    width:'100%',
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:10,
+
+  },
+  popSuggestArrivee:{
+    position:'absolute',
+    top:'0%',
+    left:'0%',
+    height:40,
+    width:'100%',
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:10,
     borderWidth: 1,
-    shadowOffset:{width:0, height:3},
-    shadowColor:'black',
-    shadowOpacity:0.7,
-    shadowRadius:3,
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: "black",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
   },
   pin: {
     marginLeft: 10,
   },
   textArrivee: {
     marginLeft: "32%",
-    fontWeight:'600',
+    fontWeight: "600",
     fontSize: 16,
-
   },
-  container3: {
-
-  },
-  buttonRechercher:{
-    width:'50%',
-    marginLeft:'45%',
+  container3: {},
+  buttonRechercher: {
+    width: "50%",
+    marginLeft: "45%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgb(195,227,163)",
     height: 40,
     borderRadius: 10,
-    shadowOffset:{width:0, height:3},
-    shadowColor:'black',
-    shadowOpacity:0.7,
-    shadowRadius:3,
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: "black",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
   },
-  textRechercher:{
-    fontWeight:'600',
+  textRechercher: {
+    fontWeight: "600",
     fontSize: 16,
   },
-  input:{
-    width: '100%'
+  input: {
+    width: "100%",
   },
 });

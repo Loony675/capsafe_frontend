@@ -81,7 +81,6 @@ const BottomSheet = () => {
   const visibleAddress = useSelector((state) => state.isVisible.isVisibleAddress)
   const visibleListTraj = useSelector((state => state.isVisible.isVisibleListTrajet))
   const visibleSelectTraj = useSelector((state) => state.isVisible.isVisibleSelectTrajet)
-  console.log('-->', visibleListTraj.isVisibleListTrajet);
   if (visibleDA.isVisibleDA === true ) {
     screenVisible= (<DepartureArrival/>)
   } else if (visibleAddress.isVisibleAddressList === true) {

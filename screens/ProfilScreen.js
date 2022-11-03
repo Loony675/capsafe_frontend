@@ -28,8 +28,6 @@ const ProfilScreen = () => {
   const [sexeM, setSexeM] = useState(false);
   const [usernameM, setUsernameM] = useState(false);
 
-  console.log("ProfilInfos --> ", profilInfos);
-  console.log("FirstName --> ", profilInfos.firstName);
   // updateProfilInfo('lastName')
   let sendedInfo;
   useEffect(() => {
