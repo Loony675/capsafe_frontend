@@ -58,7 +58,7 @@ export default function MiseEnRelationScreen({ navigation }) {
       <View style={styles.borderBottom}></View>
       </View>
       <View style={styles.container3}>
-        <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate("TabNavigator", { screen: "MessagingScreen" })}>
+        <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate("TabNavigator", { screen: "Chat", token2:'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH' })}>
           <Text style={styles.textBtn} >Envoyer un message</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "800",
     color: "white",
-
   },
 
   rate: {
