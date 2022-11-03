@@ -92,7 +92,7 @@ const ProfilScreen = () => {
           {!firstNameM && (
             <Text style={styles.text2}>
               {profilInfos.firstName}
-              {" test"}
+              {""}
               <FontAwesome
                 style={styles.editProfil}
                 name="edit"

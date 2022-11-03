@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
 container: {
     flex: 1,
-    backgroundColor: 'rgba(124, 96, 183, 0.7)',
+    backgroundColor: 'rgba(71, 139, 188, 1)',
     alignItems: "center",
 },
 

@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.7,
     shadowRadius: 3,
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
   },
   colorOVO: {
     color: "white",
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderRadius: 9999,
     borderColor: "black",
     borderWidth: 1,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   logoWork: {
     height: 40,
     width: 40,
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderRadius: 9999,
     borderColor: "black",
     borderWidth: 1,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   logoStar: {
     height: 40,
     width: 40,
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "#f4a261",
     borderRadius: 9999,
     borderColor: "black",
     borderWidth: 1,

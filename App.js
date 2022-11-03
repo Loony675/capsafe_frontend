@@ -45,7 +45,7 @@ const TabNavigator = () => {
             iconName = "user";
           } else if (route.name === "Main") {
             iconName = "home";
-          } else if (route.name === "Messaging") {
+          } else if (route.name === "Tchat") {
             iconName = "envelope";
           } else if (route.name === "Settings") {
             iconName = "gear";
@@ -60,10 +60,10 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Main" component={MainScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
+      <Tab.Screen name="Main" component={MainScreen} />
       {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
-      <Tab.Screen name="MessagingScreen" component={MessagingScreen} />
+      <Tab.Screen name="Tchat" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
       {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
     </Tab.Navigator>
@@ -75,7 +75,6 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
 
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
@@ -88,7 +87,7 @@ export default function App() {
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
 

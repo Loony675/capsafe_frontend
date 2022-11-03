@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
-  TextInput,
+  TextInput, KeyboardAvoidingView
 } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
@@ -45,6 +45,8 @@ export default function SignUpScreen({navigation}) {
   };
 
   return (
+    // <KeyboardAvoidingView style={styles.background} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+
     <View style={styles.background}>
         <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1667468073/LOGO_CapSafe_V4_-_OMBRE_zolwhe.jpg"}}/>
       <View style={styles.container}>
@@ -79,6 +81,7 @@ export default function SignUpScreen({navigation}) {
         </TouchableOpacity>
       </View>
     </View>
+  // </KeyboardAvoidingView>
   );
 }
 
