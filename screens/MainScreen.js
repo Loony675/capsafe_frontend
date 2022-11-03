@@ -45,7 +45,7 @@ export default function MainScreen({ navigation }) {
             pinColor="#f4a261"
           />
         )}
-        {pinPositionDeparture && (
+        {/* {pinPositionDeparture && (
           <Marker
             coordinate={pinPositionDeparture.positionDeparture}
             title="Position départ"
@@ -58,7 +58,7 @@ export default function MainScreen({ navigation }) {
             title="Position arrivée"
             pinColor="blue"
           />
-        )}
+        )} */}
       </MapView>
       <BottomSheet />
     </GestureHandlerRootView>
