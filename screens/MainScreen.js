@@ -19,10 +19,8 @@ export default function MainScreen({ navigation }) {
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      // console.log("Status", status);
       if (status === "granted") {
         Location.watchPositionAsync({ distanceInterval: 10 }, (location) => {
-          // console.log("Location--->", location);
           setCurrentPosition(location.coords);
         });
       }
@@ -34,10 +32,9 @@ export default function MainScreen({ navigation }) {
   const pinPositionArrival = useSelector(
     (state) => state.position.pinArrival
   );
-  // console.log('Pin arrivée-->', pinPositionArrival);
   return (
     <GestureHandlerRootView style={styles.container}>
-      <MapView style={styles.map} mapType="hybrid">
+      <MapView style={styles.map} mapType="hybrid" region={{ latitude: 48.8877, longitude: 2.30368, latitudeDelta:0.02, longitudeDelta: 0.02}}>
         {currentPosition && (
           <Marker
             coordinate={currentPosition}
