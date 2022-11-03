@@ -13,7 +13,7 @@ export default function HomeScreen({ navigation }) {
   // console.log(url)
   return (
       <View style = {styles.background}>
-        <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
+        <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1667468073/LOGO_CapSafe_V4_-_OMBRE_zolwhe.jpg"}}/>
         <View style = {styles.buttonContainer}>
           <TouchableOpacity style = {styles.btn1}>
             <Image style={styles.image1} source={require("../assets/facebook.png")} />

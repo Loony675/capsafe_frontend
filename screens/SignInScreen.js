@@ -26,7 +26,7 @@ const SignInScreen = ({ navigation }) => {
   const [emailError, setEmailError] = useState(false);
 
   const handleConnection = () => {
-    if (!EMAIL_REGEX.test(signInEmail)) {
+    if (EMAIL_REGEX.test(signInEmail)) {
       setEmailError(true);
     }
     fetch(`http://${url}:3000/users/signIn`, {
@@ -48,7 +48,7 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1666620435/LOGO_CAPSAFE_2_-_1_me7nba.png"}}/>
+      <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1667468073/LOGO_CapSafe_V4_-_OMBRE_zolwhe.jpg"}}/>
       <View style={styles.container}>
         <TextInput
           style={styles.emailInput}
@@ -66,8 +66,8 @@ const SignInScreen = ({ navigation }) => {
           autoCapitalize="none" // Pas de majuscule
           secureTextEntry={true} // cache le mdp
         />
-        <TouchableOpacity style={styles.btnSignIn}>
-          <Text style={styles.textSignIn} onPress={() => handleConnection()}>
+        <TouchableOpacity style={styles.btnSignIn} onPress={() => handleConnection()}>
+          <Text style={styles.textSignIn} >
             Se connecter
           </Text>
         </TouchableOpacity>
