@@ -15,15 +15,18 @@ import {
   isVisibleDeparture,
   isVisibleSelectTraj,
 } from "../reducers/isVisible";
-import { addDeparture, addArrival } from "../reducers/trajets";
+import { addDeparture, addArrival, addJourney } from "../reducers/trajets";
 
 export default function ListTrajet() {
   const dispatch = useDispatch();
 
- 
-
   const url = useSelector((state) => state.url.value);
+  const depCity = useSelector((state) => state.trajets.value.depCity);
+  const arrCity = useSelector((state) => state.trajets.value.arrCity);
+  const coordSelected = useSelector((state) => state.trajets.value);
+  const trajetSelectionne = useSelector((state) => state.trajets.sections);
 
+console.log(trajetSelectionne);
   const [trajet, setTrajet] = useState([]);
   const [ligne, setLigne] = useState([]);
   const [depart, setDepart] = useState("");
@@ -34,17 +37,20 @@ export default function ListTrajet() {
   const [onDepartureInput, setOnDepartureInput] = useState(false);
   const [onArrivalInput, setOnArrivalInput] = useState();
 
-
   const [departurePossible, setDeparturePossible] = useState([]);
   const [arrivalPossible, setArrivalPossible] = useState([]);
-  const coordSelected = useSelector((state) => state.trajets.value);
-
-
   const goToSelectTrajet = () => {
     dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
     dispatch(isVisibleDeparture({ isVisibleDA: false }));
     dispatch(isVisibleSelectTraj({ isVisibleSelectTrajet: true }));
   };
+
+  const options = {
+    headers: {
+      Authorization: "3e7944d3-0cff-4af5-a721-a09dbfaa01bd",
+    },
+  };
+
   const fetchAPI = async () => {
     await fetch(
       `https://api.navitia.io/v1/journeys?from=${coordSelected.depLon};${coordSelected.depLat}&to=${coordSelected.arrLon};${coordSelected.arrLat}`,
@@ -56,6 +62,7 @@ export default function ListTrajet() {
           // console.log(reponseAPIJson.journeys);
           let gettingJourney = reponseAPIJson.journeys[0].sections?.map(
             (data, i) => {
+              dispatch(addJourney(sections.push(data)))
               return data;
               // console.log(data.from);
             }
@@ -65,13 +72,12 @@ export default function ListTrajet() {
         }
       })
     );
-  }
+  };
 
   useEffect(() => {
     fetchAPI();
   }, []);
 
-  
   // console.log(mapListAddress[0]);
   // console.log(mapListAddress);
   // return (
@@ -129,23 +135,18 @@ export default function ListTrajet() {
     <View style={styles.globalContainer}>
       <View style={styles.container0}>
         <TouchableOpacity>
-        <FontAwesome
-              onPress={() => backToDA()}
-              name={"arrow-circle-left"}
-              size={40}
-              color={"#f4a261"}
-            />
-         </TouchableOpacity>
+          <FontAwesome
+            onPress={() => backToDA()}
+            name={"arrow-circle-left"}
+            size={40}
+            color={"#f4a261"}
+          />
+        </TouchableOpacity>
         <TouchableOpacity>
-        <FontAwesome
-              name={"play-circle-o"}
-              size={40}
-              color={"#f4a261"}
-            />
+          <FontAwesome name={"play-circle-o"} size={40} color={"#f4a261"} />
         </TouchableOpacity>
       </View>
       <View style={styles.container1}>
-        
         <View style={styles.buttonDepart}>
           <FontAwesome
             name={"location-arrow"}
@@ -153,7 +154,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-          <Text>{}</Text>
+          <Text>{depCity}</Text>
         </View>
       </View>
       <View style={styles.container2}>
@@ -171,7 +172,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.pin}
           />
-
+          <Text>{arrCity}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
@@ -181,18 +182,13 @@ export default function ListTrajet() {
         <View style={styles.mapStyle}>
           <View style={styles.mapDirection}>
             <TouchableOpacity onPress={() => goToSelectTrajet()}>
-              <View>
+              <View style={styles.resultJourney}>
                 {mapListAddress[0]?.map((data, i) => {
                   //Theo insert image
                   // console.log(data);
                   // let path = require(`../assets/transport/${data}.png`)
-                  return (
-                    <View key={i}>
-                      {/* <Image source={path} style={styles.ligne} />  */}
-                    </View>
-                  );
+                  return <Text>{i}: {data}, </Text>;
                 })}
-                <Text>data</Text>
               </View>
 
               <Text style={{ fontWeight: "600" }}>
@@ -212,25 +208,23 @@ const styles = StyleSheet.create({
   globalContainer: {
     width: "100%",
     justifyContent: "center",
-    borderWidth:1,
-    borderColor: "red"
+    borderWidth: 1,
+    borderColor: "red",
   },
-  container0:{
-    
+  container0: {
     marginBottom: 15,
     height: 40,
     borderWidth: 1,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingLeft: 20,
     paddingRight: 20,
   },
   container1: {
     flexDirection: "row",
-    justifyContent:"center",
-    width:"100%",
-    
+    justifyContent: "center",
+    width: "100%",
   },
 
   buttonDepart: {
@@ -248,10 +242,9 @@ const styles = StyleSheet.create({
   },
   container2: {
     flexDirection: "row",
-    justifyContent:'center',
-    width: '100%',
+    justifyContent: "center",
+    width: "100%",
     borderColor: "red",
-
   },
   buttonArrivee: {
     flexDirection: "row",
@@ -262,7 +255,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 1,
-    
   },
   pin: {
     marginLeft: 10,
@@ -303,9 +295,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  popSuggest: {
-
-  },
+  popSuggest: {},
   buttonSuggere: {
     alignItems: "center",
     backgroundColor: "white",
@@ -315,10 +305,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
   },
-  input:{
-    width: '100%'
+  input: {
+    width: "100%",
   },
-  resultSuggest:{
+  resultSuggest: {
     backgroundColor: "white",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -326,7 +316,14 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderRightWidth: 2,
     height: "60%",
-    justifyContent:"center",
+    justifyContent: "center",
     alignItems: "center",
-  }
+  },
+  resultJourney:{
+    justifyContent:'flex-start',
+    alignItems: "center",
+    flexDirection:"row",
+    marginTop: 20,
+  },
+  
 });

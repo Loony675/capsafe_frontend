@@ -106,17 +106,19 @@ export default function DepartureArrival() {
         addDeparture({
           depLon: city?.coord.stop_area.coord.lon,
           depLat: city?.coord.stop_area.coord.lat,
+          depCity: city?.places,
         })
       );
       setOnDepartureInput(false)
     } else {
       setArrivee("");
-      setArrivee(city.places);
-      setCoordArrivee(city.coord.stop_area.coord);
+      setArrivee(city?.places);
+      setCoordArrivee(city?.coord.stop_area.coord);
       dispatch(
         addArrival({
-          arrLon: city.coord.stop_area.coord.lon,
-          arrLat: city.coord.stop_area.coord.lat,
+          arrLon: city?.coord.stop_area.coord.lon,
+          arrLat: city?.coord.stop_area.coord.lat,
+          arrCity: city?.places,
         })
       );
     }
