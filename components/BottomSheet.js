@@ -102,12 +102,9 @@ const BottomSheet = () => {
         <View hide={true} style={styles.onVaOuContainer}>
           {/* {screenVisible} */}
           {/* <SelectTrajet/> */}
-<<<<<<< HEAD
-          {/* <ListTrajet/> */}
-=======
           {/* <MiseEnRelation/> */}
-          <DepartureArrival/>
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
+          {/* <DepartureArrival/> */}
+          <ListTrajet/>
         </View>
       </Animated.View>
     </GestureDetector>

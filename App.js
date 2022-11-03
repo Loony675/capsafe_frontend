@@ -13,14 +13,10 @@ import SignUpScreen from "./screens/SignUpScreen";
 import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
 // import ChatScreen from "./screens/ChatScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
-<<<<<<< HEAD
 import MessagingScreenTest from "./screens/MessagingScreenTest";
 import MiseEnRelation from "./screens/MiseEnRelationScreen";
 import SelectTrajet from "./screens/SelectTrajet";
 import MessagesScreen from "./screens/MessagesScreen";
-=======
-import MessagingScreen from "./screens/MessagingScreen";
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -33,9 +29,9 @@ import users from "./reducers/users";
 import url from "./reducers/url";
 import isVisible from "./reducers/isVisible";
 import position from "./reducers/position";
-
+import trajets from './reducers/trajets'
 const store = configureStore({
-  reducer: { users, url, isVisible, position },
+  reducer: { users, url, isVisible, position, trajets },
 });
 
 const Stack = createNativeStackNavigator();
@@ -70,18 +66,10 @@ const TabNavigator = () => {
       <Tab.Screen name="Settings" component={SettingsScreen} />
 
       <Tab.Screen name="Main" component={MainScreen} />
-<<<<<<< HEAD
       {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
-      <Tab.Screen name="MessagingScreen" component={MessagingScreen} />
+      <Tab.Screen name="MessagingScreen" component={MessagingScreenTest} />
       <Tab.Screen name="MessagesNew" component={MessagesScreen} />      
       {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
-=======
-      <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
-      <Tab.Screen name="Route" component={RouteScreen} />
-      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
     </Tab.Navigator>
   );
 };
@@ -93,7 +81,6 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-<<<<<<< HEAD
           <Stack.Screen   name="MiseEnRelation" component={MiseEnRelation} />
 
           <Stack.Screen name="Home" component={HomeScreen} />
@@ -106,14 +93,8 @@ export default function App() {
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* decommenter la ligne 80 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-=======
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="ChatTest" component={ChatScreenTest} />
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}

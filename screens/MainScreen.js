@@ -28,13 +28,13 @@ export default function MainScreen({ navigation }) {
       }
     })();
   }, []);
-  const pinPositionDeparture = useSelector(
-    (state) => state.position.pinDeparture
-  );
-  const pinPositionArrival = useSelector(
-    (state) => state.position.pinArrival
-  );
-  console.log('Pin arrivée-->', pinPositionArrival);
+  // const pinPositionDeparture = useSelector(
+  //   (state) => state.position.pinDeparture
+  // );
+  // const pinPositionArrival = useSelector(
+  //   (state) => state.position.pinArrival
+  // );
+  // console.log('Pin arrivée-->', pinPositionArrival);
   return (
     <GestureHandlerRootView style={styles.container}>
       <MapView style={styles.map} mapType="hybrid">
@@ -43,10 +43,10 @@ export default function MainScreen({ navigation }) {
             coordinate={currentPosition}
             title="My position"
             pinColor="#fecb2d"
-            opacity= "0.1"            
+            // opacity= "0.1"            
           />
         )}
-        {pinPositionDeparture && (
+        {/* {pinPositionDeparture && (
           <Marker
             coordinate={pinPositionDeparture.positionDeparture}
             title="Position départ"
@@ -59,7 +59,7 @@ export default function MainScreen({ navigation }) {
             title="Position arrivée"
             pinColor="blue"
           />
-        )}
+        )} */}
       </MapView>
       <BottomSheet />
     </GestureHandlerRootView>
