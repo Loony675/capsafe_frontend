@@ -11,9 +11,9 @@ import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
-// import ChatScreen from "./screens/ChatScreen";
-import ChatScreenTest from "./screens/ChatScreenTest";
+import ChatScreen from "./screens/ChatScreen";
 import MessagingScreen from "./screens/MessagingScreen";
+import SelectTrajet from "./screens/SelectTrajet";
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -60,11 +60,11 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
       {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
-      <Tab.Screen name="MessagingScreen" component={MessagingScreenTest} />
-      <Tab.Screen name="MessagesNew" component={MessagesScreen} />      
+      <Tab.Screen name="MessagingScreen" component={MessagingScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
       {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
     </Tab.Navigator>
   );
@@ -75,25 +75,26 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */}
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          {/* <Stack.Screen   name="MiseEnRelation" component={MiseEnRelationScreen} /> */}
-
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
-
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
-          <Stack.Screen name="ListTrajet" component={MainScreen} />
 
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
           {/* decommenter la ligne 80 après fin des test ligne 70 */}
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="ChatTest" component={ChatScreenTest} />
-          {/* <Stack.Screen name="Facebook" component={HomeScreen} />
-          <Stack.Screen name="Google" component={HomeScreen} />           */}
+          <Stack.Screen name="ChatTest" component={ChatScreen} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
+          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
+
+          {/* <Stack.Screen name="Facebook" component={HomeScreen} /> */}
+          {/* <Stack.Screen name="Google" component={HomeScreen} /> */}
+          {/* decommenter la ligne 78 après fin des test ligne 70 */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
