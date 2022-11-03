@@ -60,8 +60,8 @@ const TabNavigator = () => {
         tabBarStyle: { backgroundColor: "black" },
       })}
     >
-      <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} />
       {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
       <Tab.Screen name="MessagingScreen" component={MessagingScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
@@ -75,16 +75,18 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
 
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
