@@ -3,12 +3,13 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
   TextInput,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import BottomSheet from "../components/BottomSheet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   isVisibleListTraj,
   isVisibleDeparture,
@@ -16,11 +17,46 @@ import {
 } from "../reducers/isVisible";
 
 export default function ListTrajet() {
-  const listTrajet = [
-    { logo: "0", nbrMembre: "11  membres sur votre trajet", timer: "23 min" },
-    { logo: "1", nbrMembre: "7 membres sur votre trajet", timer: "10 min" },
-    { logo: "2", nbrMembre: "4 membres sur votre trajet", timer: "111 min" },
-  ];
+  const url = useSelector((state) => state.url.value);
+
+  const [trajet, setTrajet] = useState([]);
+  const [ligne, setLigne] = useState([]);
+
+  const fetchAPI = async () => {
+    const options = {
+      headers: {
+        Authorization: "a3241d36-8169-4f8b-840c-214b769f3771"
+      }
+    };
+
+   await fetch(`https://api.navitia.io/v1/journeys?from=2.3036095;48.8877713&to=2.655400;48.542107`, options).then(
+      reponseAPI => reponseAPI.json().then(
+        reponseAPIJson =>{ 
+          if(reponseAPIJson){
+            // console.log('===================================================', reponseAPIJson.journeys[0].sections);
+            // console.log(reponseAPIJson.journeys);
+            let testMessage = reponseAPIJson.journeys[0].sections.map((data, i) => {
+                return data
+                // console.log(data.from);
+            })
+            // console.log(testMessage);
+            setTrajet(testMessage)
+          }}))
+          
+
+// let journey = await fetch(`http://${url}:3000/displayJourney`)
+// let journeyJson = await journey.json()  
+// setTrajet([...trajet, journeyJson])
+console.log('here');
+
+
+};
+
+  useEffect(() => {
+fetchAPI()
+}, [])
+// console.log(trajet);
+
 
   const dispatch = useDispatch();
   const goToSelectTrajet = () => {
@@ -29,22 +65,54 @@ export default function ListTrajet() {
     dispatch(isVisibleSelectTraj({isVisibleSelectTrajet : true}))
 
   }
-  const mapListAddress = listTrajet.map((data, i) => {
-    return (
-      <View key={i} style={styles.mapStyle}>
-        <View style={styles.mapDirection}>
-          <TouchableOpacity style={styles.trajetButton}
-            onPress={() =>
-              goToSelectTrajet()
-            }
-          >
-            <Text style={{ fontWeight: "600" }}>{data.logo} {data.nbrMembre} {data.timer}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  });
+  let affichageLigne = []
+  let value;
 
+  const mapListAddress = trajet.map((data, i) => {
+    // console.log('================>', data.type, i);
+    let path = ''
+   
+if(data.type === 'street_network'){
+  console.log(data.mode);
+    path = `../assets/transport/${data.mode}.png`
+      // affichageLigne.push(<Image key={i} style={styles.image1} source={{uri:"../assets/transport/walking.png", width:200,height:200}} />)
+      affichageLigne.push(data.mode)
+      return affichageLigne
+    }else if(data.type === 'public_transport'){
+      affichageLigne.push(data.display_informations.code)
+      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.display_informations.code}.png`)} />)
+      return affichageLigne
+    }else if(data.type === 'transfer'){
+      affichageLigne.push(data.transfer_type)
+
+      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.transfer_type}.png`)} />)
+      return affichageLigne
+    }else if(data.type === 'waiting'){
+      affichageLigne.push(data.type)
+
+      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.type}.png`)} />)
+      return affichageLigne
+      }
+setLigne(mapListAddress)
+  })
+  console.log(mapListAddress[0]);
+  // console.log(mapListAddress);
+    // return (
+      // <View key={i} style={styles.mapStyle}>
+      //   <View style={styles.mapDirection}>
+      //     <TouchableOpacity
+      //       onPress={() =>
+      //         goToSelectTrajet()
+      //       }
+      //     >
+      //       <Text>affichageLigne</Text>
+      //       <Text style={{ fontWeight: "600" }}>{data.nbrMembre}</Text>
+      //       <Text>{data.timer}</Text>
+      //     </TouchableOpacity>
+      //   </View>
+      // </View>
+  //   )
+  // })
   /* retour DepartureArrival*/
 
   const backToDA = () => {
@@ -93,13 +161,37 @@ export default function ListTrajet() {
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
-        <Text style={{ color: "white", fontWeight: "600", fontSize: "15" }}>
+        <Text style={styles.suggests}>
           Suggérés
         </Text>
       </View>
-      <View style={styles.container4}>{mapListAddress}</View>
+      <View style={styles.container4}>
+      <View style={styles.mapStyle}>
+        <View style={styles.mapDirection}>
+          <TouchableOpacity
+            onPress={() =>
+              goToSelectTrajet()
+            }
+          >
+            <View>
+              {mapListAddress[0]?.map(data=> { //Theo insert image
+              return <Text>{data}</Text>})} 
+              <Text>data</Text>
+              </View>
+             
+            <Text style={{ fontWeight: "600" }}>
+              {/* {data.nbrMembre} */}
+              </Text>
+            <Text>
+              {/* {data.timer} */}
+              </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      {/* {mapListAddress} */}
+      </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -174,7 +266,9 @@ const styles = StyleSheet.create({
     alignItems: "space-between",
     borderColor: "grey",
   },
-  trajetButton:{
-
+  suggests:{
+   color: "white", 
+   fontWeight: "600", 
+   fontSize: 15 
   }
 });

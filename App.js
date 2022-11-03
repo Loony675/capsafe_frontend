@@ -13,7 +13,14 @@ import SignUpScreen from "./screens/SignUpScreen";
 import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
 // import ChatScreen from "./screens/ChatScreen";
 import ChatScreenTest from "./screens/ChatScreenTest";
+<<<<<<< HEAD
+import MessagingScreenTest from "./screens/MessagingScreenTest";
+import MiseEnRelation from "./screens/MiseEnRelationScreen";
+import SelectTrajet from "./screens/SelectTrajet";
+import MessagesScreen from "./screens/MessagesScreen";
+=======
 import MessagingScreen from "./screens/MessagingScreen";
+>>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -62,10 +69,17 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
+<<<<<<< HEAD
+      {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
+      <Tab.Screen name="MessagingScreen" component={MessagingScreen} />
+      <Tab.Screen name="MessagesNew" component={MessagesScreen} />      
+      {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
+=======
       <Tab.Screen name="Profil" component={ProfilScreen} />
       {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
       <Tab.Screen name="Route" component={RouteScreen} />
       <Tab.Screen name="ChatTest" component={ChatScreenTest} />
+>>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
     </Tab.Navigator>
   );
 };
@@ -75,6 +89,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
