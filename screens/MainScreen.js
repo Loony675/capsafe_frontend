@@ -43,10 +43,7 @@ export default function MainScreen({ navigation }) {
             coordinate={currentPosition}
             title="My position"
             pinColor="#fecb2d"
-<<<<<<< HEAD
             // opacity= "0.1"            
-=======
->>>>>>> caa4351f7babfb36d2b4916cf365f4d2c871370e
           />
         )}
         {/* {pinPositionDeparture && (

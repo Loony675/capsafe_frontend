@@ -236,7 +236,9 @@ export default function ListTrajet() {
                 style={styles.buttonSuggere}
                 onPress={() => citySelected(city, "depart")}
               >
+              <View style={styles.resultSuggest}>
                  <Text>{city.places}</Text>
+              </View>
               </TouchableOpacity>
             ))}
           </View>
@@ -271,7 +273,9 @@ export default function ListTrajet() {
                 style={styles.buttonSuggere}
                 onPress={() => citySelected(city, "arrivee")}
               >
-                <Text>{city.places}</Text>
+                <View style={styles.resultSuggest}>
+                  <Text>{city.places}</Text>
+                  </View>
               </TouchableOpacity>
 
             ))}
@@ -407,7 +411,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  popSuggest: {},
+  popSuggest: {
+    
+  },
   buttonSuggere: {
     alignItems: "center",
     backgroundColor: "white",
@@ -419,5 +425,16 @@ const styles = StyleSheet.create({
   },
   input:{
     width: '100%'
+  },
+  resultSuggest:{
+    backgroundColor: "white",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: "60%",
+    justifyContent:"center",
+    alignItems: "center",
   }
 });
