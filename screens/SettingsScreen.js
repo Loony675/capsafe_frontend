@@ -39,6 +39,7 @@ const App = () => {
         </View>
       </Modal>
 
+
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Réglages</Text>
         <View style={styles.borderBottom}></View>
