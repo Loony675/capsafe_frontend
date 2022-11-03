@@ -20,11 +20,7 @@ import { addDeparture } from "../reducers/trajets";
 export default function ListTrajet() {
   const dispatch = useDispatch();
 
-  const options = {
-    headers: {
-      Authorization: "3e7944d3-0cff-4af5-a721-a09dbfaa01bd",
-    },
-  };
+ 
 
   const url = useSelector((state) => state.url.value);
 
@@ -43,64 +39,12 @@ export default function ListTrajet() {
   const [arrivalPossible, setArrivalPossible] = useState([]);
   const coordSelected = useSelector((state) => state.trajets.value);
 
-  useEffect(() => {
-    fetch(
-      `https://api.navitia.io/v1/coverage/fr-idf/places?q=${depart}`,
-      options
-    ).then((data) =>
-      data.json().then((data) => {
-        let affichageDeparturePossible = data.places?.map((places) => {
-          // console.log(places);
-          return { places: places.name, coord: places };
-        });
-        // console.log(data.places[0].name);
-        setDeparturePossible(affichageDeparturePossible);
-      })
-    );
-  }, [depart]);
 
-  useEffect(() => {
-    fetch(
-      `https://api.navitia.io/v1/coverage/fr-idf/places?q=${arrivee}`,
-      options
-    ).then((data) =>
-      data.json().then((data) => {
-        let affichageArrivalPossible = data.places?.map((places) => {
-          console.log(places);
-          return { places: places.name, coord: places };
-        });
-        // console.log(data.places[0].name);
-        setArrivalPossible(affichageArrivalPossible);
-      })
-    );
-  }, [arrivee]);
-
-  const citySelected = (city, step) => {
-    if (step === "depart") {
-      setDepart("");
-      setDepart(city.places);
-      setCoordDepart(city.coord.stop_area.coord);
-      dispatch(
-        addDeparture({
-          depLon: city.coord.stop_area.coord.lon,
-          depLat: city.coord.stop_area.coord.lat,
-        })
-      );
-      setOnDepartureInput(false)
-    } else {
-      setArrivee("");
-      setArrivee(city.places);
-      setCoordArrivee(city.coord.stop_area.coord);
-      dispatch(
-        addArrival({
-          arrLon: city.coord.stop_area.coord.lon,
-          arrLat: city.coord.stop_area.coord.lat,
-        })
-      );
-    }
+  const goToSelectTrajet = () => {
+    dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
+    dispatch(isVisibleDeparture({ isVisibleDA: false }));
+    dispatch(isVisibleSelectTraj({ isVisibleSelectTrajet: true }));
   };
-  // console.log(depart);
-  // console.log(departurePossible);
   const fetchAPI = async () => {
     await fetch(
       `https://api.navitia.io/v1/journeys?from=${coordSelected.depLon};${coordSelected.depLat}&to=${coordSelected.arrLon};${coordSelected.arrLat}`,
@@ -122,27 +66,33 @@ export default function ListTrajet() {
       })
     );
   }
-  const writingOnDeparture = (value)=>{
-    setDepart(value)
-    setOnDepartureInput(true)
-    // let journey = await fetch(`http://${url}:3000/displayJourney`)
-    // let journeyJson = await journey.json()
-    // setTrajet([...trajet, journeyJson])
-    // console.log('here');
-  };
 
   useEffect(() => {
     fetchAPI();
   }, []);
-  // console.log(trajet);
 
-  const goToSelectTrajet = () => {
-    dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
-    dispatch(isVisibleDeparture({ isVisibleDA: false }));
-    dispatch(isVisibleSelectTraj({ isVisibleSelectTrajet: true }));
-  };
+  
+  // console.log(mapListAddress[0]);
+  // console.log(mapListAddress);
+  // return (
+  // <View key={i} style={styles.mapStyle}>
+  //   <View style={styles.mapDirection}>
+  //     <TouchableOpacity
+  //       onPress={() =>
+  //         goToSelectTrajet()
+  //       }
+  //     >
+  //       <Text>affichageLigne</Text>
+  //       <Text style={{ fontWeight: "600" }}>{data.nbrMembre}</Text>
+  //       <Text>{data.timer}</Text>
+  //     </TouchableOpacity>
+  //   </View>
+  // </View>
+  //   )
+  // })
+  /* retour DepartureArrival*/
+
   let affichageLigne = [];
-  let value;
 
   const mapListAddress = trajet?.map((data, i) => {
     // console.log('================>', data.type, i);
@@ -171,26 +121,6 @@ export default function ListTrajet() {
     }
     setLigne(mapListAddress);
   });
-  // console.log(mapListAddress[0]);
-  // console.log(mapListAddress);
-  // return (
-  // <View key={i} style={styles.mapStyle}>
-  //   <View style={styles.mapDirection}>
-  //     <TouchableOpacity
-  //       onPress={() =>
-  //         goToSelectTrajet()
-  //       }
-  //     >
-  //       <Text>affichageLigne</Text>
-  //       <Text style={{ fontWeight: "600" }}>{data.nbrMembre}</Text>
-  //       <Text>{data.timer}</Text>
-  //     </TouchableOpacity>
-  //   </View>
-  // </View>
-  //   )
-  // })
-  /* retour DepartureArrival*/
-
   const backToDA = () => {
     dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
     dispatch(isVisibleDeparture({ isVisibleDA: true }));
@@ -223,25 +153,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-          <TextInput
-            placeholder="Départ"
-            onChangeText={(value) => writingOnDeparture(value)}
-            value={depart}
-            style={styles.input}
-          />
-          <View style={styles.popSuggest}>
-          {onDepartureInput && departurePossible?.map((city, i) => (
-              <TouchableOpacity
-                key={i}
-                style={styles.buttonSuggere}
-                onPress={() => citySelected(city, "depart")}
-              >
-              <View style={styles.resultSuggest}>
-                 <Text>{city.places}</Text>
-              </View>
-              </TouchableOpacity>
-            ))}
-          </View>
+
         </View>
       </View>
       <View style={styles.container2}>
@@ -259,27 +171,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.pin}
           />
-          
-          <TextInput
-            placeholder="Arrivée"
-            onChangeText={(value) => setArrivee(value)}
-            value={arrivee}
-            style={styles.input}
-          />
-          <View style={styles.popSuggest}>
-            {arrivalPossible?.map((city, i) => (
-              <TouchableOpacity
-                key={i}
-                style={styles.buttonSuggere}
-                onPress={() => citySelected(city, "arrivee")}
-              >
-                <View style={styles.resultSuggest}>
-                  <Text>{city.places}</Text>
-                  </View>
-              </TouchableOpacity>
 
-            ))}
-          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
@@ -412,7 +304,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   popSuggest: {
-    
+
   },
   buttonSuggere: {
     alignItems: "center",

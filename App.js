@@ -14,7 +14,6 @@ import MiseEnRelationScreen from "./screens/MiseEnRelationScreen";
 import ChatScreen from "./screens/ChatScreen";
 import MessagingScreen from "./screens/MessagingScreen";
 import SelectTrajet from "./screens/SelectTrajet";
-import MessagesScreen from "./screens/MessagesScreen";
 //Import redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
