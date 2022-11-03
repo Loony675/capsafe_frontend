@@ -84,10 +84,10 @@ const ProfilScreen = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Image
+      {/* <Image
         style={styles.logo}
         source={require()}
-      />
+      /> */}
       <View style={styles.MainInfoContainer}>
         <View style={styles.infoContainer}>
           <Text style={styles.text1}>Prénom :</Text>
