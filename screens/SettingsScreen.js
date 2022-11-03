@@ -7,7 +7,7 @@ const App = () => {
     <View style={styles.globalContainer}>
       <Modal
         style={styles.centeredView}
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -18,7 +18,16 @@ const App = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
-              CapSafe a été fait par Ali, Benoit et Théo
+              CapSafe est un projet réalisé en deux semaines par trois élèves de
+              La Capsule.
+            </Text>
+            <Text >
+              Nous espérons que cette application vous plaira autant qu'il nous
+              a plus de vous la faire en partant d'une page blanche.
+            </Text>
+            <Text style={{fontWeight:'600', marginTop:10,}}> 
+
+            Ali Benoit Théo
             </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
@@ -34,12 +43,14 @@ const App = () => {
         <Text style={styles.title}>Réglages</Text>
         <View style={styles.borderBottom}></View>
       </View>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
+      <View style={styles.container2}>
+        <Pressable
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => setModalVisible(true)}
+        >
+          <Text style={styles.textStyle}>A propos de nous</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -50,10 +61,10 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(71, 139, 188, 1)",
   },
   centeredView: {
-    marginTop:'60%',
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(71, 139, 188, 1)",
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
   },
   titleContainer: {
     marginTop: "20%",
@@ -65,6 +76,11 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "800",
     color: "white",
+  },
+  container2:{
+    marginTop:'70%',
+    alignItems:'center',
+    justifyContent:'center',
   },
   borderBottom: {
     width: "80%",
@@ -89,15 +105,17 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
+    marginTop: 10,
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    width:150,
+    backgroundColor: "#f4a261",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#f4a261",
   },
   textStyle: {
     color: "white",

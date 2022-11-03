@@ -10,11 +10,15 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 
+import { useDispatch, useSelector } from "react-redux";
+// import reducers
+
+import { isVisibleListTraj, isVisibleSelectTraj } from "../reducers/isVisible";
+
 // import BottomSheet from "../components/BottomSheet";
 
 export default function SelectTrajet() {
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const membresMatch = [
     { name: "Medhi", communStations: 5, starRate: 3.5 },
     { name: "Beubeu31", communStations: 3, starRate: 4.9 },
@@ -32,21 +36,43 @@ export default function SelectTrajet() {
   const mapMembresMatch = membresMatch.map((data, i) => {
     return (
       <View key={i} style={styles.mapStyle}>
-        <TouchableOpacity style={styles.test} onPress={() => navigation.navigate('MiseEnRelation')}>
+        <TouchableOpacity
+          style={styles.test}
+          onPress={() => navigation.navigate("MiseEnRelation")}
+        >
           <View style={styles.avatarPic}>
             <FontAwesome name={"user"} color={"white"} size={15} />
           </View>
-          <Text>{data.name} {data.communStations} stations en commun {data.starRate}
-          <FontAwesome name={"star"} color={"yellow"} size={15} />
-
+          <Text>
+            {data.name} {data.communStations} stations en commun {data.starRate}
+            <FontAwesome name={"star"} color={"yellow"} size={15} />
           </Text>
         </TouchableOpacity>
       </View>
     );
   });
+
+  const dispatch = useDispatch()
+
+  const goToListTrajet = () => {
+    dispatch(isVisibleSelectTraj({ isVisibleSelectTraj: false }));
+    dispatch(isVisibleListTraj({ isVisibleListTrajet: true }));
+  };
   return (
     <View style={styles.globalContainer}>
+      <View style={{flexDirection:'row'}}>
+      <TouchableOpacity onPress={() => goToListTrajet()}>
+        <View style={styles.arrowLeft}>
+          <FontAwesome
+            name={"arrow-left"}
+            size={20}
+            color={"rgb(170,170,170)"}
+          />
+        </View>
+      </TouchableOpacity>
       <Text>Instructions de voyage:</Text>
+      </View>
+
       <View style={styles.container1}>
         <Text>Marcher jusqu'à n'en plus pouvoir</Text>
       </View>
