@@ -86,7 +86,7 @@ const ProfilScreen = () => {
     <View style={styles.mainContainer}>
       <Image
         style={styles.logo}
-        source={require()}
+        // source={require()}
       />
       <View style={styles.MainInfoContainer}>
         <View style={styles.infoContainer}>

@@ -69,15 +69,6 @@ const TabNavigator = () => {
       <Tab.Screen name="MessagingScreen" component={MessagingScreenTest} />
       <Tab.Screen name="MessagesNew" component={MessagesScreen} />      
       {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
-<<<<<<< HEAD
-=======
-=======
-      <Tab.Screen name="Profil" component={ProfilScreen} />
-      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
-      <Tab.Screen name="Route" component={RouteScreen} />
-      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
->>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
->>>>>>> a9469b9fa6351d0936b42f8d0a9199a53ed2d553
     </Tab.Navigator>
   );
 };
@@ -89,7 +80,6 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-<<<<<<< HEAD
           <Stack.Screen   name="MiseEnRelation" component={MiseEnRelation} />
 
           <Stack.Screen name="Home" component={HomeScreen} />
@@ -103,13 +93,6 @@ export default function App() {
           {/* decommenter la ligne 80 après fin des test ligne 70 */}
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           <Stack.Screen name="profil" component={ProfilScreen} />
-=======
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="SignIn" component={SignInScreen} />
->>>>>>> a9469b9fa6351d0936b42f8d0a9199a53ed2d553
           <Stack.Screen name="ChatTest" component={ChatScreenTest} />
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
