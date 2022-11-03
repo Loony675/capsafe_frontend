@@ -24,10 +24,10 @@ const SignInScreen = ({ navigation }) => {
   const [signInEmail, setSignInEmail] = useState("benoit@gmail.com");
   const [signInPassword, setSignInPassword] = useState("1234");
   const [emailError, setEmailError] = useState(false);
-
+  
   const handleConnection = () => {
     if (!EMAIL_REGEX.test(signInEmail)) {
-      setEmailError(true);
+      setEmailError(false);
     }
     fetch(`http://${url}:3000/users/signIn`, {
       method: "POST",
@@ -36,15 +36,13 @@ const SignInScreen = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.result) {
           dispatch(login({ username: data.username, token: data.token }));
           navigation.navigate("TabNavigator", { screen: "Main" });
           setSignInEmail("");
           setSignInPassword("");
         }
-      })}
-  
+      })}  
 
   return (
     <View style={styles.background}>
@@ -77,7 +75,6 @@ const SignInScreen = ({ navigation }) => {
       </View>
     </View>
   )}
-
 
 export default SignInScreen
 
@@ -140,6 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
   },
+
   textSignIn: {
     textAlign: "center",
     alignItems:'center',
@@ -156,6 +154,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
   },
+
   textPassword: {
     textAlign: "center",
     alignItems:'center',

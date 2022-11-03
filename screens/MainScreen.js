@@ -42,7 +42,7 @@ export default function MainScreen({ navigation }) {
           <Marker
             coordinate={currentPosition}
             title="My position"
-            pinColor="#fecb2d"
+            pinColor="#f4a261"
           />
         )}
         {/* {pinPositionDeparture && (

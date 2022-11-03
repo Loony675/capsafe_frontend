@@ -102,6 +102,8 @@ const BottomSheet = () => {
         <View hide={true} style={styles.onVaOuContainer}>
           {/* {screenVisible} */}
           {/* <SelectTrajet/> */}
+          {/* <MiseEnRelation/> */}
+          {/* <DepartureArrival/> */}
           <ListTrajet/>
         </View>
       </Animated.View>

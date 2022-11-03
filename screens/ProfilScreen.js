@@ -18,7 +18,8 @@ const ProfilScreen = () => {
   // const user = useSelector((state) => state.user.value);
   const url = useSelector((state) => state.url.value);
   const token = useSelector((state) => state.users.value.token);
-  console.log("Token-->", token);
+  const photo = require("../assets/profil1.png");
+
   const [profilInfos, setProfilInfos] = useState([]);
   const [firstNameM, setFirstNameM] = useState(false);
   const [lastNameM, setLastNameM] = useState(false);
@@ -27,8 +28,8 @@ const ProfilScreen = () => {
   const [sexeM, setSexeM] = useState(false);
   const [usernameM, setUsernameM] = useState(false);
 
-    console.log('ProfilInfos --> ',profilInfos);
-    console.log('FirstName --> ',profilInfos.firstName);
+  console.log("ProfilInfos --> ", profilInfos);
+  console.log("FirstName --> ", profilInfos.firstName);
   // updateProfilInfo('lastName')
   let sendedInfo;
   useEffect(() => {
@@ -65,7 +66,7 @@ const ProfilScreen = () => {
       .then((profilInfo) => profilInfo.json())
       .then((profilInfo) => {
         if (profilInfo.result) {
-          console.log('edit fait');
+          console.log("edit fait");
           // console.log(profilInfo);
           setFirstNameM(false);
           setLastNameM(false);
@@ -84,22 +85,20 @@ const ProfilScreen = () => {
 
   return (
     <View style={styles.mainContainer}>
-      {/* <Image
-        style={styles.logo}
-        source={require()}
-      /> */}
+      <Image style={styles.logo} source={photo} />
       <View style={styles.MainInfoContainer}>
         <View style={styles.infoContainer}>
           <Text style={styles.text1}>Prénom :</Text>
           {!firstNameM && (
             <Text style={styles.text2}>
-              {profilInfos.firstName}{" test"}
+              {profilInfos.firstName}
+              {" test"}
               <FontAwesome
                 style={styles.editProfil}
                 name="edit"
                 onPress={() => setFirstNameM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -107,7 +106,7 @@ const ProfilScreen = () => {
             <View style={styles.editContainer}>
               <TextInput
                 placeholder="Prénom"
-                onChangeText={(value) => setFirstNameM(value) }
+                onChangeText={(value) => setFirstNameM(value)}
                 value={profilInfos.firstName}
                 style={styles.input}
               />
@@ -118,7 +117,7 @@ const ProfilScreen = () => {
                   validateProfilInfo("firstName", profilInfos.firstName)
                 }
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -134,7 +133,7 @@ const ProfilScreen = () => {
                 name="edit"
                 onPress={() => setLastNameM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -153,7 +152,7 @@ const ProfilScreen = () => {
                   validateProfilInfo("lastName", profilInfos.lastName)
                 }
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -169,7 +168,7 @@ const ProfilScreen = () => {
                 name="edit"
                 onPress={() => setUsernameM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -188,7 +187,7 @@ const ProfilScreen = () => {
                   validateProfilInfo("username", profilInfos.username)
                 }
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -204,7 +203,7 @@ const ProfilScreen = () => {
                 name="edit"
                 onPress={() => setEmailM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -221,7 +220,7 @@ const ProfilScreen = () => {
                 name="check-circle"
                 onPress={() => validateProfilInfo("email", profilInfos.email)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -238,7 +237,7 @@ const ProfilScreen = () => {
                 name="edit"
                 onPress={() => setbirthDayDateM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -259,7 +258,7 @@ const ProfilScreen = () => {
                   validateProfilInfo("birthDayDate", profilInfos.birthDayDate)
                 }
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -275,7 +274,7 @@ const ProfilScreen = () => {
                 name="edit"
                 onPress={() => setSexeM(true)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
             </Text>
           )}
@@ -292,7 +291,7 @@ const ProfilScreen = () => {
                 name="check-circle"
                 onPress={() => validateProfilInfo("sexe", profilInfos.sexe)}
                 size={25}
-                color="#ec6e5b"
+                color="rgba(71, 139, 188, 1)"
               />
               {/*<FontAwesome style ={styles.editingProfil} name='remove' onPress={() => setFirstNameM(true)} size={25} color='#ec6e5b' />*/}
             </View>
@@ -323,7 +322,7 @@ const ProfilScreen = () => {
               name="edit"
               onPress={() => updateProfilInfo("emergencyTime")}
               size={25}
-              color="#ec6e5b"
+              color="rgba(71, 139, 188, 1)"
             />
           </Text>
         </View>
@@ -345,10 +344,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   logo: {
-    marginTop: 100,
-    height: 100,
-    width: 100,
+    marginTop: 60,
+    height: 150,
+    width: 150,
     borderRadius: 20,
   },
   MainInfoContainer: {
@@ -362,19 +362,19 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-      width: "90%",
+    width: "90%",
+    height: "8%",
     alignItems: "flex-start",
     justifyContent: "center",
     backgroundColor: "white",
-    marginTop: 20,
     fontSize: 18,
     borderRadius: 10,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
 
-  text1:{
+  text1: {
     fontSize: 15,
-    width: '100%',
+    width: "100%",
   },
 
   text2: {
@@ -396,54 +396,50 @@ const styles = StyleSheet.create({
   editingProfil: {
     textAlign: "right",
   },
-// test
+  // test
 
-cadre: {
-  width: "90%",
-  height: "7%",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
+  cadre: {
+    width: "90%",
+    height: "7%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
 
-  backgroundColor: "white",
-  borderRadius: 10,
-  paddingLeft: 10,
-},
+    backgroundColor: "white",
+    borderRadius: 10,
+    paddingLeft: 10,
+  },
 
-left:{
-  height: "100%",
-  borderWidth: 1,
-},
-  prenom:{
+  left: {
+    height: "100%",
+    borderWidth: 1,
+  },
+
+  prenom: {
     height: "50%",
   },
 
-  test2:{
+  test2: {
     color: "#478bbc",
     fontSize: 15,
     borderWidth: 1,
-
-  },
-  
-  crayon:{
   },
 
-  editContainer1:{
-    flexDirection:'row' ,
-    flexWrap: 'wrap',
-    width:'50%',
-    alignItems:'stretch',
+  crayon: {},
+
+  editContainer1: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "50%",
+    alignItems: "stretch",
     borderWidth: 1,
-
   },
 
   input1: {
     borderWidth: 1,
-
   },
-  
-  editingProfil1:{
+
+  editingProfil1: {
     borderWidth: 1,
-
   },
-})
+});

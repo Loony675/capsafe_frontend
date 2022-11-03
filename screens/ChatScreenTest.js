@@ -133,7 +133,7 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
               // console.log(message))
               <View key={i} style={[styles.messageWrapper,{...(message.tokenReceiver === !token? styles.messageSent : styles.messageRecieved),
                   },
-                ]}>
+                ]}> 
                 <View style={[styles.message,{...(message.tokenReceiver=== token? styles.messageSentBg: styles.messageRecievedBg),
                     },
                   ]}>   
@@ -272,8 +272,10 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
       paddingLeft: 20,
       paddingRight: 20,
       
-    }})
-//      else if (recordingUri) { // Si message audio
+    } })
+    
+    
+//     else if (recordingUri) { // Si message audio
 //       payload = new FormData();
 //       payload.append('audio', {
 //         uri: recordingUri,

@@ -26,9 +26,9 @@ import users from "./reducers/users";
 import url from "./reducers/url";
 import isVisible from "./reducers/isVisible";
 import position from "./reducers/position";
-
+import trajets from './reducers/trajets'
 const store = configureStore({
-  reducer: { users, url, isVisible, position },
+  reducer: { users, url, isVisible, position, trajets },
 });
 
 const Stack = createNativeStackNavigator();
@@ -77,18 +77,15 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="profil" component={ProfilScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="ListTrajet" component={MainScreen} />
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
+          <Stack.Screen name="profil" component={ProfilScreen} />
           <Stack.Screen name="ChatTest" component={ChatScreenTest} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
-          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
-
-          {/* <Stack.Screen name="Facebook" component={HomeScreen} /> */}
-          {/* <Stack.Screen name="Google" component={HomeScreen} /> */}
-          {/* decommenter la ligne 78 après fin des test ligne 70 */}
+          {/* <Stack.Screen name="Facebook" component={HomeScreen} />
+          <Stack.Screen name="Google" component={HomeScreen} />           */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
