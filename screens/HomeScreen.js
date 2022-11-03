@@ -28,11 +28,7 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity style = {styles.btn4} onPress={() => navigation.navigate('SignIn')}>
             <Text style = {styles.signIn} >Déjà un compte ?</Text>
-          </TouchableOpacity>
-          {/* <TouchableOpacity style = {styles.btn4}>
-            <Text style = {styles.signIn} onPress={() => navigation.navigate('profil')}>profil</Text>
-          </TouchableOpacity> */}
-          
+          </TouchableOpacity>          
         </View>
       </View>
   )
@@ -41,7 +37,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,    
-    backgroundColor: "rgba(	124, 96, 183, 0.7)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     alignItems: "center",
     justifyContent : "center",
   },
@@ -119,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
-    backgroundColor: "rgba(71, 139, 188, 0.4)",
+    backgroundColor: "#f4a261",
   },
 
   signUp: {
@@ -136,7 +132,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     marginBottom: 15,
-    backgroundColor: "rgba(71, 139, 188, 0.4)",
+    backgroundColor: "#f4a261",
   },
 
   signIn: {

@@ -3,71 +3,73 @@ import {
   Text,
   TouchableOpacity,
   View,
-  TextInput,
+  Image,
+  TextInput,  
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 import { useNavigation } from "@react-navigation/native";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
+import { ScrollView } from "react-native-gesture-handler";
 
-
-export default function MiseEnRelationScreen({navigation}) {
-
+export default function MiseEnRelationScreen({ navigation }) {
   // const navigation = useNavigation()
   const avis = [
-    { avatar: "0", com: "Plûtot marrant avec sa moustache" },
-    { avatar: "1", com: "Agréable et souriant" },
-    { avatar: "2", com: "Gentil et discret" },
+    { avatar: require("../assets/Image2.png"), com: "Plûtot marrant avec sa moustache."},
+    { avatar: require("../assets/Image3.png"), com: "Agréable et souriant." },
+    { avatar: require("../assets/Image4.png"), com: "Gentil et discret." },
+    { avatar: require("../assets/singe.jpg"), com: "houbba houbba !!!" },
   ];
+
+  const photo = require("../assets/barbu.png")
+
   const mapAvis = avis.map((data, i) => {
     return (
-      <View key={i}>
-        <Text style={styles.avis}>
-          {data.avatar} {data.com}
-        </Text>
+      <View key={i} style= {styles.containerComment}>
+        <Image source={data.avatar} style={styles.avatar}/>
+        <Text style={styles.avis}>{data.com}</Text>
       </View>
     );
   });
   return (
     <View style={styles.globalContainer}>
+      <View style={styles.containerBack}>
+        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate("TabNavigator", { screen: "Main" })}>
+        <FontAwesome name="arrow-left" color="black" size="30"></FontAwesome>
+        </TouchableOpacity>
+      </View>
       <View style={styles.container1}>
-        <Text style={styles.username}>Beubeu31</Text>
-        <Text style={styles.rate}>
-          4.9 <FontAwesome name="star" color="orange" size="30"></FontAwesome>
-        </Text>
-        <Text style={styles.memberSince}>Membre depuis le 18/09/2022</Text>
-        <View style={styles.borderBottom}></View>
+        <Image  style={styles.photo} source= {photo}/>
+        <View style= {styles.topRight}>
+          <Text style={styles.username}>Beubeu31</Text>
+          <Text style={styles.rate}>
+          4.9 <FontAwesome name="star" color="orange" size="30"></FontAwesome>          
+          </Text>
+          <Text style={styles.memberSince}>Membre depuis le 18/09/2022</Text>
+        </View>
       </View>
       <View style={styles.container2}>
-        {mapAvis}
+        <Text style={styles.commentaire}>Commentaires :</Text>
         <View style={styles.borderBottom}></View>
+        <ScrollView>
+          {mapAvis}
+        </ScrollView>
+      <View style={styles.borderBottom}></View>
       </View>
       <View style={styles.container3}>
         <TouchableOpacity style={styles.buttons}>
-          <Text style= {styles.textBtn} onPress= {() => navigation.navigate('TabNavigator', { screen: 'ChatTest' })}>
-            Envoyer un message
-          </Text>
+          <Text style={styles.textBtn} onPress={() => navigation.navigate("TabNavigator", { screen: "ChatTest" })}>Envoyer un message</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={styles.textBtn}>
-            Téléphoner
-          </Text>
+          <Text style={styles.textBtn}>Téléphoner</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={styles.textBtn}>
-            Rejoindre
-          </Text>
+          <Text style={styles.textBtn}>Rejoindre</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={styles.textBtn}>
-            Signaler/bloquer
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate('TabNavigator')}>
-          <Text style={styles.textBtn}>
-            BACK
-          </Text>
-        </TouchableOpacity>
+          <Text style={styles.textBtn}>Signaler/bloquer</Text>
+        </TouchableOpacity>       
       </View>
     </View>
   );
@@ -75,21 +77,60 @@ export default function MiseEnRelationScreen({navigation}) {
 
 const styles = StyleSheet.create({
   globalContainer: {
-    flex: 1,    
+    flex: 1,
     backgroundColor: "rgba(71, 139, 188, 1)",
   },
 
+  containerBack: {
+    height: '10%',
+    width: '100%',
+    justifyContent: "flex-end",
+
+  },
+
+  buttonBack: {
+    height: 60,
+    width: 60,
+    backgroundColor: "rgba(71, 139, 188, 1)",
+    borderRadius: 9999,
+    marginLeft: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   container1: {
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: "25%",
+    height: "20%",
+    paddingRight: 30,
+
+  },
+
+  photo: {
+    height: "80%",
+    width: "35%",
+    borderRadius: 9999,
+    marginLeft: 20,
+    marginTop: 0,
+    marginBottom: 0,
+    borderWidth: 1,
+  },
+
+  topRight: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: "80%",
+    width: "65%",
+    marginTop: 0,
+    marginBottom: 0,
   },
 
   username: {
     fontSize: 40,
     fontWeight: "800",
     color: "white",
-    marginTop: 40
+
   },
 
   rate: {
@@ -106,28 +147,39 @@ const styles = StyleSheet.create({
 
   borderBottom: {
     width: "80%",
-    borderBottomWidth: 5,
-    borderBottomColor: "rgba(71, 139, 188, 1)",
-    alignItems: "center",
-    justifyContent: "center",
+    borderBottomWidth: 4,
+    borderBottomColor: "white",
+  },
+
+  containerComment: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 0.5,
+    borderColor: "white"
+  },
+
+  commentaire: {
+    color: 'white',
+    fontSize: 25,
   },
 
   container2: {
     alignItems: "flex-start",
-    borderWidth: 1,
-    height: "20%",
+    height: "30%",
     paddingLeft: 15,
-    color: 'white'
+    color: "white",
   },
 
   avis: {
-    color: 'white'
+    color: "white",
+    marginLeft: 10,
+    marginTop: 10
   },
 
   container3: {
     alignItems: "center",
     justifyContent: "space-evenly",
-    height: "55%",
+    height: "40%",
   },
 
   buttons: {
@@ -137,21 +189,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,
-    
   },
 
   textBtn: {
     fontWeight: "600",
     fontSize: 20,
-    color: 'white'
+    color: "white",
   },
 
-  buttonBack:{
-    height:70,
-    width:70,
-    backgroundColor:'#f4a261',
-    borderRadius:9999,
-    alignItems:'center',
-    justifyContent:'center'
-  }
+  
+
+  avatar: {
+    height: 45,
+    width: 45,
+    borderRadius: 9999
+  },
+
+  
 });
