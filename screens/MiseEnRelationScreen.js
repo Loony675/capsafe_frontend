@@ -35,8 +35,8 @@ export default function MiseEnRelationScreen({ navigation }) {
   return (
     <View style={styles.globalContainer}>
       <View style={styles.containerBack}>
-        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate("TabNavigator", { screen: "Main" })}>
-        <FontAwesome name="arrow-left" color="black" size="30"></FontAwesome>
+        <TouchableOpacity style={styles.buttonBack} onPress={() => navigation.navigate("TabNavigator", { screen: "Main"})}>
+        <FontAwesome name="arrow-left" color="black" size={30}></FontAwesome>
         </TouchableOpacity>
       </View>
       <View style={styles.container1}>
@@ -44,7 +44,7 @@ export default function MiseEnRelationScreen({ navigation }) {
         <View style= {styles.topRight}>
           <Text style={styles.username}>Beubeu31</Text>
           <Text style={styles.rate}>
-          4.9 <FontAwesome name="star" color="orange" size="30"></FontAwesome>          
+          4.9 <FontAwesome name="star" color="orange" size={30}></FontAwesome>          
           </Text>
           <Text style={styles.memberSince}>Membre depuis le 18/09/2022</Text>
         </View>
@@ -58,7 +58,7 @@ export default function MiseEnRelationScreen({ navigation }) {
       <View style={styles.borderBottom}></View>
       </View>
       <View style={styles.container3}>
-        <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate("TabNavigator", { screen: "Chat", token2:'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH' })}>
+        <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate("Chat", { token2: "ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH"})}>
           <Text style={styles.textBtn} >Envoyer un message</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>

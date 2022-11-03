@@ -75,9 +75,9 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
