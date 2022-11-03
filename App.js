@@ -62,10 +62,10 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Profil" component={ProfilScreen} />
-      {/* <Tab.Screen name="Messaging" component={MessagingScreen} />       */}
-      <Tab.Screen name="Route" component={RouteScreen} />
-      <Tab.Screen name="ChatTest" component={ChatScreenTest} />
+      {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
+      <Tab.Screen name="MessagingScreen" component={MessagingScreenTest} />
+      <Tab.Screen name="MessagesNew" component={MessagesScreen} />      
+      {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
     </Tab.Navigator>
   );
 };
@@ -75,13 +75,20 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
+          {/* <Stack.Screen   name="MiseEnRelation" component={MiseEnRelation} /> */}
+
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="ListTrajet" component={MainScreen} />
-          <Stack.Screen name="MiseEnRelation" component={MiseEnRelationScreen} />
+
+          <Stack.Screen name="Facebook" component={HomeScreen} />
+          <Stack.Screen name="Google" component={HomeScreen} />
+          {/* decommenter la ligne 80 après fin des test ligne 70 */}
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
           <Stack.Screen name="ChatTest" component={ChatScreenTest} />
           {/* <Stack.Screen name="Facebook" component={HomeScreen} />
