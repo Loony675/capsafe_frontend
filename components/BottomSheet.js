@@ -19,7 +19,7 @@ import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
 import Adresses from "../screens/AdressesScreen.js";
 import ListTrajet from "../screens/ListTrajetsScreen.js";
-import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible.js";
+import { isVisibleDeparture, isVisibleListTrajet } from "../reducers/isVisible.js";
 import SelectTrajet from "../screens/SelectTrajet.js";
 import MiseEnRelation from "../screens/MiseEnRelationScreen.js";
 
@@ -103,7 +103,8 @@ const BottomSheet = () => {
           {/* {screenVisible} */}
           {/* <SelectTrajet/> */}
           {/* <MiseEnRelation/> */}
-          <DepartureArrival/>
+          {/* <DepartureArrival/> */}
+          <ListTrajet/>
         </View>
       </Animated.View>
     </GestureDetector>

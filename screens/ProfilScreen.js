@@ -86,7 +86,7 @@ const ProfilScreen = () => {
     <View style={styles.mainContainer}>
       <Image
         style={styles.logo}
-        source={require("../assets/imageProfil.png")}
+        source={require()}
       />
       <View style={styles.MainInfoContainer}>
         <View style={styles.infoContainer}>
@@ -341,7 +341,7 @@ export default ProfilScreen;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: "rgba(	124, 96, 183, 0.4)",
+    backgroundColor: "rgba(71, 139, 188, 1)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -355,26 +355,26 @@ const styles = StyleSheet.create({
     height: "68%",
     width: "80%",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: "15%",
-    backgroundColor: "white",
+    justifyContent: "space-evenly",
+    marginTop: "10%",
+    backgroundColor: "#f4a261",
     borderRadius: 20,
   },
 
   infoContainer: {
-    //   // height: 30,
-    width: "100%",
+      width: "90%",
     alignItems: "flex-start",
     justifyContent: "center",
-    backgroundColor: "rgba(	124, 96, 183, 0.1)",
+    backgroundColor: "white",
     marginTop: 20,
-    marginLeft: 20,
     fontSize: 18,
+    borderRadius: 10,
+    paddingLeft: 10
   },
 
-  text1: {
+  text1:{
     fontSize: 15,
-    width: "100%",
+    width: '100%',
   },
 
   text2: {
@@ -382,17 +382,68 @@ const styles = StyleSheet.create({
     fontSize: 15,
     width: "100%",
   },
+
   editContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     width: "100%",
-    alignItems: "stretch",
   },
 
   editProfil: {
     textAlign: "right",
   },
+
   editingProfil: {
     textAlign: "right",
   },
-});
+// test
+
+cadre: {
+  width: "90%",
+  height: "7%",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+
+  backgroundColor: "white",
+  borderRadius: 10,
+  paddingLeft: 10,
+},
+
+left:{
+  height: "100%",
+  borderWidth: 1,
+},
+  prenom:{
+    height: "50%",
+  },
+
+  test2:{
+    color: "#478bbc",
+    fontSize: 15,
+    borderWidth: 1,
+
+  },
+  
+  crayon:{
+  },
+
+  editContainer1:{
+    flexDirection:'row' ,
+    flexWrap: 'wrap',
+    width:'50%',
+    alignItems:'stretch',
+    borderWidth: 1,
+
+  },
+
+  input1: {
+    borderWidth: 1,
+
+  },
+  
+  editingProfil1:{
+    borderWidth: 1,
+
+  },
+})

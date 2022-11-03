@@ -10,6 +10,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 //update
 
+<<<<<<< HEAD
+const MessagingScreen = ({navigation}) => {
+let token2 = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
+  const handleclic = () => {
+    navigation.navigate('MessagesNew', {token2});
+  }
+=======
 const MessagingScreen = ({ navigation }) => {
   const url = useSelector((state) => state.url.value);
   const token = useSelector((state) => state.users.value.token);
@@ -41,6 +48,7 @@ const MessagingScreen = ({ navigation }) => {
     navigation.navigate("Chat");
   };
 
+>>>>>>> 71d972135e2ba116ba9c22ad396a5215b1cf0529
   return (
     <View style={styles.container}>
       <Text style={styles.Titre}>Messages</Text>
