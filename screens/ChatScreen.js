@@ -13,8 +13,8 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
     
     // const token = useSelector((state) => state.users.value.token); 
     const token = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
-    const token2 = 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnO'
-    const channel = 'ctK-p1A6zJYEV-fPNAcRVansbEX_eWnOZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
+    const token2 = params.token2
+    const channel = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdHZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
     const username = useSelector((state) => state.users.value.username);
     const [messages, setMessages] = useState([]);
     const [chanel, setChanel] = useState('');

@@ -9,8 +9,7 @@ import React from 'react'
 const MessagingScreenTest = ({navigation}) => {
 
   const handleclic = () => {
-    navigation.navigate('Chat')
-
+    navigation.navigate('Chat', { token2: 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH' })
   }
   return (
     <View style={styles.container}>

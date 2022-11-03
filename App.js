@@ -87,7 +87,6 @@ export default function App() {
           {/* decommenter la ligne 80 après fin des test ligne 70 */}
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
-          <Stack.Screen name="ChatTest" component={ChatScreen} />
           {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
