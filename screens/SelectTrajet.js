@@ -24,13 +24,13 @@ export default function SelectTrajet() {
     { name: "Beubeu31", communStations: 3, starRate: 4.9 },
     { name: "Ali", communStations: 2, starRate: 0.2 },
     { name: "Chloé", communStations: 1, starRate: 4.8 },
-    { name: "Medhi", communStations: 5, starRate: 3.5 },
-    { name: "Beubeu31", communStations: 3, starRate: 4.9 },
-    { name: "Ali", communStations: 2, starRate: 0.2 },
-    { name: "Chloé", communStations: 1, starRate: 4.8 },
-    { name: "Medhi", communStations: 5, starRate: 3.5 },
-    { name: "Beubeu31", communStations: 3, starRate: 4.9 },
-    { name: "Ali", communStations: 2, starRate: 0.2 },
+    { name: "Thomas", communStations: 5, starRate: 3.5 },
+    { name: "Michel", communStations: 3, starRate: 4.9 },
+    { name: "Alice", communStations: 2, starRate: 0.2 },
+    { name: "Charlotte", communStations: 1, starRate: 4.8 },
+    { name: "Marine", communStations: 5, starRate: 3.5 },
+    { name: "Bill", communStations: 3, starRate: 4.9 },
+    { name: "Marjorie", communStations: 2, starRate: 0.2 },
     { name: "Chloé", communStations: 1, starRate: 4.8 },
   ];
   const mapMembresMatch = membresMatch.map((data, i) => {
@@ -87,7 +87,7 @@ export default function SelectTrajet() {
       </View>
 
       <View style={styles.container1}>
-        <Text>Marcher jusqu'à n'en plus pouvoir</Text>
+        <Text>Marcher jusqu'au Metro 14 à Pont Cardinet(...)</Text>
       </View>
       <Text style={{ fontWeight: "600", fontSize: 17 }}>
         Membres sur votre trajet:

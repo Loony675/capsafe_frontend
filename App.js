@@ -85,9 +85,9 @@ export default function App() {
 
           <Stack.Screen name="Facebook" component={HomeScreen} />
           <Stack.Screen name="Google" component={HomeScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          <Stack.Screen name="profil" component={ProfilScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="profil" component={ProfilScreen} />
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
           {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
           {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
 

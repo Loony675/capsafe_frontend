@@ -162,7 +162,7 @@ export default function DepartureArrival() {
             value={depart}
             style={styles.input}
           />
-          {onDepartureInput &&
+          {/* {onDepartureInput &&
             departurePossible?.map((city, i) => (
               <View style={styles.popSuggestDepart}>
                 <TouchableOpacity
@@ -175,7 +175,7 @@ export default function DepartureArrival() {
                   </View>
                 </TouchableOpacity>
               </View>
-            ))}
+            ))} */}
         </TouchableOpacity>
       </View>
       <View style={styles.container2}>
@@ -201,7 +201,7 @@ export default function DepartureArrival() {
             value={arrivee}
             style={styles.input}
           />
-          <View style={styles.popSuggestArrivee}>
+          {/* <View style={styles.popSuggestArrivee}>
             {arrivalPossible?.map((city, i) => (
               <TouchableOpacity
                 key={i}
@@ -213,7 +213,7 @@ export default function DepartureArrival() {
                 </View>
               </TouchableOpacity>
             ))}
-          </View>
+          </View> */}
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
@@ -278,36 +278,41 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 40,
     borderRadius: 10,
-
-  },
-  popSuggestDepart:{
-    position:'absolute',
-    top:'0%',
-    left:'0%',
-    height:40,
-    width:'100%',
-    backgroundColor:'white',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:10,
-
-  },
-  popSuggestArrivee:{
-    position:'absolute',
-    top:'0%',
-    left:'0%',
-    height:40,
-    width:'100%',
-    backgroundColor:'white',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:10,
     borderWidth: 1,
     shadowOffset: { width: 0, height: 3 },
     shadowColor: "black",
     shadowOpacity: 0.7,
     shadowRadius: 3,
+
   },
+  // popSuggestDepart:{
+  //   position:'absolute',
+  //   top:'0%',
+  //   left:'0%',
+  //   height:40,
+  //   width:'100%',
+  //   backgroundColor:'white',
+  //   justifyContent:'center',
+  //   alignItems:'center',
+  //   borderRadius:10,
+
+  // },
+  // popSuggestArrivee:{
+  //   position:'absolute',
+  //   top:'0%',
+  //   left:'0%',
+  //   height:40,
+  //   width:'100%',
+  //   backgroundColor:'white',
+  //   justifyContent:'center',
+  //   alignItems:'center',
+  //   borderRadius:10,
+  //   borderWidth: 1,
+  //   shadowOffset: { width: 0, height: 3 },
+  //   shadowColor: "black",
+  //   shadowOpacity: 0.7,
+  //   shadowRadius: 3,
+  // },
   pin: {
     marginLeft: 10,
   },

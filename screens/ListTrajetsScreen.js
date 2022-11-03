@@ -26,7 +26,7 @@ export default function ListTrajet() {
   const coordSelected = useSelector((state) => state.trajets.value);
   const trajetSelectionne = useSelector((state) => state.trajets.sections);
 
-console.log(trajetSelectionne);
+
   const [trajet, setTrajet] = useState([]);
   const [ligne, setLigne] = useState([]);
   const [depart, setDepart] = useState("");
@@ -39,6 +39,27 @@ console.log(trajetSelectionne);
 
   const [departurePossible, setDeparturePossible] = useState([]);
   const [arrivalPossible, setArrivalPossible] = useState([]);
+  const listTrajet = [
+    { logo: "T1", nbrMembre: "11  membres sur votre trajet", timer: "23 min" },
+    { logo: "T2", nbrMembre: "7 membres sur votre trajet", timer: "10 min" },
+    { logo: "T3", nbrMembre: "4 membres sur votre trajet", timer: "111 min" },
+  ];
+  const mapListAddress = listTrajet.map((data, i) => {
+    return (
+      <View key={i} style={styles.mapStyle}>
+        <View style={styles.mapDirection}>
+          <TouchableOpacity style={styles.trajetButton}
+            onPress={() =>
+              goToSelectTrajet()
+            }
+          >
+            <Text style={{ fontWeight: "600" }}>{data.logo} {data.nbrMembre} {data.timer}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  });
+
   const goToSelectTrajet = () => {
     dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
     dispatch(isVisibleDeparture({ isVisibleDA: false }));
@@ -100,33 +121,33 @@ console.log(trajetSelectionne);
 
   let affichageLigne = [];
 
-  const mapListAddress = trajet?.map((data, i) => {
-    // console.log('================>', data.type, i);
-    let path = "";
+  // const mapListAddress = trajet?.map((data, i) => {
+  //   // console.log('================>', data.type, i);
+  //   let path = "";
 
-    if (data.type === "street_network") {
-      // console.log(data.mode);
-      path = `../assets/transport/${data.mode}.png`;
-      // affichageLigne.push(<Image key={i} style={styles.image1} source={{uri:"../assets/transport/walking.png", width:200,height:200}} />)
-      affichageLigne.push(data.mode);
-      return affichageLigne;
-    } else if (data.type === "public_transport") {
-      affichageLigne.push(data.display_informations.code);
-      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.display_informations.code}.png`)} />)
-      return affichageLigne;
-    } else if (data.type === "transfer") {
-      affichageLigne.push(data.transfer_type);
+  //   if (data.type === "street_network") {
+  //     // console.log(data.mode);
+  //     path = `../assets/transport/${data.mode}.png`;
+  //     // affichageLigne.push(<Image key={i} style={styles.image1} source={{uri:"../assets/transport/walking.png", width:200,height:200}} />)
+  //     affichageLigne.push(data.mode);
+  //     return affichageLigne;
+  //   } else if (data.type === "public_transport") {
+  //     affichageLigne.push(data.display_informations.code);
+  //     // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.display_informations.code}.png`)} />)
+  //     return affichageLigne;
+  //   } else if (data.type === "transfer") {
+  //     affichageLigne.push(data.transfer_type);
 
-      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.transfer_type}.png`)} />)
-      return affichageLigne;
-    } else if (data.type === "waiting") {
-      affichageLigne.push(data.type);
+  //     // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.transfer_type}.png`)} />)
+  //     return affichageLigne;
+  //   } else if (data.type === "waiting") {
+  //     affichageLigne.push(data.type);
 
-      // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.type}.png`)} />)
-      return affichageLigne;
-    }
-    setLigne(mapListAddress);
-  });
+  //     // value = affichageLigne.push(<Image style={styles.image1} source={require(`../assets/${data.type}.png`)} />)
+  //     return affichageLigne;
+  //   }
+  //   setLigne(mapListAddress);
+  // });
   const backToDA = () => {
     dispatch(isVisibleListTraj({ isVisibleListTrajet: false }));
     dispatch(isVisibleDeparture({ isVisibleDA: true }));
@@ -154,7 +175,7 @@ console.log(trajetSelectionne);
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-          <Text>{depCity}</Text>
+          <Text>56 boulevard Pereire 75017 Paris</Text>
         </View>
       </View>
       <View style={styles.container2}>
@@ -172,7 +193,7 @@ console.log(trajetSelectionne);
             color={"rgba(71, 139, 188, 1)"}
             style={styles.pin}
           />
-          <Text>{arrCity}</Text>
+          <Text>41 rue du Président Despatys 77000 Melun</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container3}>
@@ -182,14 +203,14 @@ console.log(trajetSelectionne);
         <View style={styles.mapStyle}>
           <View style={styles.mapDirection}>
             <TouchableOpacity onPress={() => goToSelectTrajet()}>
-              <View style={styles.resultJourney}>
+              {/* <View style={styles.resultJourney}>
                 {mapListAddress[0]?.map((data, i) => {
                   //Theo insert image
                   // console.log(data);
                   // let path = require(`../assets/transport/${data}.png`)
                   return <Text>{i}: {data}, </Text>;
                 })}
-              </View>
+              </View> */}
 
               <Text style={{ fontWeight: "600" }}>
                 {/* {data.nbrMembre} */}
@@ -198,7 +219,7 @@ console.log(trajetSelectionne);
             </TouchableOpacity>
           </View>
         </View>
-        {/* {mapListAddress} */}
+        {mapListAddress}
       </View>
     </View>
   );
@@ -208,13 +229,11 @@ const styles = StyleSheet.create({
   globalContainer: {
     width: "100%",
     justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "red",
+
   },
   container0: {
     marginBottom: 15,
     height: 40,
-    borderWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -226,7 +245,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
   },
-
   buttonDepart: {
     flexDirection: "row",
     alignItems: "center",
