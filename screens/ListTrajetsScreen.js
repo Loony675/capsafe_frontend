@@ -15,7 +15,7 @@ import {
   isVisibleDeparture,
   isVisibleSelectTraj,
 } from "../reducers/isVisible";
-import { addDeparture } from "../reducers/trajets";
+import { addDeparture, addArrival } from "../reducers/trajets";
 
 export default function ListTrajet() {
   const dispatch = useDispatch();
@@ -153,7 +153,7 @@ export default function ListTrajet() {
             color={"rgba(71, 139, 188, 1)"}
             style={styles.locationArrow}
           />
-
+          <Text>{}</Text>
         </View>
       </View>
       <View style={styles.container2}>

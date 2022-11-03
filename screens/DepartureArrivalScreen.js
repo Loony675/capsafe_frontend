@@ -12,6 +12,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useDispatch, useSelector } from "react-redux";
 import { isVisibleDeparture, isVisibleListTraj } from "../reducers/isVisible";
 import { positionDeparture, positionArrival } from "../reducers/position";
+import { addDeparture, addArrival } from "../reducers/trajets";
 
 export default function DepartureArrival() {
   const dispatch = useDispatch();
@@ -39,8 +40,6 @@ export default function DepartureArrival() {
   const [departurePossible, setDeparturePossible] = useState([]);
   const [arrivalPossible, setArrivalPossible] = useState([]);
   const coordSelected = useSelector((state) => state.trajets.value);
-
-
 
 
   const options = {
@@ -100,13 +99,13 @@ export default function DepartureArrival() {
   const citySelected = (city, step) => {
     if (step === "depart") {
       setDepart("");
-      setDepart(city.places);
-      setCoordDepart(city.coord.stop_area.coord);
+      setDepart(city?.places);
+      setCoordDepart(city?.coord.stop_area.coord);
       console.log(city);
       dispatch(
         addDeparture({
-          depLon: city.coord.stop_area.coord.lon,
-          depLat: city.coord.stop_area.coord.lat,
+          depLon: city?.coord.stop_area.coord.lon,
+          depLat: city?.coord.stop_area.coord.lat,
         })
       );
       setOnDepartureInput(false)

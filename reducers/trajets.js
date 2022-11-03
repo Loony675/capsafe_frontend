@@ -21,5 +21,5 @@ export const trajetsSlice = createSlice({
   },
 });
 
-export const { addDeparture } = trajetsSlice.actions;
+export const { addDeparture, addArrival } = trajetsSlice.actions;
 export default trajetsSlice.reducer;

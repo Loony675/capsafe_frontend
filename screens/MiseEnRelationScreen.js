@@ -59,7 +59,7 @@ export default function MiseEnRelationScreen({ navigation }) {
       </View>
       <View style={styles.container3}>
         <TouchableOpacity style={styles.buttons}>
-          <Text style={styles.textBtn} onPress={() => navigation.navigate("TabNavigator", { screen: "ChatTest" })}>Envoyer un message</Text>
+          <Text style={styles.textBtn} onPress={() => navigation.navigate("TabNavigator", { screen: "ChatTest", token2: 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH' })}>Envoyer un message</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttons}>
           <Text style={styles.textBtn}>Téléphoner</Text>
