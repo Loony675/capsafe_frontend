@@ -53,15 +53,15 @@ useEffect(() => {
 }); // a la connection pusher est informé que params.username à join le chanel
 
     const subscription = pusher.subscribe(channel); // attribution du channel chat 
-    subscription.bind('pusher:subscription_succeeded', () => { // On s'assure de la liaison au chanel chat et que pusher renvoie subscription_succeeded
-      subscription.bind('message', handleReceiveMessage); // On demande a pusher de nous faire une mise à jour l'orsque'un évenement 'message' lui parvient
+    subscription.bind('pusher:subscription_succeeded', () => { // On s'assure de la liaison au channel chat et que pusher renvoie subscription_succeeded
+      subscription.bind('message', handleReceiveMessage); // On demande à pusher de nous faire une mise à jour lorsqu'un évenement 'message' lui parvient
     });
 
     return () => fetch(`${BACKEND_ADDRESS}/messages1/users`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },        
         body: JSON.stringify({chanel :channel, token: token}),
-});; // Lors de la destruction du useEffect (fermeture de la page)on interroge la route delete (suppression des messages du à la sortie du chanel)
+});; // Lors de la destruction du useEffect (fermeture de la page)on interroge la route delete (suppression des messages du à la sortie du channel)
   }, [token]); // rerender
 
   useEffect(() => {
