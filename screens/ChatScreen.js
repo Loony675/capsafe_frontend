@@ -50,7 +50,7 @@ useEffect(() => {
         headers: { "Content-Type": "application/json" },        
         body: JSON.stringify({chanel : channel, token: token}),
 
-}); // a la connection pusher est informé que params.username à join le chanel
+}); // a la connection pusher est informé que params.username a join le channel
 
     const subscription = pusher.subscribe(channel); // attribution du channel chat 
     subscription.bind('pusher:subscription_succeeded', () => { // On s'assure de la liaison au channel chat et que pusher renvoie subscription_succeeded
