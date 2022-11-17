@@ -9,15 +9,14 @@ const pusher = new Pusher("9cf6d78d2a5981a0d45c", { cluster: "eu" });
   export default function ChatScreenTest({ navigation, route: { params } }) {
     
     const url = useSelector((state) => state.url.value);
-    const BACKEND_ADDRESS = `http://${url}:3000`;
+    // const BACKEND_ADDRESS = `http://${url}:3000`;
+    const BACKEND_ADDRESS = 'https://capsafe-backend.vercel.app';
     
-    // const token = useSelector((state) => state.users.value.token); 
     const token = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
     const token2 = params.token2
     const channel = 'ZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdHZKa72E5Q-zoSLDrleDzMWlUlXv5YUqdH'
     const username = useSelector((state) => state.users.value.username);
     const [messages, setMessages] = useState([]);
-    const [chanel, setChanel] = useState('');
     const [messageText, setMessageText] = useState('');
     const [recording, setRecording] = useState(null);
     const [recordingUri, setRecordingUri] = useState(null);
@@ -32,14 +31,11 @@ useEffect(() => {
       }).then((response) => response.json())
         .then(data => {
             if(data.result){
-                // console.log(data);
             let testMessage = data.message[0].message.map(data => {
                 return data
             })
             setMessages(testMessage)
-            // console.log(messages);
         }})
-        // console.log(messages);
         }, [])
 
 
@@ -50,7 +46,7 @@ useEffect(() => {
         headers: { "Content-Type": "application/json" },        
         body: JSON.stringify({chanel : channel, token: token}),
 
-}); // a la connection pusher est informé que params.username a join le channel
+}); // à la connexion pusher est informé que params.username a join le channel
 
     const subscription = pusher.subscribe(channel); // attribution du channel chat 
     subscription.bind('pusher:subscription_succeeded', () => { // On s'assure de la liaison au channel chat et que pusher renvoie subscription_succeeded

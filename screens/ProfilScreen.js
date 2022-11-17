@@ -31,7 +31,8 @@ const ProfilScreen = () => {
   // updateProfilInfo('lastName')
   let sendedInfo;
   useEffect(() => {
-    fetch(`http://${url}:3000/users/displayOneUser`, {
+    // fetch(`http://${url}:3000/users/displayOneUser`, { // local
+    fetch('https://capsafe-backend.vercel.app/users/displayOneUser', { // vercel
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: token }),

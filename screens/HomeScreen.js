@@ -1,16 +1,7 @@
 import { View, Text, KeyboardAvoidingView, StyleSheet, TouchableOpacity, ImageBackground, Image, Button } from 'react-native'
 import React from 'react'
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationProp, ParamListBase } from "@react-navigation/native";
-import { useSelector } from 'react-redux';
 export default function HomeScreen({ navigation }) {
-  const url = useSelector((state) => state.url.value);
-//update
 
-  // console.log(url)
   return (
       <View style = {styles.background}>
         <Image style = {styles.logo} source={{uri : "https://res.cloudinary.com/dpe2tab7h/image/upload/v1667468073/LOGO_CapSafe_V4_-_OMBRE_zolwhe.jpg"}}/>
@@ -100,13 +91,11 @@ const styles = StyleSheet.create({
     marginRight: 18,
     
   },
-
   google: {
     textAlign:'center',   
     fontSize: 20,
     paddingTop: 12, 
   },
-
   btn3: {
     width: "100%",
     height: "15%",
@@ -123,7 +112,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20
   },
-
   btn4: {
     width: "100%",
     height: "15%",
@@ -134,7 +122,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: "#f4a261",
   },
-
   signIn: {
     textAlign:'center',
     color: 'white',

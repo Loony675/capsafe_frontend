@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-// import BottomSheet from "../components/BottomSheet";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   isVisibleListTraj,

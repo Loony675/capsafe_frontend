@@ -3,9 +3,7 @@ import React, { useEffect } from "react";
 import {
   GestureDetector,
   Gesture,
-  GestureHandlerRootView,
 } from "react-native-gesture-handler";
-//update1
 
 import Animated, {
   useAnimatedStyle,
@@ -13,7 +11,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import OnVaOuScreen from "../screens/OnVaOuScreen.js";
 import DepartureArrival from "../screens/DepartureArrivalScreen.js";
@@ -99,10 +97,6 @@ const BottomSheet = () => {
         <View style={styles.line}></View>
         <View hide={true} style={styles.onVaOuContainer}>
           {screenVisible}
-          {/* <SelectTrajet/> */}
-          {/* <MiseEnRelation/> */}
-          {/* <DepartureArrival/> */}
-          {/* <ListTrajet/> */}
         </View>
       </Animated.View>
     </GestureDetector>
@@ -135,4 +129,4 @@ const styles = StyleSheet.create({
 
   },
 });
-//test
+

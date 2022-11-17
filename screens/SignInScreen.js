@@ -29,7 +29,8 @@ const SignInScreen = ({ navigation }) => {
     if (!EMAIL_REGEX.test(signInEmail)) {
       setEmailError(false);
     }
-    fetch(`http://${url}:3000/users/signIn`, {
+    // fetch(`http://${url}:3000/users/signIn`, { // local
+    fetch('https://capsafe-backend.vercel.app/users/signIn',  { // vercel
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: signInEmail, password: signInPassword }),

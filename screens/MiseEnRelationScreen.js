@@ -14,7 +14,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function MiseEnRelationScreen({ navigation }) {
-  // const navigation = useNavigation()
   const avis = [
     { avatar: require("../assets/Image2.png"), com: "Plûtot marrant avec sa moustache."},
     { avatar: require("../assets/Image3.png"), com: "Agréable et souriant." },

@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-// import BottomSheet from "../components/BottomSheet";
 
 import { isVisibleAddressList } from "../reducers/isVisible";
 import { useDispatch } from "react-redux";

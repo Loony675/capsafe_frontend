@@ -25,7 +25,8 @@ export default function SignUpScreen({navigation}) {
 
   const handleRegister = () => {
 
-    fetch(`http://${url}:3000/users/signUp`, {
+    // fetch(`http://${url}:3000/users/signUp`, { // local
+    fetch('https://capsafe-backend.vercel.app/users/signUp', { // vercel
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: '192.168.1.22',
+  // value: '192.168.1.22', // local
+  // value: 'https://capsafe-backend.vercel.app', // vercel
 };
 
 export const urlSlice = createSlice({

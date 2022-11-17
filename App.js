@@ -10,7 +10,6 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import HomeScreen from "./screens/HomeScreen";
 import MainScreen from "./screens/MainScreen";
 import ProfilScreen from "./screens/ProfilScreen";
-import RouteScreen from "./screens/RouteScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
@@ -51,7 +50,7 @@ const TabNavigator = () => {
             iconName = "home";
           } else if (route.name === "Tchat") {
             iconName = "envelope";
-          } else if (route.name === "Settings") {
+          } else if (route.name === "Réglages") {
             iconName = "gear";
           }
 
@@ -66,10 +65,8 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Profil" component={ProfilScreen} />
       <Tab.Screen name="Main" component={MainScreen} />
-      {/* <Tab.Screen name="ChatTest" component={ChatScreenTest} /> */}
       <Tab.Screen name="Tchat" component={MessagingScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      {/* <Tab.Screen name="Route" component={RouteScreen} /> */}
+      <Tab.Screen name="Réglages" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };
@@ -87,17 +84,8 @@ export default function App() {
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
 
-          <Stack.Screen name="Facebook" component={HomeScreen} />
-          <Stack.Screen name="Google" component={HomeScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="profil" component={ProfilScreen} />
-          {/* <Stack.Screen name="TabNavigator" component={TabNavigator} /> */}
-          {/* <Stack.Screen name = "MiseEnRelation" component= {MiseEnRelation} /> */}
-          {/* <Stack.Screen name="Chat" component={ChatScreen} /> */}
-
-          {/* <Stack.Screen name="Facebook" component={HomeScreen} /> */}
-          {/* <Stack.Screen name="Google" component={HomeScreen} /> */}
-          {/* decommenter la ligne 78 après fin des test ligne 70 */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
